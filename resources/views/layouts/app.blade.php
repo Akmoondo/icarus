@@ -31,7 +31,7 @@
     <script src="{{ asset('icarus/js/popper.min.js' )}}" ></script>
     <script src="{{ asset('icarus/js/bootstrap.min.js' )}}" ></script>
     <script src="{{ asset('icarus/js/jquery-slim.min.js' )}}" ></script>
-  {{--<script>window.jQuery || document.write("<script src={{ asset(icarus/js/jquery-slim.min.js)}}"><\/script>')</script>--}}
+    <script>window.jQuery || document.write('<script src="{{ asset("icarus/js/jquery-slim.min.js")}}"<\/script>')</script>
     <script src="{{ asset('icarus/js/bootstrap.bundle.min.js')}}"></script>
     <script src="{{ asset('icarus/js/feather.min.js') }}"></script>
     <script src="{{ asset('icarus/js/chart.min.js') }}" ></script>
