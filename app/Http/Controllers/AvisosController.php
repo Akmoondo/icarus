@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Aviso;
 
 class AvisosController extends Controller
 {
@@ -13,7 +14,11 @@ class AvisosController extends Controller
      */
     public function index()
     {
-        return view('avisos.index');
+        $title = "Avisos";
+        $aviso = Aviso::all();
+        $aviso->load('user', 'id_requesito');
+        dd($aviso);
+        return view('avisos.index', compact('title'), compact('aviso'));
     }
 
     /**

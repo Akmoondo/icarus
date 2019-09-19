@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Aviso;
+use App\Evidencia;
+use App\Requisito;
 
 class DashboardsController extends Controller
 {
@@ -13,7 +16,8 @@ class DashboardsController extends Controller
      */
     public function index()
     {
-        return view('dashboard.index');
+        $title = "Dashboard";
+        return view('dashboard.index', compact('title'));
     }
 
     /**

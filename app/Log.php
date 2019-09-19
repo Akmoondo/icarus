@@ -8,6 +8,6 @@ class Log extends Model
 {
     protected $fillable = ['user_id', 'registro'];
     public function user(){
-        $this->hasOne(User::class, 'user_id');
+       return $this->hasOne(User::class, 'id', 'user_id');
     }
 }

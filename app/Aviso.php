@@ -8,9 +8,9 @@ class Aviso extends Model
 {
     protected $fillable = ['user_id', 'id_requisito', 'aviso', 'urgencia'];
     public function user(){
-        $this->hasOne(User::class, 'user_id');
+        return $this->hasOne(User::class, 'id', 'user_id');
     }
     public function requisito(){
-        $this->hasOne(Requisito::class, 'id_requisito');
+        return $this->hasOne(Requisito::class, 'id_requisito');
     }
 }

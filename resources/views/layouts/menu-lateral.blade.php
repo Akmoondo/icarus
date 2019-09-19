@@ -17,7 +17,7 @@
               
                 <li class="nav-item">
                   <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mb-1 text-muted">
-                  <a class="nav-link" href="auditoria.php">
+                  <a class="nav-link" href="{{ route('auditoria.index') }}">
                   <span data-feather="file"></span>
                     Auditoria
                   </a>
@@ -25,7 +25,7 @@
                 </li>
                 <li class="nav-item">
                     <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mb-1 text-muted">
-                  <a class="nav-link" href="resources\views\avisos\index.blade.php">
+                  <a class="nav-link" href="{{ route('aviso.index') }}">
                     <span data-feather="alert-circle"></span>
                     Avisos
                   </a>
@@ -55,7 +55,7 @@
                 </li>
                 <li class="nav-item">
                   <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mb-1 text-muted">
-                  <a class="nav-link" href="log.php">
+                  <a class="nav-link" href="{{ route('logs.index') }}">
                   <span data-feather="archive"></span>
                     LOGS
                   </a>

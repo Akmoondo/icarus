@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Log;
 
 class LogsController extends Controller
 {
@@ -13,7 +14,11 @@ class LogsController extends Controller
      */
     public function index()
     {
-        return view('logs.index');
+        $title = "Registros";
+        $log = Log::all();
+        $log->load('user');
+        
+        return view('logs.index', compact('title'), compact('log'));
     }
 
     /**

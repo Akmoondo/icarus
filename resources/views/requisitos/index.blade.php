@@ -18,7 +18,7 @@
     <tbody>
       <tr>
         <th scope="row">Requisito</th>
-        <td> {{ $requisito->requisito }} </td>
+        <td> {{ $requisito->requisito}} </td>
       </tr>
       <tr>
         <th scope="row">Artigo</th>
@@ -38,21 +38,19 @@
         </tr>
       <tr>
         <th scope="row">Evidência</th>
-        <td> 
-        </td>  
-        
+        <td>{{$evidencia->evidencia}}</td>  
       </tr>
       <tr>
         <th scope="row">Cadastro</th>
-        <td></td>
+        <td>{{$evidencia->created_at}}</td>
       </tr>
       <tr>
         <th scope="row">Validade</th>
-        <td><form action="" method="post"> <input type="date" id="validade"> </form></td>
+        <td>{{$evidencia->validade}} </form></td>
       </tr>
       <tr>
       <th scope="row">Situação</th>
-        <td><span data-feather="check-square"></span>Em conformidade</td>
+        <td>{{$evidencia->situacao}}</td>
       </tr>
       
     </tbody>

@@ -15,7 +15,7 @@ class DatabaseSeeder extends Seeder
     {
         // $this->call(UsersTableSeeder::class);
        // $this->call(RequisitosSeeder::class);
-        DB::table('requisitos')->insert([   
+        DB::table('avisos')->insert([   
         'user_id' => rand(1, 3),
         'requisito' => rand(1, 10),
         'artigo' => Str::random(5),

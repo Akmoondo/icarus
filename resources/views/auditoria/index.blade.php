@@ -18,41 +18,22 @@
            <thead>
              <tr>
                <th>Requisito</th>
+               <th>Artigo</th>
                <th>Responsável</th>
-               <th>Validade</th>
+               <th>Evidência</th>
                <th>Situação</th>
              </tr>
            </thead>
            <tbody>
-           @foreach($requisito->requisito as $requisito) 
-            <tr>
-             <td><a href ="">{{$requisito->requisito}}</a></td>
+           @foreach($requisito->all() as $requisito) 
+           <tr>
+             <td><a href ="{{ route('requisito.show', $requisito->id)}}">{{$requisito->requisito}}</a></td>
+               <td>{{$requisito->artigo}}</td>
                <td>{{$requisito->user->name}}</td>
-               <td>validade</td>
-               <td>situacao</a></td>
+               <td>{{$requisito->evidencia}}</td>
+               <td>{{$requisito->situacao}}</td>
             </tr>
-            @endforeach
-              <tr>
-               <td><a href ="requisito.php">Art.48</a></td>
-               <td>Maria</td>
-               <td><a href ="#">psi.pdf</a></td>
-               <td>11/11/19</td>
-               <td><span data-feather="alert-triangle"></span><a href ="requisito.php">Pendente</a></td>
-             </tr>
-             <tr>
-               <td><a href ="requisito.php">Art.48</a></td>
-               <td>Jonas</td>
-               <td><a href ="#">redes.pdf</a></td>
-               <td>15/11/19</td>
-               <td><span data-feather="alert-triangle"></span><a href ="requisito.php">Pendente</a></td>
-             </tr>
-             <tr>
-               <td><a href ="requisito.php">Art.48<a></td>
-               <td>Eduardo</td>
-               <td><a href ="#">ca.pdf</a></td>
-               <td>11/11/19</td>
-               <td><span data-feather="x-circle"></span><a href ="requisito.php">Incomformidade</a></td>
-             </tr>
+            @endforeach 
            </tbody>
          </table>
        </div> 

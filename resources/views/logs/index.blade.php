@@ -1,4 +1,4 @@
-@extends('layout.app')
+@extends('layouts.app')
 
 @section('content')
 <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
@@ -24,24 +24,14 @@
            </tr>
          </thead>
          <tbody>
-           <tr>
-             <td>001</td>
-             <td>João</td>
-             <td>Cadastraou uma evidência</td>
-             <td>11/11/19 - STM 15:15</td>
+          @foreach($log->all() as $log) 
+          <tr>
+             <td>{{$log->id}}</td>
+             <td>{{$log->user->name}}</td>
+             <td>{{$log->registro}}</td>
+             <td>{{$log->created_at}}</td>
            </tr>
-            <tr>
-             <td>002</td>
-             <td>João</td>
-             <td>Logout do sistema</td>
-             <td>11/11/19 - STM 15:30</td>
-           </tr>
-           <tr>
-             <td>003</td>
-             <td>João</td>
-             <td>Login no sistema</td>
-             <td>11/11/19 - STM 15:12</td>
-           </tr>
+          @endforeach
          </tbody>
        </table>
      </div> 

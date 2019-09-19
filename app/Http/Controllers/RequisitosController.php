@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Requisito;
+use App\Evidencia;
 
 class RequisitosController extends Controller
 {
@@ -14,9 +15,13 @@ class RequisitosController extends Controller
      */
     public function index()
     {
-        //
         //return Requisito::all();
-        return view('requisitos.index');
+        $title = "Auditoria";
+        $requisito = Requisito::all();
+        $requisito->load('user');
+        $auditoria = Evidencia::all('evidencia', 'situacao');
+        //dd($requisito);
+        return view('auditoria.index', compact('title'), compact('requisito'), compact('auditoria'));
     }
 
     /**
@@ -49,12 +54,12 @@ class RequisitosController extends Controller
     public function show($id)
     {
         $requisito = Requisito::where('id', $id)->first();
-        
         $requisito->load('user');
+        $evidencia = Evidencia::where('id_requisito', $id)->first();
+        //dd( $evidencia );
+        $title = "Requisito $id";
 
-        //dd( $requisito );
-
-        return view('requisitos.index', compact('requisito'));
+        return view('requisitos.index', compact('requisito'), compact('title'), compact('evidencia'));
     }
 
     /**

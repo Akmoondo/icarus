@@ -2,9 +2,9 @@
 
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Str;
-use App\Requisito;
+use App\Comentario;
 
-class RequisitosSeeder extends Seeder
+class ComentariosSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -13,18 +13,12 @@ class RequisitosSeeder extends Seeder
      */
     public function run()
     {
-        
         for($i = 0; $i < 10; $i++){
             Requisito::create([
                 'user_id' => rand(1, 3),
-                'id_requisito' => rand(1, 10),
-                'artigo' => Str::rand(5),
-                'descricao' => Str::rand(50),
-                'comparacao' => Str::rand(4),
+                'id_evidencia' => rand(1, 10),
+                'texto' => Str::rand(20)
             ]);
-        
         }
-
-        //factory(App\Requisito::class, 10)-> create();
     }
 }
