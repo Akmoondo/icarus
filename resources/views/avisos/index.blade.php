@@ -19,16 +19,18 @@
           <thead>
             <tr>
 			  <th>Urgência</th>
-              <th>Aviso</th>
+        <th>Aviso</th>
 			  <th>Data</th>
             </tr>
           </thead>
           <tbody>
-            <tr>
-			  <td><span data-feather="alert-triangle"></span>Atenção</td>
-              <td>Evidências Vencida (Requisito Art.12)</td>
-              <td>11/11/19</td>
-            </tr>
+          @foreach ($aviso as $aviso)
+          <tr>
+			      <td>{{$aviso->urgencia}}</td>
+            <td>{{$aviso->aviso}}</td>
+            <td>{{$aviso->created_at}}</td>
+          </tr>
+          @endforeach
           </tbody>
         </table>
       </div>

@@ -20,7 +20,6 @@
                <th>Requisito</th>
                <th>Artigo</th>
                <th>Responsável</th>
-               <th>Evidência</th>
                <th>Situação</th>
              </tr>
            </thead>
@@ -30,8 +29,7 @@
              <td><a href ="{{ route('requisito.show', $requisito->id)}}">{{$requisito->requisito}}</a></td>
                <td>{{$requisito->artigo}}</td>
                <td>{{$requisito->user->name}}</td>
-               <td>{{$requisito->evidencia}}</td>
-               <td>{{$requisito->situacao}}</td>
+               <td>{{$auditoria->situacao}}</td>
             </tr>
             @endforeach 
            </tbody>

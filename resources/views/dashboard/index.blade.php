@@ -6,7 +6,7 @@
       <h1 class="h2">Dashboard</h1>
       <div class="btn-toolbar mb-2 mb-md-0">
         <div class="btn-group mr-2">
-          <button type="button" class="btn btn-sm btn-outline-secondary" onClick="window.location.href='relatorio.php'">Relatórios</button>
+         {{-- <button type="button" class="btn btn-sm btn-outline-secondary" onClick="window.location.href='relatorio.php'">Relatórios</button> --}}
         </div>
       </div>
     </div>
@@ -26,34 +26,18 @@
             <th>Requisito</th>
             <th>Responsável</th>
             <th>Evidência</th>
-            <th>Validade</th>
+            <th>Cadastro</th>
           </tr>
         </thead>
         <tbody>
+        @foreach ($pendente->all() as $requisito)
           <tr>
-            <td><a href ="requisito.php">Art.12</a></td>
-            <td>João</td>
-            <td><a href ="requisito.php">criptografia.pdf</a></td>
-            <td>02/11/19</td>
+            <td><a href ="{{ route('requisito.show', $requisito->id_requisito)}}">{{$requisito->id_requisito}}</a></td>
+            <td>{{$requisito->user->name}}</td>
+            <td>{{$requisito->evidencia}}</td>
+            <td>{{$requisito->created_at}}</td>
           </tr>
-           <tr>
-            <td><a href ="requisito.php">Art.48</a></td>
-            <td>Maria</td>
-            <td><a href ="requisito.php">psi.pdf</a></td>
-            <td>11/11/19</td>
-          </tr>
-          <tr>
-            <td><a href ="requisito.php">Art.48</a></td>
-            <td>Jonas</td>
-            <td><a href ="requisito.php">redes.pdf</a></td>
-            <td>15/11/19</td>
-          </tr>
-          <tr>
-            <td><a href ="requisito.php">Art.48</a></td>
-            <td>Eduardo</td>
-            <td><a href ="requisito.php">ca.pdf</a></td>
-            <td>11/11/19</td>
-          </tr>
+        @endforeach
         </tbody>
       </table>
     </div> 

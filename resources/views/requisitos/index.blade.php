@@ -18,19 +18,19 @@
     <tbody>
       <tr>
         <th scope="row">Requisito</th>
-        <td> {{ $requisito->requisito}} </td>
+        <td> {{$requisito->requisito}} </td>
       </tr>
       <tr>
         <th scope="row">Artigo</th>
-        <td> {{ $requisito->artigo }} </td>
+        <td> {{$requisito->artigo }} </td>
       </tr>
       <tr>
         <th scope="row">Responsável</th>
-        <td> {{ $requisito->user->name }}</td>
+        <td> {{$requisito->user->name }}</td>
       </tr>
        <tr>
         <th scope="row">Descrição</th>
-        <td> {{ $requisito->descricao}}</td>
+        <td> {{$requisito->descricao}}</td>
       </tr>
       <tr>
         <th scope="row">Relacionada</th>
@@ -58,7 +58,7 @@
   </div>
         
       
-          <h2>Comentário</h2>
+          {{--<h2>Comentário</h2>
           <div class="table-responsive">
               <table class="table table-striped table-sm">
               <thead>
@@ -70,13 +70,13 @@
             </thead>
             <tbody>
               <tr>
-                <td>João</td>
-                <td>11/11/19</td>
-                <td>Cadastro de evidência atrasado devido a alteração no processo</td>
+                <td></td>
+                <td></td>
+                <td></td>
               </tr>
             </tbody>
           </table>
-        </div>
+        </div>--}}
   
         <h2>Hitórico do Requisito</h2>
         <div class="table-responsive">
@@ -90,24 +90,14 @@
               </tr>
             </thead>
             <tbody>
+              @foreach ($evidencia->where($requisito->requisito) as $evidencia)
               <tr>
-                <td><span data-feather="check-square"></span><a href ="requisito.php">Conformidade</a></td>
-                <td>João</td>
-                <td><a href ="requisito.php">criptografia.pdf</a></td>
-                <td>02/11/19</td>
+              <td>{{$evidencia->situacao}}</td>
+                <td>{{$evidencia->user->name}}</td>
+                <td>{{$evidencia->evidencia}}</a></td>
+                <td>{{$evidencia->validade}}</td>
               </tr>
-               <tr>
-                <td><span data-feather="alert-triangle"></span><a href ="requisito.php">Pendente</a></td>
-                <td>Maria</td>
-                <td><a href ="requisito.php">psi.pdf</a></td>
-                <td>11/11/19</td>
-              </tr>
-              <tr>
-                <td><span data-feather="x-circle"></span><a href ="requisito.php">Incomformidade</a></td>
-                <td>Jonas</td>
-                <td><a href ="requisito.php">redes.pdf</a></td>
-                <td>15/11/19</td>
-              </tr>
+              @endforeach
             </tbody>
           </table>
         </div> 

@@ -16,9 +16,9 @@ class AvisosController extends Controller
     {
         $title = "Avisos";
         $aviso = Aviso::all();
-        $aviso->load('user', 'id_requesito');
+        $aviso->load('user', 'id_requisito');
         dd($aviso);
-        return view('avisos.index', compact('title'), compact('aviso'));
+        return view('avisos.index', compact('title','aviso'));
     }
 
     /**

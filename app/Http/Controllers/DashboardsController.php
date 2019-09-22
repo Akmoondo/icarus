@@ -17,7 +17,11 @@ class DashboardsController extends Controller
     public function index()
     {
         $title = "Dashboard";
-        return view('dashboard.index', compact('title'));
+        $pendente = Evidencia::where('situacao', 'Pendente');
+        $pendente->load('id_requisito');
+        dd ($pendente);
+
+        return view('dashboard.index', compact('title','pendente'));
     }
 
     /**

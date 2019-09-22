@@ -18,7 +18,7 @@ class LogsController extends Controller
         $log = Log::all();
         $log->load('user');
         
-        return view('logs.index', compact('title'), compact('log'));
+        return view('logs.index', compact('title','log'));
     }
 
     /**
