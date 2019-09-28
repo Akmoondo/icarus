@@ -50,7 +50,7 @@
       </tr>
       <tr>
       <th scope="row">Situação</th>
-        <td>{{$evidencia->situacao}}</td>
+        <td></td>
       </tr>
       
     </tbody>

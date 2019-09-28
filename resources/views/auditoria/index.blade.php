@@ -29,7 +29,7 @@
              <td><a href ="{{ route('requisito.show', $requisito->id)}}">{{$requisito->requisito}}</a></td>
                <td>{{$requisito->artigo}}</td>
                <td>{{$requisito->user->name}}</td>
-               <td>{{$auditoria->situacao}}</td>
+               <td>{{}}</td>
             </tr>
             @endforeach 
            </tbody>
