@@ -17,8 +17,6 @@ Route::get('/', function () {
 
 Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
-Route::get('/requisitos/{id}', 'RequisitosController@show')->name("requisito.show");
-Route::get('/requisitos', 'RequisitosController@index')->name('auditoria.index');
+Route::get('auditoria/requisitos/{id}', 'RequisitosController@show')->name("requisito.show");
+Route::get('/auditoria', 'RequisitosController@index')->name('auditoria.index');
 Route::get('/dashboard', 'DashboardsController@index')->name('dashboard.index');
-Route::get('/avisos', 'AvisosController@index')->name('aviso.index');
-Route::get('/logs', 'logsController@index')->name('logs.index');

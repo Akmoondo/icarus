@@ -23,24 +23,7 @@
                   </a>
                   </h6>
                 </li>
-                <li class="nav-item">
-                    <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mb-1 text-muted">
-                  <a class="nav-link" href="{{ route('aviso.index') }}">
-                    <span data-feather="alert-circle"></span>
-                    Avisos
-                  </a>
-                  </h6>
-                </li>
-                {{--<li class="nav-item">
-                  <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mb-1 text-muted">
-                  <a class="nav-link" href="relatorio.php">
-                    <span data-feather="layers"></span>
-                    Relatórios
-                  </a>
-                  </h6>
-                </li>--}}
               </ul>
-      
               <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
                 <span>Gerenciamento</span>
               </h6>
@@ -53,14 +36,6 @@
                   </a>
                   </h6>
                 </li>
-                {{--<li class="nav-item">
-                  <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mb-1 text-muted">
-                  <a class="nav-link" href="{{ route('logs.index') }}">
-                  <span data-feather="archive"></span>
-                    LOGS
-                  </a>
-                  </h6>
-                </li>--}}
               </ul>
             </div>
           </nav>
