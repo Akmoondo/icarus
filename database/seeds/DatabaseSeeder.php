@@ -15,12 +15,14 @@ class DatabaseSeeder extends Seeder
     {
         // $this->call(UsersTableSeeder::class);
        // $this->call(RequisitosSeeder::class);
-        DB::table('avisos')->insert([   
-        'user_id' => rand(1, 3),
-        'requisito' => rand(1, 10),
-        'artigo' => Str::random(5),
-        'descricao' => Str::random(50),
-        'comparacao' => Str::random(4),
-        ]);
+        //factory('App\User', 3)->create();
+        factory('App\Situation', 3)->create();
+        factory('App\Sector', 3)->create();
+        factory('App\Role', 3)->create();
+        factory('App\LGPD', 3)->create();
+        factory('App\Privilege', 3)->create();
+        factory('App\Evidence', 3)->create();
+        factory('App\ISO27001', 3)->create();
+        factory('App\Company', 3)->create();
     }
 }

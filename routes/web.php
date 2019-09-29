@@ -11,12 +11,19 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+use Illuminate\Support\Facades\Route;
+
+
 
 Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
-Route::get('auditoria/requisitos/{id}', 'RequisitosController@show')->name("requisito.show");
-Route::get('/auditoria', 'RequisitosController@index')->name('auditoria.index');
-Route::get('/dashboard', 'DashboardsController@index')->name('dashboard.index');
+
+Route::get('/', 'DashboardController@index');
+
+Route::get('/roles', 'RolesController@index')->name('roles.index');
+Route::post('/roles', 'RolesController@save')->name('roles.save');
+Route::get('/roles/{uuid}', 'RolesController@show')->name('roles.show');
+Route::put('/roles/{uuid}', 'RolesController@update')->name('roles.update');
+Route::delete('/routes/{uuid}', 'RolesController@destroy')->name('roles.destroy');
+
+Route::get('companies', 'CompaniesController@index')->name('companies.index');

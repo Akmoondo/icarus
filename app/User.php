@@ -16,7 +16,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password', 'type_id', 'sector_id',
+        'uuid', 'name', 'email', 'password', 'role_uuid', 'sector_uuid',
     ];
 
     
@@ -40,18 +40,18 @@ class User extends Authenticatable
     ];
 
     public function sector() {
-        return $this->belongsTo('App/Sector', 'sector_id');
+        return $this->belongsTo('App/Sector', 'sector_uuid');
     }
 
-    public function type() {
-        return $this->belongsTo('App/Type', 'type_id');
+    public function role() {
+        return $this->belongsTo('App/Role', 'role_uuid');
     }
 
     public function lgpd(){
-        return $this->hasMany(LGPD::class, 'user_sector_id');
+        return $this->hasMany(LGPD::class, 'sector_uuid');
     }
 
     public function iso27001(){
-        return $this->hasMany(ISO27001::class, 'user_sector_id');
+        return $this->hasMany(ISO27001::class, 'sector_uuid');
     }
 }

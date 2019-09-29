@@ -6,15 +6,13 @@ use Illuminate\Database\Eloquent\Model;
 
 class Evidence extends Model
 {
+    protected $table = 'evidences';
+    
     protected $fillable = [
-        'evidence', 'comment', 'lgpd_id', 'iso27001_id',
+        'uuid', 'evidence', 'comment', 
     ];
 
-    public function lgpd(){
-        return $this->belongsTo('App/LGPD', 'lgpd_id');
-    }
-
-    public function iso27001(){
-        return $this->belongsTo('App/ISO27001', 'iso27001_id');
+    public function lgpd_iso27001(){
+        return $this->belongsTo(LGPD_ISO27001::class, 'evidence_uuid');
     }
 }
