@@ -16,9 +16,9 @@ class CreateTableIso27001 extends Migration
         Schema::create('iso27001', function (Blueprint $table) {
             $table->increments('id');
             $table->uuid('uuid');
-            $table->string('clause');
-            $table->string('requirement');
-            $table->string('brief');
+            $table->string('clause', 10)->nullable();
+            $table->string('requirement', 20);
+            $table->text('brief', 500);
             $table->uuid('situation_uuid');
             $table->uuid('sector_uuid');
 

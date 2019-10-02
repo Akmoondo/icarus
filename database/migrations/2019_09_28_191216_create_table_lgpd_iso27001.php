@@ -14,8 +14,8 @@ class CreateTableLgpdIso27001 extends Migration
     public function up()
     {
         Schema::create('lgpd_iso27001', function (Blueprint $table) {
-            $table->uuid('lgpd_uuid');
-            $table->uuid('iso27001_uuid');
+            $table->uuid('lgpd_uuid')->nullable();
+            $table->uuid('iso27001_uuid')->nullable();
             $table->uuid('evidence_uuid');
         });
     }

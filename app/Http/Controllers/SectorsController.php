@@ -3,15 +3,16 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Repositories\CompaniesRepository;
+use App\Repositories\SectorsRepository;
 
-class CompaniesController extends Controller
+
+class SectorsController extends Controller
 {
-    protected $companiesRepository;
+    protected $sectorsRepository;
     
-    public function __construct(CompaniesRepository $companiesRepository)
+    public function __construct(SectorsRepository $sectorsRepository)
     {
-       $this->companiesRepository = $companiesRepository;
+       $this->sectorsRepository = $sectorsRepository;
     }
     /**
      * Display a listing of the resource.
@@ -20,9 +21,9 @@ class CompaniesController extends Controller
      */
     public function index()
     {
-        $companies = $this->companiesRepository->index();
-
-        return view('companies.index', compact('companies'));
+        $sectors = $this->sectorsRepository->index();
+        //$sectors->load('companies');
+        return view('sectors.index', compact('sectors'));
     }
 
     /**
@@ -32,8 +33,8 @@ class CompaniesController extends Controller
      */
     public function create()
     {
-        $companies = $this->companiesRepository->create();
-        return $companies;
+        $sectors = $this->sectorsRepository->create();
+        return $sectors;
     }
 
     /**
@@ -45,8 +46,8 @@ class CompaniesController extends Controller
     public function store(Request $request)
     {
         $inputs = $request->all();
-        $companies = $this->companiesRepository->store($inputs);
-        return redirect()->route('companies.index');
+        $sectors = $this->sectorsRepository->store($inputs);
+        return redirect()->route('sectors.index');
     }
 
     /**
@@ -57,8 +58,8 @@ class CompaniesController extends Controller
      */
     public function show($id)
     {
-        $companies = $this->companiesRepository->show($id);
-        return $companies;
+        $sectors = $this->sectorsRepository->show($id);
+        return $sectors;
     }
 
     /**
@@ -81,8 +82,8 @@ class CompaniesController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $companies = $this->companiesRepository->update($id, $request);
-        return  redirect()->route('companies.index');
+        $sectors = $this->sectorsRepository->update($id, $request);
+        return  redirect()->route('sectors.index');
     }
 
     /**
@@ -93,8 +94,7 @@ class CompaniesController extends Controller
      */
     public function destroy($id)
     {
-        $companies = $this->companiesRepository->destroy($id);
-        return redirect()->route('companies.index');
+        $sectors = $this->sectorsRepository->destroy($id);
+        return redirect()->route('sectors.index');
     }
 }
-

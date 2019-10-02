@@ -40,11 +40,11 @@ class User extends Authenticatable
     ];
 
     public function sector() {
-        return $this->belongsTo('App/Sector', 'sector_uuid');
+        return $this->hasOne(Sector::class,'uuid', 'sector_uuid');
     }
 
     public function role() {
-        return $this->belongsTo('App/Role', 'role_uuid');
+        return $this->hasOne(Role::class,'uuid', 'role_uuid');
     }
 
     public function lgpd(){

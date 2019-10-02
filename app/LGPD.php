@@ -19,11 +19,11 @@ class LGPD extends Model
         return $this->hasMany(LGPD_ISO27001::class, 'evidence_uuid');
     }
 
-    public function user_section() {
-        return $this->belongsTo('App/User', 'sector_uuid');
+    public function sector() {
+        return $this->hasOne(Sector::class, 'uuid', 'sector_uuid');
     }
 
     public function situation(){
-        return $this->belongsTo('App/Situation', 'situation_uuid');
+        return $this->hasOne(Situation::class, 'uuid', 'situation_uuid');
     }
 }

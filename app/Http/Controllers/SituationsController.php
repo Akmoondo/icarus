@@ -3,15 +3,16 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Repositories\CompaniesRepository;
+use App\Repositories\SituationsRepository;
 
-class CompaniesController extends Controller
+
+class SituationsController extends Controller
 {
-    protected $companiesRepository;
+    protected $situationsRepository;
     
-    public function __construct(CompaniesRepository $companiesRepository)
+    public function __construct(SituationsRepository $situationsRepository)
     {
-       $this->companiesRepository = $companiesRepository;
+       $this->situationsRepository = $situationsRepository;
     }
     /**
      * Display a listing of the resource.
@@ -20,9 +21,9 @@ class CompaniesController extends Controller
      */
     public function index()
     {
-        $companies = $this->companiesRepository->index();
+        $situations = $this->situationsRepository->index();
 
-        return view('companies.index', compact('companies'));
+        return view('situations.index', compact('situations'));
     }
 
     /**
@@ -32,8 +33,8 @@ class CompaniesController extends Controller
      */
     public function create()
     {
-        $companies = $this->companiesRepository->create();
-        return $companies;
+        $situations = $this->situationsRepository->create();
+        return $situations;
     }
 
     /**
@@ -44,9 +45,10 @@ class CompaniesController extends Controller
      */
     public function store(Request $request)
     {
+        //$situations = Situation::create($request->all());
         $inputs = $request->all();
-        $companies = $this->companiesRepository->store($inputs);
-        return redirect()->route('companies.index');
+        $situations = $this->situationsRepository->store($inputs);
+        return redirect()->route('situations.index');
     }
 
     /**
@@ -57,8 +59,8 @@ class CompaniesController extends Controller
      */
     public function show($id)
     {
-        $companies = $this->companiesRepository->show($id);
-        return $companies;
+        $situations = $this->situationsRepository->show($id);
+        return $situations;
     }
 
     /**
@@ -81,8 +83,13 @@ class CompaniesController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $companies = $this->companiesRepository->update($id, $request);
-        return  redirect()->route('companies.index');
+       /* $situations = Situation::where('uuid', $id)->update([
+            'situation' => $request['situation'],
+            'color' => $request['color'],
+        ]); */
+
+        $situations = $this->situationsRepository->update($id, $request);
+        return  redirect()->route('situations.index');
     }
 
     /**
@@ -93,8 +100,7 @@ class CompaniesController extends Controller
      */
     public function destroy($id)
     {
-        $companies = $this->companiesRepository->destroy($id);
-        return redirect()->route('companies.index');
+        $situations = $this->situationsRepository->destroy($id);
+        return redirect()->route('situations.index');
     }
 }
-

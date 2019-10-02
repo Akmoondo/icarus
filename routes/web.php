@@ -18,12 +18,44 @@ use Illuminate\Support\Facades\Route;
 Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::get('/', 'DashboardController@index');
+Route::get('/', 'DashboardController@index')->name('dashboard.index');
 
 Route::get('/roles', 'RolesController@index')->name('roles.index');
 Route::post('/roles', 'RolesController@save')->name('roles.save');
 Route::get('/roles/{uuid}', 'RolesController@show')->name('roles.show');
 Route::put('/roles/{uuid}', 'RolesController@update')->name('roles.update');
-Route::delete('/routes/{uuid}', 'RolesController@destroy')->name('roles.destroy');
+Route::delete('/roles/{uuid}', 'RolesController@destroy')->name('roles.destroy');
 
-Route::get('companies', 'CompaniesController@index')->name('companies.index');
+Route::get('/situations', 'SituationsController@index')->name('situations.index');
+Route::get('/situations/new', 'SituationsController@create')->name('situations.create');
+Route::post('/situations/store', 'SituationsController@store')->name('situations.store');
+Route::get('/situations/show/{uuid}', 'SituationsController@show')->name('situations.show');
+Route::put('/situations/update/{uuid}', 'SituationsController@update')->name('situations.update');
+Route::get('/situations/destroy/{uuid}', 'SituationsController@destroy')->name('situations.destroy');
+
+Route::get('/evidences', 'EvidencesController@index')->name('evidences.index');
+Route::get('/evidences/new', 'EvidencesController@create')->name('evidences.create');
+Route::post('/evidences/store', 'EvidencesController@store')->name('evidences.store');
+Route::get('/evidences/show/{uuid}', 'EvidencesController@show')->name('evidences.show');
+Route::get('/evidences/destroy/{uuid}', 'EvidencesController@destroy')->name('evidences.destroy');
+
+Route::get('/companies', 'CompaniesController@index')->name('companies.index');
+Route::get('/companies/new', 'CompaniesController@create')->name('companies.create');
+Route::post('/companies/store', 'CompaniesController@store')->name('companies.store');
+Route::get('/companies/show/{uuid}', 'CompaniesController@show')->name('companies.show');
+Route::put('/companies/update/{uuid}', 'CompaniesController@update')->name('companies.update');
+Route::get('/companies/destroy/{uuid}', 'CompaniesController@destroy')->name('companies.destroy');
+
+Route::get('/sectors', 'SectorsController@index')->name('sectors.index');
+Route::get('/sectors/new', 'SectorsController@create')->name('sectors.create');
+Route::post('/sectors/store', 'SectorsController@store')->name('sectors.store');
+Route::get('/sectors/show/{uuid}', 'SectorsController@show')->name('sectors.show');
+Route::put('/sectors/update/{uuid}', 'SectorsController@update')->name('sectors.update');
+Route::get('/sectors/destroy/{uuid}', 'SectorsController@destroy')->name('sectors.destroy');
+
+Route::get('/users', 'UsersController@index')->name('users.index');
+Route::get('/users/new', 'UsersController@create')->name('users.create');
+Route::post('/users/store', 'UsersController@store')->name('users.store');
+Route::get('/users/show/{uuid}', 'UsersController@show')->name('users.show');
+Route::put('/users/update/{uuid}', 'UsersController@update')->name('users.update');
+Route::get('/users/destroy/{uuid}', 'UsersController@destroy')->name('users.destroy');

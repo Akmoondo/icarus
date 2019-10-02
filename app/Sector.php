@@ -10,8 +10,8 @@ class Sector extends Model
         'uuid', 'company_uuid', 'sector',
     ];
 
-    public function companie() {
-        return $this->belongsTo('App/Company', 'company_uuid');
+    public function companies() {
+        return $this->hasOne(Company::class, 'uuid', 'company_uuid');
     }
 
     public function user(){

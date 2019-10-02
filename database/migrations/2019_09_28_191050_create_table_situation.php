@@ -16,8 +16,8 @@ class CreateTableSituation extends Migration
         Schema::create('situations', function (Blueprint $table) {
             $table->increments('id');
             $table->uuid('uuid');
-            $table->string('situation');
-            $table->string('color');
+            $table->string('situation', 45);
+            $table->string('color', 45);
             $table->timestamps();
             $table->softDeletes();
         });

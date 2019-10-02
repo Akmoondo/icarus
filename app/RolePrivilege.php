@@ -11,10 +11,10 @@ class RolePrivilege extends Model
     ];
 
     public function  role(){
-        return $this->belongsTo(Role::class, 'role_uuid');
+        return $this->hasOne(Role::class, 'uuid', 'role_uuid');
     }
 
     public function  privilege(){
-        return $this->belongsTo(Privilege::class, 'privilege_uuid');
+        return $this->hasOne(Privilege::class, 'uuid', 'privilege_uuid');
     }
 }

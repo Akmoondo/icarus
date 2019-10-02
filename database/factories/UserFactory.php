@@ -109,6 +109,7 @@ $factory->define(App\Company::class, function (Faker $faker) {
 $factory->define(App\Evidence::class, function (Faker $faker) {
     return [
         'uuid' => $faker->uuid,
+        'name' => $faker->name,
         'evidence' => Str::random(5),
         'comment' => $faker->name,
     ];

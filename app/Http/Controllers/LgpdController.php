@@ -3,16 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Repositories\CompaniesRepository;
 
-class CompaniesController extends Controller
+class LgpdController extends Controller
 {
-    protected $companiesRepository;
-    
-    public function __construct(CompaniesRepository $companiesRepository)
-    {
-       $this->companiesRepository = $companiesRepository;
-    }
     /**
      * Display a listing of the resource.
      *
@@ -20,9 +13,7 @@ class CompaniesController extends Controller
      */
     public function index()
     {
-        $companies = $this->companiesRepository->index();
-
-        return view('companies.index', compact('companies'));
+        //
     }
 
     /**
@@ -32,8 +23,7 @@ class CompaniesController extends Controller
      */
     public function create()
     {
-        $companies = $this->companiesRepository->create();
-        return $companies;
+        //
     }
 
     /**
@@ -44,9 +34,7 @@ class CompaniesController extends Controller
      */
     public function store(Request $request)
     {
-        $inputs = $request->all();
-        $companies = $this->companiesRepository->store($inputs);
-        return redirect()->route('companies.index');
+        //
     }
 
     /**
@@ -57,8 +45,7 @@ class CompaniesController extends Controller
      */
     public function show($id)
     {
-        $companies = $this->companiesRepository->show($id);
-        return $companies;
+        //
     }
 
     /**
@@ -81,8 +68,7 @@ class CompaniesController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $companies = $this->companiesRepository->update($id, $request);
-        return  redirect()->route('companies.index');
+        //
     }
 
     /**
@@ -93,8 +79,6 @@ class CompaniesController extends Controller
      */
     public function destroy($id)
     {
-        $companies = $this->companiesRepository->destroy($id);
-        return redirect()->route('companies.index');
+        //
     }
 }
-

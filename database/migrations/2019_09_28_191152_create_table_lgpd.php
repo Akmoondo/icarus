@@ -16,9 +16,9 @@ class CreateTableLgpd extends Migration
         Schema::create('lgpd', function (Blueprint $table) {
             $table->increments('id');
             $table->uuid('uuid');
-            $table->string('clause');
-            $table->string('requirement');
-            $table->string('brief');
+            $table->string('clause', 10);
+            $table->string('requirement', 20);
+            $table->text('brief', 500);
             $table->uuid('situation_uuid');
             $table->uuid('sector_uuid');
 

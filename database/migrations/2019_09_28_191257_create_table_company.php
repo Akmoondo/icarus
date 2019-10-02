@@ -16,11 +16,11 @@ class CreateTableCompany extends Migration
         Schema::create('companies', function (Blueprint $table) {
             $table->increments('id');
             $table->uuid('uuid');
-            $table->string('cnpj');
-            $table->string('name');
-            $table->string('telphone');
+            $table->string('cnpj', 15);
+            $table->string('name', 45);
+            $table->string('telphone', 16);
             $table->string('email',199);
-            $table->string('sponsor');
+            $table->string('sponsor', 45);
 
             $table->timestamps();
             $table->softDeletes();

@@ -4,7 +4,7 @@ namespace Repositories;
 
 use App\User;
 
-class UserRepository{
+class UsersRepository{
 
     public function index( $search = null )
     {
@@ -26,13 +26,14 @@ class UserRepository{
 
     public function update($user_id, $inputs)
     {
-        $user = User::where('id', $user_id)->update([
+        $user = User::where('uuid', $user_id)->update([
             'name' => $inputs['name'],
             'password' => bcrypt( $inputs['password'] )
         ]);
 
         return $user;
     }
+
 
     public function destroy( $user_id)
     {

@@ -3,12 +3,12 @@
 namespace App\Repositories;
 
 use App\Evidence;
+use Illuminate\Support\Str;
 
 class EvidencesRepository{
 
     public function index( $search = null )
     {
-     
         $evidences = Evidence::all();
        
         return $evidences;
@@ -21,16 +21,15 @@ class EvidencesRepository{
         return $evidence;
     }
 
-    public function update($evidence_id, $inputs)
-    {
-        $evidence = Evidence::where('uuid', $evidence_id)->update([
-            'name' => $inputs['name'],
-            'password' => bcrypt( $inputs['password'] )
-        ]);
+    public function create (){
+        $evidences = Str::uuid();
+        return view('evidences.create', compact('evidences'));
+    }
+    public function store ($inputs){
+        $evidence = Evidence::create($inputs);
 
         return $evidence;
     }
-
     public function destroy( $evidence_id )
     {
         $evidence = Evidence::where('uuid', $evidence_id)->delete();

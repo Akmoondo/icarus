@@ -16,8 +16,9 @@ class CreateTableEvidence extends Migration
         Schema::create('evidences', function (Blueprint $table) {
             $table->increments('id');
             $table->uuid('uuid');
+            $table->string('name', 45);
             $table->string('evidence');
-            $table->text('comment');
+            $table->text('comment', 500)->nullable();
             $table->timestamps();
             $table->softDeletes();
         });

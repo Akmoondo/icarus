@@ -1,17 +1,17 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Repositories\UsersRepository;
 
 use Illuminate\Http\Request;
-use App\Repositories\CompaniesRepository;
 
-class CompaniesController extends Controller
+class UsersController extends Controller
 {
-    protected $companiesRepository;
+    protected $usersRepository;
     
-    public function __construct(CompaniesRepository $companiesRepository)
+    public function __construct(UsersRepository $usersRepository)
     {
-       $this->companiesRepository = $companiesRepository;
+       $this->usersRepository = $usersRepository;
     }
     /**
      * Display a listing of the resource.
@@ -20,9 +20,8 @@ class CompaniesController extends Controller
      */
     public function index()
     {
-        $companies = $this->companiesRepository->index();
-
-        return view('companies.index', compact('companies'));
+        $users = $this->usersRepository->index();
+        return view('users.index', compact('users'));
     }
 
     /**
@@ -32,8 +31,8 @@ class CompaniesController extends Controller
      */
     public function create()
     {
-        $companies = $this->companiesRepository->create();
-        return $companies;
+        $users = $this->usersRepository->create();
+        return $users;
     }
 
     /**
@@ -45,8 +44,8 @@ class CompaniesController extends Controller
     public function store(Request $request)
     {
         $inputs = $request->all();
-        $companies = $this->companiesRepository->store($inputs);
-        return redirect()->route('companies.index');
+        $users = $this->usersRepository->store($inputs);
+        return redirect()->route('users.index');
     }
 
     /**
@@ -57,8 +56,8 @@ class CompaniesController extends Controller
      */
     public function show($id)
     {
-        $companies = $this->companiesRepository->show($id);
-        return $companies;
+        $users = $this->usersRepository->show($id);
+        return $users;
     }
 
     /**
@@ -81,8 +80,8 @@ class CompaniesController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $companies = $this->companiesRepository->update($id, $request);
-        return  redirect()->route('companies.index');
+        $users = $this->usersRepository->update($id, $request);
+        return  redirect()->route('users.index');
     }
 
     /**
@@ -93,8 +92,7 @@ class CompaniesController extends Controller
      */
     public function destroy($id)
     {
-        $companies = $this->companiesRepository->destroy($id);
-        return redirect()->route('companies.index');
+        $users = $this->usersRepository->destroy($id);
+        return redirect()->route('users.index');
     }
 }
-

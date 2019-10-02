@@ -17,7 +17,7 @@ class CreateTableSector extends Migration
             $table->increments('id');
             $table->uuid('uuid');
             $table->uuid('company_uuid');
-            $table->string('sector');
+            $table->string('sector', 45);
             $table->timestamps();
             $table->softDeletes();
         });

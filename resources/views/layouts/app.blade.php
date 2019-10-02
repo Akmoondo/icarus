@@ -8,7 +8,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="icon" href="{{ asset('/gentelella')}}/images/favicon.ico" type="image/ico">
     
-        <title>Gentelella Alela! | </title>
+        <title>ICARUS</title>
     
         <!-- Bootstrap -->
         <link href="{{ asset('/gentelella/vendors/bootstrap/dist/css/bootstrap.min.css') }}" rel="stylesheet">
@@ -108,5 +108,6 @@
 
     <!-- Custom Theme Scripts -->
     <script src="{{asset('/gentelella/build/js/custom.min.js') }}"></script>
+    
 </body>
 </html>

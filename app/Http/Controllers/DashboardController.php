@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Repositories\CompanyRepository;
+use App\Repositories\CompaniesRepository;
 use App\Repositories\EvidencesRepository;
 
 class DashboardController extends Controller
@@ -13,11 +13,11 @@ class DashboardController extends Controller
     protected $evidencesRepository;
 
     public function __construct( 
-        CompanyRepository $companyRepository,
+        CompaniesRepository $companiesRepository,
         EvidencesRepository $evidencesRepository
     )
     {
-        $this->companiesRepository = $companyRepository;
+        $this->companiesRepository = $companiesRepository;
         $this->evidencesRepository = $evidencesRepository;
     }
 
