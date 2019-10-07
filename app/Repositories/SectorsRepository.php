@@ -2,6 +2,7 @@
 
 namespace App\Repositories;
 
+use App\Company;
 use Illuminate\Support\Str;
 use App\Sector;
 
@@ -18,9 +19,8 @@ class SectorsRepository{
     
     public function create (){
         $uuid = Str::uuid();
-        $sectors = Sector::all();
-        $sectors->load('companies');
-        return view('sectors.create', compact('uuid', 'sector'));
+        $companies = Company::all();
+        return view('sectors.create', compact('uuid', 'companies'));
     }
     
     public function store ($inputs){
@@ -39,7 +39,6 @@ class SectorsRepository{
     public function update($sector_id, $inputs)
     {
         $sector = Sector::where('uuid', $sector_id)->update([
-            'uuid' => $inputs['uuid'],
             'sector' => $inputs['sector'],
         ]);
 

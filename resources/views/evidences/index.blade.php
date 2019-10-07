@@ -15,7 +15,7 @@
                 <table class="table table-striped">
                     <thead>
                         <tr>
-                            <th>Requisitos</th>
+                            <th>Nome da Evidência</th>
                             <th class="text-center">Evidências</th>
                             <th class="text-right">Ação</th>
                         </tr>
@@ -23,7 +23,7 @@
                     <tbody>
                         @foreach ($evidences as $evidence)
                             <tr>
-                                <td> {{ $evidence->evidence }}</td>
+                                <td> {{ $evidence->name }}</td>
                                 <td class="text-center">{{ $evidence->evidence }}</td>
                                 <td class="text-right">
                                     <a href="{{ route('evidences.show', $evidence->uuid)}}"> <i class="fa fa-eye text-success"></i></a>

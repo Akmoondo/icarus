@@ -18,14 +18,14 @@ class Requirement extends Model
         return $this->hasMany(RequirementEvidence::class, 'requirement_uuid');
     }
 
-    public function Reference() {
+    public function reference() {
         return $this->hasOne(Reference::class, 'uuid', 'reference_uuid');
     }
 
     public function situation(){
         return $this->hasOne(Situation::class, 'uuid', 'situation_uuid');
     }
- 
+  
     public function auto_One() {
         return $this->hasOne(Requirement::class, 'uuid');
     }

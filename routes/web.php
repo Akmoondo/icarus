@@ -26,6 +26,12 @@ Route::get('/roles/{uuid}', 'RolesController@show')->name('roles.show');
 Route::put('/roles/{uuid}', 'RolesController@update')->name('roles.update');
 Route::delete('/roles/{uuid}', 'RolesController@destroy')->name('roles.destroy');
 
+Route::get('/privileges', 'PrivilegesController@index')->name('privileges.index');
+Route::post('/privileges', 'PrivilegesController@save')->name('privileges.save');
+Route::get('/privileges/{uuid}', 'PrivilegesController@show')->name('privileges.show');
+Route::put('/privileges/{uuid}', 'PrivilegesController@update')->name('privileges.update');
+Route::delete('/privileges/{uuid}', 'PrivilegesController@destroy')->name('privileges.destroy');
+
 Route::get('/situations', 'SituationsController@index')->name('situations.index');
 Route::get('/situations/new', 'SituationsController@create')->name('situations.create');
 Route::post('/situations/store', 'SituationsController@store')->name('situations.store');
@@ -59,6 +65,14 @@ Route::post('/references/store', 'ReferenceController@store')->name('references.
 Route::get('/references/show/{uuid}', 'ReferenceController@show')->name('references.show');
 Route::put('/references/update/{uuid}', 'ReferenceController@update')->name('references.update');
 Route::get('/references/destroy/{uuid}', 'ReferenceController@destroy')->name('references.destroy');
+
+Route::get('/requirements', 'RequirementController@index')->name('requirements.index');
+Route::get('/requirements/new', 'RequirementController@create')->name('requirements.create');
+Route::post('/requirements/store', 'RequirementController@store')->name('requirements.store');
+Route::get('/requirements/show/{uuid}', 'RequirementController@show')->name('requirements.show');
+Route::put('/requirements/update/{uuid}', 'RequirementController@update')->name('requirements.update');
+Route::get('/requirements/destroy/{uuid}', 'RequirementController@destroy')->name('requirements.destroy');
+
 
 Route::get('/users', 'UsersController@index')->name('users.index');
 Route::get('/users/new', 'UsersController@create')->name('users.create');
