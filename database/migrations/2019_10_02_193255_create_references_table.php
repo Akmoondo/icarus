@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateTableIso27001 extends Migration
+class CreateReferencesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,21 +13,15 @@ class CreateTableIso27001 extends Migration
      */
     public function up()
     {
-        Schema::create('iso27001', function (Blueprint $table) {
+        Schema::create('references', function (Blueprint $table) {
             $table->increments('id');
             $table->uuid('uuid');
-            $table->string('clause', 10)->nullable();
-            $table->string('requirement', 20);
-            $table->text('brief', 500);
-            $table->uuid('situation_uuid');
-            $table->uuid('sector_uuid');
-
+            $table->string('reference',45);
             
             $table->timestamps();
             $table->softDeletes();
         });
     }
-
     /**
      * Reverse the migrations.
      *
@@ -35,6 +29,6 @@ class CreateTableIso27001 extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('iso27001');
+        Schema::dropIfExists('references');
     }
 }

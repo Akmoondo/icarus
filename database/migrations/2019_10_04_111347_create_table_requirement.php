@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateTableLgpd extends Migration
+class CreateTableRequirement extends Migration
 {
     /**
      * Run the migrations.
@@ -13,15 +13,15 @@ class CreateTableLgpd extends Migration
      */
     public function up()
     {
-        Schema::create('lgpd', function (Blueprint $table) {
+        Schema::create('requirements', function (Blueprint $table) {
             $table->increments('id');
             $table->uuid('uuid');
             $table->string('clause', 10);
             $table->string('requirement', 20);
             $table->text('brief', 500);
-            $table->uuid('situation_uuid');
-            $table->uuid('sector_uuid');
-
+            $table->uuid('situation_uuid')->nullable();
+            $table->uuid('reference_uuid')->nullable();
+            $table->uuid('requirement_uuid')->nullable();
             
             $table->timestamps();
             $table->softDeletes();
@@ -35,6 +35,6 @@ class CreateTableLgpd extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('lgpd');
+        Schema::dropIfExists('requirements');
     }
 }

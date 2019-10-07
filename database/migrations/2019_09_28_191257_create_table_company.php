@@ -18,9 +18,9 @@ class CreateTableCompany extends Migration
             $table->uuid('uuid');
             $table->string('cnpj', 15);
             $table->string('name', 45);
-            $table->string('telphone', 16);
-            $table->string('email',199);
-            $table->string('sponsor', 45);
+            $table->string('telphone', 16)->nullable();
+            $table->string('email',199)->nullable();
+            $table->string('sponsor', 45)->nullable();
 
             $table->timestamps();
             $table->softDeletes();

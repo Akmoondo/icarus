@@ -53,6 +53,13 @@ Route::get('/sectors/show/{uuid}', 'SectorsController@show')->name('sectors.show
 Route::put('/sectors/update/{uuid}', 'SectorsController@update')->name('sectors.update');
 Route::get('/sectors/destroy/{uuid}', 'SectorsController@destroy')->name('sectors.destroy');
 
+Route::get('/references', 'ReferenceController@index')->name('references.index');
+Route::get('/references/new', 'ReferenceController@create')->name('references.create');
+Route::post('/references/store', 'ReferenceController@store')->name('references.store');
+Route::get('/references/show/{uuid}', 'ReferenceController@show')->name('references.show');
+Route::put('/references/update/{uuid}', 'ReferenceController@update')->name('references.update');
+Route::get('/references/destroy/{uuid}', 'ReferenceController@destroy')->name('references.destroy');
+
 Route::get('/users', 'UsersController@index')->name('users.index');
 Route::get('/users/new', 'UsersController@create')->name('users.create');
 Route::post('/users/store', 'UsersController@store')->name('users.store');

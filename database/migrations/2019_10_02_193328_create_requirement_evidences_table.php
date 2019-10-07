@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateTableLgpdIso27001 extends Migration
+class CreateRequirementEvidencesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,8 @@ class CreateTableLgpdIso27001 extends Migration
      */
     public function up()
     {
-        Schema::create('lgpd_iso27001', function (Blueprint $table) {
-            $table->uuid('lgpd_uuid')->nullable();
-            $table->uuid('iso27001_uuid')->nullable();
+        Schema::create('requirement_evidences', function (Blueprint $table) {
+            $table->uuid('requirement_uuid');
             $table->uuid('evidence_uuid');
         });
     }
@@ -27,6 +26,6 @@ class CreateTableLgpdIso27001 extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('lgpd_iso27001');
+        Schema::dropIfExists('requirement_evidences');
     }
 }

@@ -17,7 +17,7 @@ class CreateTableSituation extends Migration
             $table->increments('id');
             $table->uuid('uuid');
             $table->string('situation', 45);
-            $table->string('color', 45);
+            $table->string('color', 45)->nullable();
             $table->timestamps();
             $table->softDeletes();
         });

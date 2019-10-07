@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateTableSector extends Migration
+class CreateSectorRequirimentsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,9 @@ class CreateTableSector extends Migration
      */
     public function up()
     {
-        Schema::create('sectors', function (Blueprint $table) {
-            $table->increments('id');
-            $table->uuid('uuid');
-            $table->string('sector', 45);
-            $table->uuid('company_uuid');
-            $table->timestamps();
-            $table->softDeletes();
+        Schema::create('sector_requiriments', function (Blueprint $table) {
+            $table->uuid('sector_uuid');
+            $table->uuid('requirement_uuid');
         });
     }
 
@@ -30,6 +26,6 @@ class CreateTableSector extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('sectors');
+        Schema::dropIfExists('sector_requiriments');
     }
 }

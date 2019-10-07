@@ -12,7 +12,7 @@ class Evidence extends Model
         'uuid', 'name', 'evidence', 'comment', 
     ];
 
-    public function lgpd_iso27001(){
-        return $this->hasOne(LGPD_ISO27001::class, 'evidence_uuid');
+    public function requirement_evidence(){
+        return $this->hasMany(RequirementEvidence::class, 'evidence_uuid');
     }
 }

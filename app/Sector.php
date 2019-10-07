@@ -14,7 +14,7 @@ class Sector extends Model
         return $this->hasOne(Company::class, 'uuid', 'company_uuid');
     }
 
-    public function user(){
-        return $this->hasMany(User::class, 'sector_uuid');
+    public function sector_requirement(){
+        return $this->hasMany(SectorRequiriment::class, 'sector_uuid');
     }
 }

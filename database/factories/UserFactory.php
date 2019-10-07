@@ -63,7 +63,7 @@ $factory->define(App\Privilege::class, function (Faker $faker) {
     ];
 });
 
-$factory->define(App\LGPD::class, function (Faker $faker) {
+$factory->define(App\Requirement::class, function (Faker $faker) {
     return [
         'uuid' => $faker->uuid,
         'clause' => $faker->name,
@@ -71,27 +71,7 @@ $factory->define(App\LGPD::class, function (Faker $faker) {
         'brief' => Str::random(5),
         'situation_uuid' => $faker->uuid,
         'sector_uuid' => $faker->uuid,
-        
-    ];
-});
-
-$factory->define(App\ISO27001::class, function (Faker $faker) {
-    return [
-        'uuid' => $faker->uuid,
-        'clause' => $faker->name,
-        'requirement' => Str::random(5),
-        'brief' => Str::random(5),
-        'situation_uuid' => $faker->uuid,
-        'sector_uuid' => $faker->uuid,
-    ];
-});
-
-$factory->define(App\LGPD_ISO27001::class, function (Faker $faker) {
-    return [
-        'uuid' => $faker->uuid,
-        'lgpd_uuid' => $faker->uuid,
-        'iso27001_uuid' => $faker->uuid,
-        'evidence_uuid' => $faker->uuid,
+        'requirement_uuid' => $faker->uuid,
     ];
 });
 

@@ -46,12 +46,4 @@ class User extends Authenticatable
     public function role() {
         return $this->hasOne(Role::class,'uuid', 'role_uuid');
     }
-
-    public function lgpd(){
-        return $this->hasMany(LGPD::class, 'sector_uuid');
-    }
-
-    public function iso27001(){
-        return $this->hasMany(ISO27001::class, 'sector_uuid');
-    }
 }
