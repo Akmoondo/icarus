@@ -14,16 +14,16 @@
                 <table class="table table-striped">
                     <thead>
                         <tr>
-                            <th class="text-center">Empresa</th>
-                            <th>Setor</th>
+                            <th>Empresa</th>
+                            <th class="text-center">Setor</th>
                             <th class="text-right">Ação</th>
                         </tr>
                     </thead>
                     <tbody>
                             @foreach ($sectors as $sector)
                                 <tr>
-                                        <td class="text-center">{{($sector->companies)? $sector->companies->name : ''}}</td>
-                                    <td>{{ $sector->sector }}</td>
+                                    <td>{{($sector->companies)? $sector->companies->name : ''}}</td>
+                                    <td class="text-center">{{ $sector->sector }}</td>
                                     <td class="text-right">
                                         <a href="{{ route('sectors.show', $sector->uuid)}}"> <i class="fa fa-edit text-success"></i></a>
                                         <a href="{{ route('sectors.destroy', $sector->uuid)}}"> <i class="fa fa-trash text-danger"></i></a>
@@ -34,7 +34,7 @@
                 </table>
             @else
                 <div class="alert alert-danger">
-                    <p>Não há nenhuma Setor cadastrada!</p>
+                    <p>Não há nenhum Setor cadastrado!</p>
                 </div>
             @endif
         </div>

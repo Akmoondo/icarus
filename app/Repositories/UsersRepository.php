@@ -1,6 +1,6 @@
 <?php
 
-namespace Repositories;
+namespace App\Repositories;
 
 use App\User;
 
@@ -16,7 +16,7 @@ class UsersRepository{
        
        return $users;
     }
-
+ 
     public function show( $user_id )
     {
         $user = User::find( $user_id );

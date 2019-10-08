@@ -80,3 +80,10 @@ Route::post('/users/store', 'UsersController@store')->name('users.store');
 Route::get('/users/show/{uuid}', 'UsersController@show')->name('users.show');
 Route::put('/users/update/{uuid}', 'UsersController@update')->name('users.update');
 Route::get('/users/destroy/{uuid}', 'UsersController@destroy')->name('users.destroy');
+
+Route::get('/audit', 'AuditController@index')->name('audit.index');
+Route::get('/audit/new', 'AuditController@create')->name('audit.create');
+Route::post('/audit/store', 'AuditController@store')->name('audit.store');
+Route::get('/audit/show/{uuid}', 'AuditController@show')->name('audit.show');
+Route::put('/audit/update/{uuid}', 'AuditController@update')->name('audit.update');
+Route::get('/audit/destroy/{uuid}', 'AuditController@destroy')->name('audit.destroy');

@@ -29,11 +29,12 @@ class RequirementsRepository{
     }
     
     public function store ($inputs){
+        //dd($inputs);
         $requirement = Requirement::create($inputs);
 
         return $requirement;
     }
-
+ 
     public function update($requirement_id, $inputs)
     {
         $requirement = Requirement::where('uuid', $requirement_id)->update([

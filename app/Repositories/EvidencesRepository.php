@@ -3,6 +3,7 @@
 namespace App\Repositories;
 
 use App\Evidence;
+use App\Requirement;
 use Illuminate\Support\Str;
 
 class EvidencesRepository{
@@ -23,7 +24,8 @@ class EvidencesRepository{
 
     public function create (){
         $evidences = Str::uuid();
-        return view('evidences.create', compact('evidences'));
+        $requirements = Requirement::all();
+        return view('evidences.create', compact('evidences', 'requirements'));
     }
     public function store ($inputs){
         $evidence = Evidence::create($inputs);

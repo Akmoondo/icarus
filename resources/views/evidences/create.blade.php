@@ -30,6 +30,22 @@
             <input type="file"  id="evidence" name="evidence" data-role="magic-overlay" data-target="#pictureBtn" data-edit="insertImage">
         </div>
     </div>
+    <div class="form-group">
+        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">Requisitos<span class="required">*</span></label>
+        <div class="checkbox">
+            <div class="col-md-9 col-sm-9 col-xs-12">
+                @foreach ($requirements as $requirement)   
+                <label class="">
+                    <div class="icheckbox_flat-green" style="position: relative;">
+                        <input type="checkbox" name="requirement_uuid" id="requirement_uuid" class="flat"  style="position: absolute; opacity: 0;">
+                        <ins class="iCheck-helper" style="position: absolute; top: 0%; left: 0%; display: block; width: 100%; height: 100%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;"></ins></div>
+                            {{$requirement->requirement}}
+                </label>
+                @endforeach
+            </div>
+        </div>
+    </div>
+        
     <!-- Fim -->
     <div class="ln_solid"></div>
     <div class="form-group">
