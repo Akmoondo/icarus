@@ -6,10 +6,9 @@
             <a class="btn btn-danger pull-right" href="{{ route('sectors.index') }}">Cancelar</a>
             <div class="clearfix"></div>
 </div>
-<form id="demo-form2" data-parsley-validate="" class="form-horizontal form-label-left" novalidate="" method ="POST" action="{{route('sectors.store')}}" >
+<form id="demo-form2" data-parsley-validate="" class="form-horizontal form-label-left" novalidate="" method ="POST" action="{{route('companies.sectors.create', $company->uuid)}}" >
     @csrf
-    <input type="hidden" id = "uuid" name="uuid" value="{{$uuid}}" >
-    
+
     @include('sectors._form')
     
     <div class="form-group">
