@@ -23,7 +23,7 @@ class SectorsController extends Controller
     {
         $sectors = $this->sectorsRepository->index();
         //$sectors->load('companies');
-        return view('sectors.index', compact('sectors'));
+        return view('companies.sectors.index', compact('sectors'));
     }
 
     /**
@@ -43,11 +43,11 @@ class SectorsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, $company_uuid)
     {
         $inputs = $request->all();
-        $sectors = $this->sectorsRepository->store($inputs);
-        return redirect()->route('sectors.index');
+        $sectors = $this->sectorsRepository->store($inputs, $company_uuid);
+        return redirect()->route('companies.sectors.index');
     }
 
     /**
@@ -83,7 +83,7 @@ class SectorsController extends Controller
     public function update(Request $request, $id)
     {
         $sectors = $this->sectorsRepository->update($id, $request);
-        return  redirect()->route('sectors.index');
+        return  redirect()->route('companies.sectors.index');
     }
 
     /**
@@ -95,6 +95,6 @@ class SectorsController extends Controller
     public function destroy($id)
     {
         $sectors = $this->sectorsRepository->destroy($id);
-        return redirect()->route('sectors.index');
+        return redirect()->route('companies.sectors.index');
     }
 }

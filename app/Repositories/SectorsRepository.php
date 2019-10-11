@@ -19,8 +19,7 @@ class SectorsRepository{
     
     public function create (){
         $uuid = Str::uuid();
-        $companies = Company::all();
-        return view('sectors.create', compact('uuid', 'companies'));
+        return view('companies.sectors.create', compact('uuid'));
     }
     
     public function store ($inputs){
@@ -33,7 +32,7 @@ class SectorsRepository{
     {
         $sector = Sector::where('uuid', $sector_id )->first();
 
-        return view('sectors.show', compact('sector'));
+        return view('companies.sectors.show', compact('sector'));
     }
 
     public function update($sector_id, $inputs)

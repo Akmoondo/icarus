@@ -26,6 +26,7 @@
                                 <td> {{ $company->name }}</td>
                                 <td class="text-center"> {{ $company->sponsor }}</td>
                                 <td class="text-right">
+                                    <a href="{{ route('companies.sectors.index', $company->uuid)}}"><i class="fa fa-gear text-primary"></i></a>
                                     <a href="{{ route('companies.show', $company->uuid)}}"> <i class="fa fa-edit text-success"></i></a>
                                     <a href="{{ route('companies.destroy', $company->uuid)}}"> <i class="fa fa-trash text-danger"></i></a>
                                 </td>

@@ -63,7 +63,6 @@
           <li><a><i class="fa fa-table"></i> Empresas <span class="fa fa-chevron-down"></span></a>
             <ul class="nav child_menu">
             <li><a href="{{route('companies.index')}}">Gerenciar Empresas</a></li>
-            <li><a href="{{route('sectors.index')}}">Gerenciar Setores</a></li>
             </ul>
           </li>
       </div>
