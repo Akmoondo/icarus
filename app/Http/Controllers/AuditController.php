@@ -42,7 +42,10 @@ class AuditController extends Controller
      */
     public function index()
     {
-        //
+        $requirements = $this->requirementsRepository->index();
+        $references = $this->referencesRepository->index();
+        $situations = $this->situationsRepository->index();
+        return view('audit.index', compact('requirements', 'references', 'situations'));
     }
 
     /**

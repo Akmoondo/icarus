@@ -24,7 +24,7 @@
                     <tbody>
                         @foreach ($requirements as $requirement)
                             <tr>
-                                <td>{{($requirement->reference)? $requiment->reference->reference : ''}}</td>
+                                <td>{{($requirement->reference)? $requirement->reference->reference : ''}}</td>
                                 <td class="text-center"> {{ $requirement->clause }}</td>
                                 <td class="text-center"> {{ $requirement->requirement }}</td>
                                 <td class="text-right">
@@ -37,7 +37,7 @@
                 </table>
             @else
                 <div class="alert alert-danger">
-                    <p>Não há nenhuma Situação cadastrada!</p>
+                    <p>Não há nenhum Requisito cadastrado!</p>
                 </div>
             @endif
         </div>

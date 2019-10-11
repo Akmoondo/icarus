@@ -29,7 +29,7 @@ class RequirementsRepository{
     }
     
     public function store ($inputs){
-        //dd($inputs);
+        dd($inputs);
         $requirement = Requirement::create($inputs);
 
         return $requirement;

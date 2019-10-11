@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="x_title">
-        <h2>Adicionar Nova Requisito</h2>
+        <h2>Adicionar Novo Requisito</h2>
             <a class="btn btn-danger pull-right" href="{{ route('requirements.index') }}">Cancelar</a>
             <div class="clearfix"></div>
 </div>
