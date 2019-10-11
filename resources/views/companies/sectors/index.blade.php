@@ -6,7 +6,7 @@
     <div class="x_panel">
         <div class="x_title">
             <h2>Setores</h2>
-            <a class="btn btn-success pull-right" href="{{route('companies.sectors.create')}}">Novo Setor</a>
+            <a class="btn btn-success pull-right" href="{{--route('companies.sectors.create')--}}">Novo Setor</a>
             <div class="clearfix"></div>
         </div>
         <div class="x_content">
@@ -14,15 +14,14 @@
                 <table class="table table-striped">
                     <thead>
                         <tr>
-                            <th>Empresa</th>
-                            <th class="text-center">Setor</th>
+                            
+                            <th>Setor</th>
                             <th class="text-right">Ação</th>
                         </tr>
                     </thead>
                     <tbody>
                             @foreach ($sectors as $sector)
                                 <tr>
-                                    <td>{{($sector->companies)? $sector->companies->name : ''}}</td>
                                     <td class="text-center">{{ $sector->sector }}</td>
                                     <td class="text-right">
                                         <a href="{{-- route('companies.sectors.show', $sector->uuid)--}}"> <i class="fa fa-edit text-success"></i></a>

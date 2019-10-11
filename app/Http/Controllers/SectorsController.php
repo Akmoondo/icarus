@@ -19,9 +19,9 @@ class SectorsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $company_uuid)
     {
-        $sectors = $this->sectorsRepository->index();
+        $sectors = $this->sectorsRepository->index($company_uuid);
         //$sectors->load('companies');
         return view('companies.sectors.index', compact('sectors'));
     }

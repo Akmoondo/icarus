@@ -9,10 +9,9 @@ use App\Sector;
 
 class SectorsRepository{
 
-    public function index( $search = null )
+    public function index( $company_uuid )
     {
-        $sectors = Sector::all();
-        $sectors->load('companies');
+        $sectors = Sector::where('company_uuid', $company_uuid);
         //dd ($sectors);
         return $sectors;
     }
