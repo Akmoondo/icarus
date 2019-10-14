@@ -33,7 +33,6 @@
             <ul class="nav child_menu">
                 <li><a href="{{route('audit.index')}}">Auditoria</a></li>
               <li><a href="{{route('requirements.index')}}">Requisitos</a></li>
-              <li><a href="{{route('evidences.index')}}">Gerenciar Evidências</a></li>
               <li><a href="{{route('references.index')}}">Gerenciar Referências</a></li>
               <li><a href="{{route('situations.index')}}">Gerenciar Situações</a></li>
             </ul>
@@ -55,7 +54,6 @@
         <ul class="nav side-menu" style="">
           <li><a><i class="fa fa-edit"></i> Usuário <span class="fa fa-chevron-down"></span></a>
             <ul class="nav child_menu">
-              <li><a href="{{route('users.index')}}">Gerenciar Usuários</a></li>
               <li><a href="{{route('roles.index')}}">Gerenciar Cargos</a></li>
               <li><a href="{{route('privileges.index')}}">Gerenciar Privilégios</a></li>
             </ul>

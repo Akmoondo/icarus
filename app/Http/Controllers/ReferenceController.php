@@ -17,14 +17,13 @@ class ReferenceController extends Controller
     public function index()
     {
         $references = $this->referencesRepository->index();
-
+ 
         return view('references.index', compact('references'));
     }
 
     public function create()
     {
-        $references = $this->referencesRepository->create();
-        return $references;
+        return view('references.create');
     }
 
     public function store(Request $request)
@@ -37,7 +36,7 @@ class ReferenceController extends Controller
     public function show($id)
     {
         $references = $this->referencesRepository->show($id);
-        return $references;
+        return view('references.show', compact('references'));
     }
 
     public function edit($id)

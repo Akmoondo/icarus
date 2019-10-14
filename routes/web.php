@@ -39,12 +39,6 @@ Route::get('/situations/show/{uuid}', 'SituationsController@show')->name('situat
 Route::put('/situations/update/{uuid}', 'SituationsController@update')->name('situations.update');
 Route::get('/situations/destroy/{uuid}', 'SituationsController@destroy')->name('situations.destroy');
 
-Route::get('/evidences', 'EvidencesController@index')->name('evidences.index');
-Route::get('/evidences/new', 'EvidencesController@create')->name('evidences.create');
-Route::post('/evidences/store', 'EvidencesController@store')->name('evidences.store');
-Route::get('/evidences/show/{uuid}', 'EvidencesController@show')->name('evidences.show');
-Route::get('/evidences/destroy/{uuid}', 'EvidencesController@destroy')->name('evidences.destroy');
-
 Route::get('/companies', 'CompaniesController@index')->name('companies.index');
 Route::get('/companies/new', 'CompaniesController@create')->name('companies.create');
 Route::post('/companies/store', 'CompaniesController@store')->name('companies.store');
@@ -52,12 +46,19 @@ Route::get('/companies/show/{uuid}', 'CompaniesController@show')->name('companie
 Route::put('/companies/update/{uuid}', 'CompaniesController@update')->name('companies.update');
 Route::get('/companies/destroy/{uuid}', 'CompaniesController@destroy')->name('companies.destroy');
 
-Route::get('/{company_uuid}/sectors', 'SectorsController@index')->name('companies.sectors.index');
-Route::get('/{company_uuid}/sectors/new', 'SectorsController@create')->name('companies.sectors.create');
-Route::post('/{company_uuid}/sectors/store', 'SectorsController@store')->name('companies.sectors.store');
-Route::get('/{company_uuid}/sectors/show/{uuid}', 'SectorsController@show')->name('companies.sectors.show');
-Route::put('/{company_uuid}/sectors/update/{uuid}', 'SectorsController@update')->name('companies.sectors.update');
-Route::get('/{company_uuid}/sectors/destroy/{uuid}', 'SectorsController@destroy')->name('companies.sectors.destroy');
+Route::get('/companies/{company_uuid}/sectors', 'SectorsController@index')->name('companies.sectors.index');
+Route::get('/companies/{company_uuid}/sectors/new', 'SectorsController@create')->name('companies.sectors.create');
+Route::post('/companies/{company_uuid}/sectors/store', 'SectorsController@store')->name('companies.sectors.store');
+Route::get('/companies/{company_uuid}/sectors/show/{uuid}', 'SectorsController@show')->name('companies.sectors.show');
+Route::put('/companies/{company_uuid}/sectors/update/{uuid}', 'SectorsController@update')->name('companies.sectors.update');
+Route::get('/companies/{company_uuid}/sectors/destroy/{uuid}', 'SectorsController@destroy')->name('companies.sectors.destroy');
+
+Route::get('/companies/{company_uuid}/sectors/{sector_uuid}/users', 'UsersController@index')->name('companies.sectors.users.index');
+Route::get('/companies/{company_uuid}/sectors/{sector_uuid}/users/new', 'UsersController@create')->name('companies.sectors.users.create');
+Route::post('/companies/{company_uuid}/sectors/{sector_uuid}/users/store', 'UsersController@store')->name('companies.sectors.users.store');
+Route::get('/companies/{company_uuid}/sectors/{sector_uuid}/users/show/{uuid}', 'UsersController@show')->name('companies.sectors.users.show');
+Route::put('/companies/{company_uuid}/sectors/{sector_uuid}/users/update/{uuid}', 'UsersController@update')->name('companies.sectors.users.update');
+Route::get('/companies/{company_uuid}/sectors/{sector_uuid}/users/destroy/{uuid}', 'UsersController@destroy')->name('companies.sectors.users.destroy');
 
 Route::get('/references', 'ReferenceController@index')->name('references.index');
 Route::get('/references/new', 'ReferenceController@create')->name('references.create');
@@ -73,13 +74,15 @@ Route::get('/requirements/show/{uuid}', 'RequirementController@show')->name('req
 Route::put('/requirements/update/{uuid}', 'RequirementController@update')->name('requirements.update');
 Route::get('/requirements/destroy/{uuid}', 'RequirementController@destroy')->name('requirements.destroy');
 
+Route::get('/requirements/{requirement_uuid}/evidences', 'EvidencesController@index')->name('requirements.evidences.index');
+Route::get('/requirements/{requirement_uuid}/evidences/new', 'EvidencesController@create')->name('requirements.evidences.create');
+Route::post('/requirements/{requirement_uuid}/evidences/store', 'EvidencesController@store')->name('requirements.evidences.store');
+Route::get('/requirements/{requirement_uuid}/evidences/show/{uuid}', 'EvidencesController@show')->name('requirements.evidences.show');
+Route::get('/requirements/{requirement_uuid}/evidences/destroy/{uuid}', 'EvidencesController@destroy')->name('requirements.evidences.destroy');
 
-Route::get('/users', 'UsersController@index')->name('users.index');
-Route::get('/users/new', 'UsersController@create')->name('users.create');
-Route::post('/users/store', 'UsersController@store')->name('users.store');
-Route::get('/users/show/{uuid}', 'UsersController@show')->name('users.show');
-Route::put('/users/update/{uuid}', 'UsersController@update')->name('users.update');
-Route::get('/users/destroy/{uuid}', 'UsersController@destroy')->name('users.destroy');
+
+
+
 
 Route::get('/audit', 'AuditController@index')->name('audit.index');
 Route::get('/audit/new', 'AuditController@create')->name('audit.create');

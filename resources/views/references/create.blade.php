@@ -8,7 +8,6 @@
 </div>
 <form id="demo-form2" data-parsley-validate="" class="form-horizontal form-label-left" novalidate="" method ="POST" action="{{route('references.store')}}" >
     @csrf
-    <input type="hidden" id = "uuid" name="uuid" value="{{$references}}" >
     
     @include('references._form')
     

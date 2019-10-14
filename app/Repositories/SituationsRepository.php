@@ -18,15 +18,12 @@ class SituationsRepository{
     {
         $situation = Situation::where('uuid', $situation_id )->first();
 
-        return view('situations.show', compact('situation'));
+        //return view('situations.show', compact('situation'));
+        return $situation;
     }
-
-    public function create (){
-        $situations = Str::uuid();
-        return view('situations.create', compact('situations'));
-    }
-    
+   
     public function store ($inputs){
+        $inputs['uuid'] = Str::uuid();
         $situation = Situation::create($inputs);
 
         return $situation;

@@ -16,7 +16,8 @@ class CompaniesRepository{
     
     public function create (){
         $companies = Str::uuid();
-        return view('companies.create', compact('companies'));
+       // return view('companies.create', compact('companies'));
+       return $companies;
     }
     
     public function store ($inputs){
@@ -29,7 +30,7 @@ class CompaniesRepository{
     {
         $company = Company::where('uuid', $company_id )->first();
 
-        return view('companies.show', compact('company'));
+        return $company;
     }
 
     public function update($company_id, $inputs)

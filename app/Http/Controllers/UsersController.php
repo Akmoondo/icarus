@@ -21,7 +21,7 @@ class UsersController extends Controller
     public function index()
     {
         $users = $this->usersRepository->index();
-        return view('users.index', compact('users'));
+        return view('companies.sectors.users.index', compact('users'));
     }
 
     /**
@@ -45,7 +45,7 @@ class UsersController extends Controller
     {
         $inputs = $request->all();
         $users = $this->usersRepository->store($inputs);
-        return redirect()->route('users.index');
+        return redirect()->route('companies.sectors.users.index');
     }
 
     /**

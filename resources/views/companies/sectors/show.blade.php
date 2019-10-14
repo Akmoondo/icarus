@@ -2,18 +2,18 @@
 
 @section('content')
 <div class="x_title">
-    <h2>Alterar Setor: {{$sector->sector}}</h2>
-        <a class="btn btn-danger pull-right" href="{{ route('sectors.index') }}">Cancelar</a>
+    <h2>Alterar Setor: {{$sectors->sector}}</h2>
+        <a class="btn btn-danger pull-right" href="{{ route('companies.sectors.index', $company_uuid) }}">Cancelar</a>
         <div class="clearfix"></div>
 </div>
-<form id="demo-form2" data-parsley-validate="" class="form-horizontal form-label-left" novalidate="" method ="POST" action="{{ route('sectors.update', $sector->uuid) }}" > 
+<form id="demo-form2" data-parsley-validate="" class="form-horizontal form-label-left" novalidate="" method ="POST" action="{{ route('sectors.update', $sectors->uuid) }}" > 
     @csrf
     <input name="_method" type="hidden" value="PUT">
     {{--@include('situations._form')--}}
     <div class="form-group">
         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">Setor<span class="required">*</span></label>
         <div class="col-md-6 col-sm-6 col-xs-12">
-        <input  type="text" id="sector" name="sector" required="required" class="form-control col-md-7 col-xs-12" value="{{$sector->sector}}">
+        <input  type="text" id="sector" name="sector" required="required" class="form-control col-md-7 col-xs-12" value="{{$sectors->sector}}">
         </div>
     </div>
     <div class="ln_solid"></div>

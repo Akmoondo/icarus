@@ -18,15 +18,14 @@ class ReferencesRepository{
     {
         $reference = Reference::where('uuid', $reference_id )->first();
 
-        return view('references.show', compact('reference'));
+        
+        return $reference;
     }
 
-    public function create (){
-        $references = Str::uuid();
-        return view('references.create', compact('references'));
-    }
-    
+        
+   
     public function store ($inputs){
+        $inputs['uuid'] = Str::uuid();
         $reference = Reference::create($inputs);
 
         return $reference;

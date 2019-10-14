@@ -8,7 +8,7 @@
 </div>
 <form id="demo-form2" data-parsley-validate="" class="form-horizontal form-label-left" novalidate="" method ="POST" action="{{route('situations.store')}}" >
     @csrf
-    <input type="hidden" id = "uuid" name="uuid" value="{{$situations}}" >
+    
     
     @include('situations._form')
     

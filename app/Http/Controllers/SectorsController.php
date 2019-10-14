@@ -4,26 +4,29 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Repositories\SectorsRepository;
-
+use App\Repositories\CompaniesRepository;
 
 class SectorsController extends Controller
 {
     protected $sectorsRepository;
+    protected $companyRepository;
     
-    public function __construct(SectorsRepository $sectorsRepository)
+    public function __construct(SectorsRepository $sectorsRepository, CompaniesRepository $companyRepository)
     {
        $this->sectorsRepository = $sectorsRepository;
+       $this->companyRepository = $companyRepository;
     }
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $company_uuid)
+    public function index(Request $request, $company_uuid)
     {
-        $sectors = $this->sectorsRepository->index($company_uuid);
-        //$sectors->load('companies');
-        return view('companies.sectors.index', compact('sectors'));
+        $sectors = $this->sectorsRepository->index( $company_uuid );
+        $company = $this->companyRepository->show( $company_uuid );
+        //dd ( $company );
+        return view('companies.sectors.index', compact('sectors', 'company'));
     }
 
     /**
@@ -31,10 +34,12 @@ class SectorsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create( $company_uuid )
     {
-        $sectors = $this->sectorsRepository->create();
-        return $sectors;
+       // aqui vem os dados da company que o setor vai puxar
+        $company = $this->companyRepository->show( $company_uuid );
+
+        return view('companies.sectors.create', compact('company'));
     }
 
     /**
@@ -47,7 +52,7 @@ class SectorsController extends Controller
     {
         $inputs = $request->all();
         $sectors = $this->sectorsRepository->store($inputs, $company_uuid);
-        return redirect()->route('companies.sectors.index');
+        return redirect()->route('companies.sectors.index', $company_uuid);
     }
 
     /**
@@ -56,10 +61,11 @@ class SectorsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($sector_uuid, $company_uuid)
     {
-        $sectors = $this->sectorsRepository->show($id);
-        return $sectors;
+        $sectors = $this->sectorsRepository->show( $sector_uuid );
+        $company = $this->companyRepository->show( $company_uuid );
+        return view('companies.sectors.show', compact('sectors', 'company'));
     }
 
     /**

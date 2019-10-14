@@ -5,14 +5,17 @@ namespace App\Http\Controllers;
 use App\Evidence;
 use Illuminate\Http\Request;
 use App\Repositories\EvidencesRepository;
+use App\Repositories\RequirementsRepository;
+use App\Requirement;
 
 class EvidencesController extends Controller
 {
     protected $evidencesRepository;
     
-    public function __construct(EvidencesRepository $evidencesRepository)
+    public function __construct(EvidencesRepository $evidencesRepository, RequirementsRepository $requirementsRepository)
     {
        $this->evidencesRepository = $evidencesRepository;
+       $this->requirementsrepository = $requirementsRepository;
     }
     /**
      * Display a listing of the resource.
@@ -33,8 +36,9 @@ class EvidencesController extends Controller
      */
     public function create()
     {
-        $situations = $this->evidencesRepository->create();
-        return $situations;
+        $evidences = $this->evidencesRepository->create();
+        //$requirements = Requirement::all();
+        return view('evidences.create', compact('evidences'));
     }
 
     /**

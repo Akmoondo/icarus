@@ -19,13 +19,15 @@ class RequirementsRepository{
     {
         $requirement = Requirement::where('uuid', $requirement_id )->first();
 
-        return view('requirements.show', compact('requirement'));
+        //return view('requirements.show', compact('requirement'));
+        return $requirement;
     }
  
     public function create (){
         $requirements = Str::uuid();
         $references = Reference::all();
-        return view('requirements.create', compact('requirements', 'references'));
+        //return view('requirements.create', compact('requirements', 'references'));
+        return compact('requirements', 'references');
     }
     
     public function store ($inputs){

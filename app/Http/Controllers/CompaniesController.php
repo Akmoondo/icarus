@@ -33,7 +33,7 @@ class CompaniesController extends Controller
     public function create()
     {
         $companies = $this->companiesRepository->create();
-        return $companies;
+        return view('companies.create', compact('companies'));
     }
 
     /**
@@ -58,7 +58,7 @@ class CompaniesController extends Controller
     public function show($id)
     {
         $companies = $this->companiesRepository->show($id);
-        return $companies;
+        return view('companies.show', compact('company'));
     }
 
     /**

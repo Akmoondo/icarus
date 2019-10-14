@@ -11,29 +11,29 @@ class SectorsRepository{
 
     public function index( $company_uuid )
     {
-        $sectors = Sector::where('company_uuid', $company_uuid);
-        //dd ($sectors);
+        $sectors = Sector::where('company_uuid', $company_uuid)->get();
+        //dd ($company_uuid);
         return $sectors;
     }
     
-    public function create (){
-        $uuid = Str::uuid();
-        return view('companies.sectors.create', compact('uuid'));
-    }
-    
-    public function store ($inputs){
+   
+    public function store ($inputs, $company_uuid){
+
+        $inputs['uuid'] = Str::uuid();
+        $inputs['company_uuid'] = $company_uuid;
         $sector = Sector::create($inputs);
 
+        return $sector; 
+    }
+
+    public function show( $sector_uuid )
+    {
+        $sector = Sector::where('uuid', $sector_uuid)->first();
+
+        //return view('companies.sectors.show', compact('sector'));
         return $sector;
     }
-
-    public function show( $sector_id )
-    {
-        $sector = Sector::where('uuid', $sector_id )->first();
-
-        return view('companies.sectors.show', compact('sector'));
-    }
-
+ 
     public function update($sector_id, $inputs)
     {
         $sector = Sector::where('uuid', $sector_id)->update([

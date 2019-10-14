@@ -33,8 +33,7 @@ class SituationsController extends Controller
      */
     public function create()
     {
-        $situations = $this->situationsRepository->create();
-        return $situations;
+        return view('situations.create');
     }
 
     /**
@@ -60,7 +59,7 @@ class SituationsController extends Controller
     public function show($id)
     {
         $situations = $this->situationsRepository->show($id);
-        return $situations;
+        return view('situations.show', compact('situations'));
     }
 
     /**

@@ -5,8 +5,8 @@
 <div class="col-md-12 col-sm-6 col-xs-12">
     <div class="x_panel">
         <div class="x_title">
-            <h2>Setores</h2>
-            <a class="btn btn-success pull-right" href="{{--route('companies.sectors.create')--}}">Novo Setor</a>
+            <h2>Setores: {{$company->name}}</h2>
+            <a class="btn btn-success pull-right" href="{{ route('companies.sectors.create', $company->uuid) }}">Novo Setor</a>
             <div class="clearfix"></div>
         </div>
         <div class="x_content">
@@ -22,10 +22,10 @@
                     <tbody>
                             @foreach ($sectors as $sector)
                                 <tr>
-                                    <td class="text-center">{{ $sector->sector }}</td>
+                                    <td>{{ $sector->sector }}</td>
                                     <td class="text-right">
-                                        <a href="{{-- route('companies.sectors.show', $sector->uuid)--}}"> <i class="fa fa-edit text-success"></i></a>
-                                        <a href="{{-- route('companies.sectors.destroy', $sector->uuid)--}}"> <i class="fa fa-trash text-danger"></i></a>
+                                        <a href="{{-- route('companies.sectors.show', $company->uuid, $sector->uuid)--}}"> <i class="fa fa-edit text-success"></i></a>
+                                        <a href="{{-- route('companies.sectors.destroy', $company->uuid, $sector->uuid)--}}"> <i class="fa fa-trash text-danger"></i></a>
                                     </td>
                                 </tr>
                         @endforeach
