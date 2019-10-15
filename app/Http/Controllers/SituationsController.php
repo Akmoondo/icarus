@@ -33,7 +33,7 @@ class SituationsController extends Controller
      */
     public function create()
     {
-        return view('situations.create');
+        return view('audit.situations.create');
     }
 
     /**
@@ -47,7 +47,7 @@ class SituationsController extends Controller
         //$situations = Situation::create($request->all());
         $inputs = $request->all();
         $situations = $this->situationsRepository->store($inputs);
-        return redirect()->route('situations.index');
+        return redirect()->route('audit.situations.index');
     }
 
     /**
@@ -59,7 +59,7 @@ class SituationsController extends Controller
     public function show($id)
     {
         $situations = $this->situationsRepository->show($id);
-        return view('situations.show', compact('situations'));
+        return view('audit.situations.show', compact('situations'));
     }
 
     /**
@@ -88,7 +88,7 @@ class SituationsController extends Controller
         ]); */
 
         $situations = $this->situationsRepository->update($id, $request);
-        return  redirect()->route('situations.index');
+        return  redirect()->route('audit.situations.index');
     }
 
     /**
@@ -100,6 +100,6 @@ class SituationsController extends Controller
     public function destroy($id)
     {
         $situations = $this->situationsRepository->destroy($id);
-        return redirect()->route('situations.index');
+        return redirect()->route('audit.situations.index');
     }
 }

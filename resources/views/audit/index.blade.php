@@ -24,7 +24,11 @@
                             <tr>
                                 <td>{{($requirement->reference)? $requirement->reference->reference : ''}}</td>
                                 <td class="text-center"> {{ $requirement->requirement }}</td>
-                                <td class="text-center">{{($requirement->situation)? $requirement->situation->situation : ''}}</td>
+                                <td class="text-center">
+                                    @if($requirement->situation)
+                                        <span class="badge" style="background-color:{{ $requirement->situation->color }};"> {{ $requirement->situation->situation }}</span>
+                                    @endif
+                                </td>
                                 <td class="text-right">
                                     <a href="{{ route('audit.show', $requirement->uuid)}}"> <i class="fa fa-edit text-success"></i></a>
                                 </td>

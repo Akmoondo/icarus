@@ -18,7 +18,7 @@ class RequirementController extends Controller
     public function index()
     {
         $requirements = $this->requirementsRepository->index();
-        return view('requirements.index', compact('requirements'));
+        return view('audit.requirements.index', compact('requirements'));
     }
 
     public function create()
@@ -31,7 +31,7 @@ class RequirementController extends Controller
     {
         $inputs = $request->all();
         $requirements = $this->requirementsRepository->store($inputs);
-        return redirect()->route('requirements.index');
+        return redirect()->route('audit.requirements.index');
     }
 
     public function show($id)
@@ -48,12 +48,12 @@ class RequirementController extends Controller
     public function update(Request $request, $id)
     {
         $requirements = $this->requirementsRepository->update($id, $request);
-        return  redirect()->route('requirements.index');
+        return  redirect()->route('audit.requirements.index');
     }
 
     public function destroy($id)
     {
         $requirements = $this->requirementsRepository->destroy($id);
-        return redirect()->route('requirements.index');
+        return redirect()->route('audit.requirements.index');
     }
 }

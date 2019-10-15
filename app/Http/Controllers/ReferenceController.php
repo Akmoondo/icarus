@@ -18,25 +18,25 @@ class ReferenceController extends Controller
     {
         $references = $this->referencesRepository->index();
  
-        return view('references.index', compact('references'));
+        return view('audit.references.index', compact('references'));
     }
 
     public function create()
     {
-        return view('references.create');
+        return view('audit.references.create');
     }
 
     public function store(Request $request)
     {
         $inputs = $request->all();
         $references = $this->referencesRepository->store($inputs);
-        return redirect()->route('references.index');
+        return redirect()->route('audit.references.index');
     }
 
     public function show($id)
     {
         $references = $this->referencesRepository->show($id);
-        return view('references.show', compact('references'));
+        return view('audit.references.show', compact('references'));
     }
 
     public function edit($id)
@@ -47,13 +47,13 @@ class ReferenceController extends Controller
     public function update(Request $request, $id)
     {
         $references = $this->referencesRepository->update($id, $request);
-        return  redirect()->route('references.index');
+        return  redirect()->route('audit.references.index');
     }
 
     
     public function destroy($id)
     {
         $references = $this->referencesRepository->destroy($id);
-        return redirect()->route('references.index');
+        return redirect()->route('audit.references.index');
     }
 }

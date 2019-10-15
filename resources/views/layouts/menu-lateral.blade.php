@@ -32,19 +32,19 @@
           <li><a><i class="fa fa-edit"></i> Auditoria <span class="fa fa-chevron-down"></span></a>
             <ul class="nav child_menu">
                 <li><a href="{{route('audit.index')}}">Auditoria</a></li>
-              <li><a href="{{route('requirements.index')}}">Requisitos</a></li>
-              <li><a href="{{route('references.index')}}">Gerenciar Referências</a></li>
-              <li><a href="{{route('situations.index')}}">Gerenciar Situações</a></li>
+              <li><a href="{{route('audit.requirements.index')}}">Requisitos</a></li>
+              <li><a href="{{route('audit.references.index')}}">Gerenciar Referências</a></li>
+              <li><a href="{{route('audit.situations.index')}}">Gerenciar Situações</a></li>
             </ul>
           </li>
           <li><a><i class="fa fa-table"></i> Referências <span class="fa fa-chevron-down"></span></a>
             <ul class="nav child_menu">
-            <li><a href="{{route('references.index')}}">Gerenciar Referências</a></li>
+            <li><a href="{{route('audit.references.index')}}">Gerenciar Referências</a></li>
             </ul>
           </li>
         <li><a><i class="fa fa-clone"></i>Situções<span class="fa fa-chevron-down"></span></a>
             <ul class="nav child_menu">
-              <li><a href="{{route('situations.index')}}">Gerenciar Situações</a></li>
+              <li><a href="{{route('audit.situations.index')}}">Gerenciar Situações</a></li>
             </ul>
           </li>
         </ul>

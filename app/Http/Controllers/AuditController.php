@@ -33,7 +33,7 @@ class AuditController extends Controller
     }
 
    
-    
+     
    
     /**
      * Display a listing of the resource.
@@ -43,9 +43,8 @@ class AuditController extends Controller
     public function index()
     {
         $requirements = $this->requirementsRepository->index();
-        $references = $this->referencesRepository->index();
-        $situations = $this->situationsRepository->index();
-        return view('audit.index', compact('requirements', 'references', 'situations'));
+       // dd ($requirements);
+        return view('audit.index', compact('requirements'));
     }
 
     /**
@@ -77,7 +76,10 @@ class AuditController extends Controller
      */
     public function show($id)
     {
-        //
+        $requirements = $this->requirementsRepository->show($id);
+        $evidences = $this->evidencesRepository->index();
+        $situations = $this->situationsRepository->index();
+        return view('audit.show', compact('requirements', 'evidences', 'situations'));
     }
 
     /**

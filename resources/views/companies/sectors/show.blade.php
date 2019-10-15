@@ -3,10 +3,10 @@
 @section('content')
 <div class="x_title">
     <h2>Alterar Setor: {{$sectors->sector}}</h2>
-        <a class="btn btn-danger pull-right" href="{{ route('companies.sectors.index', $company_uuid) }}">Cancelar</a>
+        <a class="btn btn-danger pull-right" href="{{ route('companies.sectors.index', $company->uuid) }}">Cancelar</a>
         <div class="clearfix"></div>
 </div>
-<form id="demo-form2" data-parsley-validate="" class="form-horizontal form-label-left" novalidate="" method ="POST" action="{{ route('sectors.update', $sectors->uuid) }}" > 
+<form id="demo-form2" data-parsley-validate="" class="form-horizontal form-label-left" novalidate="" method ="POST" action="{{ route('companies.sectors.update', [$company->uuid, $sectors->uuid]) }}" > 
     @csrf
     <input name="_method" type="hidden" value="PUT">
     {{--@include('situations._form')--}}

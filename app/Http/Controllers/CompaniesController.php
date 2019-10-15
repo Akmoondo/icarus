@@ -57,7 +57,7 @@ class CompaniesController extends Controller
      */
     public function show($id)
     {
-        $companies = $this->companiesRepository->show($id);
+        $company = $this->companiesRepository->show($id);
         return view('companies.show', compact('company'));
     }
 

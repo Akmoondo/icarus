@@ -26,7 +26,7 @@ class EvidencesController extends Controller
     {
         $evidences = $this->evidencesRepository->index();
 
-        return view('evidences.index', compact('evidences'));
+        return view('audit.requirements.evidences.index', compact('evidences'));
     }
 
     /**
@@ -38,7 +38,7 @@ class EvidencesController extends Controller
     {
         $evidences = $this->evidencesRepository->create();
         //$requirements = Requirement::all();
-        return view('evidences.create', compact('evidences'));
+        return view('audit.requirements.evidences.create', compact('evidences'));
     }
 
     /**
@@ -51,19 +51,19 @@ class EvidencesController extends Controller
     {
         $inputs = $request->all();
         $evidences = $this->evidencesRepository->store($inputs);
-        return redirect()->route('evidences.index');
+        return redirect()->route('audit.requirements.index');
     }
 
     public function show($evidences_id)
     {
         $evidence = Evidence::where('uuid', $evidences_id )->first();
 
-        return view('evidences.show', compact('evidence'));
+        return view('audit.requirements.evidences.show', compact('evidence'));
     }
 
     public function destroy($id)
     {
         $evidences = $this->evidencesRepository->destroy($id);
-        return redirect()->route('evidences.index');
+        return redirect()->route('audit.requirements.evidences.index');
     }
 }

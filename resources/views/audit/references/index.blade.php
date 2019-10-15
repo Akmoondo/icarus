@@ -5,29 +5,27 @@
 <div class="col-md-12 col-sm-6 col-xs-12">
     <div class="x_panel">
         <div class="x_title">
-            <h2>Evidências</h2>
-            <a class="btn btn-success pull-right" href="{{route('evidences.create')}}">Nova Evidência</a>
+            <h2>Referências</h2>
+            <a class="btn btn-success pull-right" href="{{route('audit.references.create')}}">Nova Referência</a>
             <div class="clearfix"></div>
         </div>
         <div class="x_content">
-            @if ( $evidences )
+            @if ( $references )
             
                 <table class="table table-striped">
                     <thead>
                         <tr>
-                            <th>Nome da Evidência</th>
-                            <th class="text-center">Evidências</th>
+                            <th>Referências</th>
                             <th class="text-right">Ação</th>
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach ($evidences as $evidence)
+                        @foreach ($references as $reference)
                             <tr>
-                                <td> {{ $evidence->name }}</td>
-                                <td class="text-center">{{ $evidence->evidence }}</td>
+                                <td> {{ $reference->reference }}</td>
                                 <td class="text-right">
-                                    <a href="{{ route('evidences.show', $evidence->uuid)}}"> <i class="fa fa-eye text-success"></i></a>
-                                    <a href="{{ route('evidences.destroy', $evidence->uuid)}}"> <i class="fa fa-trash text-danger"></i></a>
+                                    <a href="{{ route('audit.references.show', $reference->uuid)}}"> <i class="fa fa-edit text-success"></i></a>
+                                    <a href="{{ route('audit.references.destroy', $reference->uuid)}}"> <i class="fa fa-trash text-danger"></i></a>
                                 </td>
                             </tr>
                         @endforeach
@@ -35,7 +33,7 @@
                 </table>
             @else
                 <div class="alert alert-danger">
-                    <p>Não há nenhuma Evidência cadastrada!</p>
+                    <p>Não há nenhuma Referência cadastrada!</p>
                 </div>
             @endif
         </div>

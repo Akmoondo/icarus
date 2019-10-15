@@ -54,14 +54,14 @@ class SectorsController extends Controller
         $sectors = $this->sectorsRepository->store($inputs, $company_uuid);
         return redirect()->route('companies.sectors.index', $company_uuid);
     }
-
+ 
     /**
      * Display the specified resource.
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($sector_uuid, $company_uuid)
+    public function show($company_uuid, $sector_uuid)
     {
         $sectors = $this->sectorsRepository->show( $sector_uuid );
         $company = $this->companyRepository->show( $company_uuid );
@@ -86,10 +86,10 @@ class SectorsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, $company_uuid , $id)
     {
         $sectors = $this->sectorsRepository->update($id, $request);
-        return  redirect()->route('companies.sectors.index');
+        return  redirect()->route('companies.sectors.index', $company_uuid);
     }
 
     /**
@@ -98,9 +98,9 @@ class SectorsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($company_uuid, $id)
     {
         $sectors = $this->sectorsRepository->destroy($id);
-        return redirect()->route('companies.sectors.index');
+        return redirect()->route('companies.sectors.index', $company_uuid);
     }
 }

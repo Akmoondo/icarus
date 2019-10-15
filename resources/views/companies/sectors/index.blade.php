@@ -24,8 +24,8 @@
                                 <tr>
                                     <td>{{ $sector->sector }}</td>
                                     <td class="text-right">
-                                        <a href="{{-- route('companies.sectors.show', $company->uuid, $sector->uuid)--}}"> <i class="fa fa-edit text-success"></i></a>
-                                        <a href="{{-- route('companies.sectors.destroy', $company->uuid, $sector->uuid)--}}"> <i class="fa fa-trash text-danger"></i></a>
+                                        <a href="{{ route('companies.sectors.show',  [$company->uuid, $sector->uuid])}}"> <i class="fa fa-edit text-success"></i></a>
+                                        <a href="{{route('companies.sectors.destroy', [$company->uuid, $sector->uuid])}}"> <i class="fa fa-trash text-danger"></i></a>
                                     </td>
                                 </tr>
                         @endforeach
