@@ -2,20 +2,27 @@
 
 @section('content')
 <div class="x_title">
-<h2>Requisito: {{$requirements->requirement}}</h2>
+<h2>Requisito: {{$requirements->clause}} - {{$requirements->requirement}}</h2>
     <form class="text-right">
-    <div class="col-md-3 col-sm-3 col-xs-4 text-right">
+    <div class="col-md-3 col-sm-3 col-xs-2 text-right">
         <select class="form-control">
             @foreach ($situations as $situation)
                 <option>{{$situation->situation}}</option>
             @endforeach
         </select>
-        </div>
-    <a class="btn btn-success pull-right" href="{{route('audit.index')}}">Salvar</a>
+    </div>
+    <a class="btn btn-danger pull-right" href="{{route('audit.index')}}">Salvar</a>
     <form>
     <div class="clearfix"></div>
 </div>
 
+<div class="col-md-12 col-sm-6 col-xs-12">
+    <div class="x_panel">
+        <div class="x_title">
+            <h2>Requisito</h2>
+            <div class="clearfix"></div>
+        </div>
+    <div class="x_content">
 <div class="table-responsive">  
     <table class="table table-bordered">  
         <tbody>
@@ -45,8 +52,10 @@
             </tr>
         </tbody>
     </table>
-</div>
-
+    </div>
+    </div>
+    </div>
+    </div>
 <div class="col-md-12 col-sm-6 col-xs-12">
         <div class="x_panel">
             <div class="x_title">
@@ -61,7 +70,7 @@
                         <thead>
                             <tr>
                                 <th>Nome da Evidência</th>
-                                <th class="text-center">Evidências</th>
+                                <th class="text-center">Evidência</th>
                                 <th class="text-right">Ação</th>
                             </tr>
                         </thead>

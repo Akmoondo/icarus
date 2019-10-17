@@ -23,7 +23,7 @@ class SituationsController extends Controller
     {
         $situations = $this->situationsRepository->index();
 
-        return view('situations.index', compact('situations'));
+        return view('audit.situations.index', compact('situations'));
     }
 
     /**
