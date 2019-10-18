@@ -76,7 +76,8 @@ class AuditController extends Controller
      */
     public function show($id)
     {
-        $requirements = $this->requirementsRepository->show($id);
+        $requirements = $this->requirementsRepository->audit($id);
+        //dd ($requirements);
         $evidences = $this->evidencesRepository->index();
         $situations = $this->situationsRepository->index();
         return view('audit.show', compact('requirements', 'evidences', 'situations'));
