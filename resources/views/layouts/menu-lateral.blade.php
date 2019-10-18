@@ -1,6 +1,6 @@
 <div class="left_col scroll-view">
     <div class="navbar nav_title" style="border: 0;">
-      <a href="index.html" class="site_title"><i class="fa fa-paw"></i> <span>Gentelella Alela!</span></a>
+      <a href="{{route('dashboard.index')}}" class="site_title"><i class="fa fa-paw"></i> <span>ICARUS</span></a>
     </div>
 
     <div class="clearfix"></div>
@@ -33,18 +33,8 @@
             <ul class="nav child_menu">
                 <li><a href="{{route('audit.index')}}">Auditoria</a></li>
               <li><a href="{{route('audit.requirements.index')}}">Requisitos</a></li>
-              <li><a href="{{route('audit.references.index')}}">Gerenciar Referências</a></li>
-              <li><a href="{{route('audit.situations.index')}}">Gerenciar Situações</a></li>
-            </ul>
-          </li>
-          <li><a><i class="fa fa-table"></i> Referências <span class="fa fa-chevron-down"></span></a>
-            <ul class="nav child_menu">
-            <li><a href="{{route('audit.references.index')}}">Gerenciar Referências</a></li>
-            </ul>
-          </li>
-        <li><a><i class="fa fa-clone"></i>Situções<span class="fa fa-chevron-down"></span></a>
-            <ul class="nav child_menu">
-              <li><a href="{{route('audit.situations.index')}}">Gerenciar Situações</a></li>
+              <li><a href="{{route('audit.references.index')}}">Referências</a></li>
+              <li><a href="{{route('audit.situations.index')}}">Situações</a></li>
             </ul>
           </li>
         </ul>
@@ -52,7 +42,7 @@
         <br>
         <h3>Usuário</h3>
         <ul class="nav side-menu" style="">
-          <li><a><i class="fa fa-edit"></i> Usuário <span class="fa fa-chevron-down"></span></a>
+          <li><a><i class="fa fa-users"></i> Usuário <span class="fa fa-chevron-down"></span></a>
             <ul class="nav child_menu">
               <li><a href="{{route('roles.index')}}">Gerenciar Cargos</a></li>
               <li><a href="{{route('privileges.index')}}">Gerenciar Privilégios</a></li>

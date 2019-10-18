@@ -17,10 +17,9 @@ class RequirementsRepository{
 
     public function show( $requirement_id )
     {
-        $requirement = Requirement::where('uuid', $requirement_id )->first();
-
-        //return view('requirements.show', compact('requirement'));
-        return $requirement;
+        $requirements = Requirement::where('uuid', $requirement_id )->first();
+        $requirements->load('reference', 'situation');
+        return compact('requirements');
     }
  
     public function create (){
@@ -43,9 +42,9 @@ class RequirementsRepository{
             'clause' => $inputs['clause'],
             'requirement' => $inputs['requirement'],
             'brief' => $inputs['brief'],
-            'situation_uuid' => $inputs['situation_uuid'],
-            'reference_uuid' => $inputs['reference_uuid'],
-            'requirement_uuid' => $inputs['requirement_uuid'],
+            //'situation_uuid' => $inputs['situation_uuid'],
+            //'reference_uuid' => $inputs['reference_uuid'],
+            //'requirement_uuid' => $inputs['requirement_uuid'],
         ]);
 
         return $requirement;

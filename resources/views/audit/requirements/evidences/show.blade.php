@@ -3,7 +3,7 @@
 @section('content')
 <div class="x_title">
 <h2>Evidência: {{$evidence->name}}</h2>
-    <a class="btn btn-danger pull-right" href="{{route('audit.requirements.evidences.index')}}">Voltar</a>
+    <a class="btn btn-danger pull-right" href="{{route('audit.index')}}">Voltar</a>
     <div class="clearfix"></div>
 </div>
 
