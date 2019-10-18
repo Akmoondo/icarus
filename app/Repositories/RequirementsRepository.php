@@ -19,14 +19,14 @@ class RequirementsRepository{
     {
         $requirements = Requirement::where('uuid', $requirement_id )->first();
         //$requirements->load('reference', 'situation');
-        return compact('requirements');
+        return $requirements;
     }
  
     public function audit ( $requirement_id )
     {
         $requirements = Requirement::where('uuid', $requirement_id )->first();
         $requirements->load('reference', 'situation');
-        return compact('requirements');
+        return $requirements;
     }
 
     public function create (){

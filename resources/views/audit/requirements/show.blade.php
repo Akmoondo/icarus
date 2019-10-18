@@ -2,30 +2,30 @@
 
 @section('content')
 <div class="x_title">
-    <h2>Alterar Requisito: {{$requirements->clause}} - {{$requirements->uuid}}</h2>
-        <a class="btn btn-danger pull-right" href="{{ route('audit.show', $requirements->requirements->uuid) }}">Cancelar</a>
+    <h2>Alterar Requisito: {{$requirements->clause}} - {{$requirements->requirement}}</h2>
+        <a class="btn btn-danger pull-right" href="{{ route('audit.show', $requirements->uuid) }}">Cancelar</a>
         <div class="clearfix"></div>
 </div>
-<form id="demo-form2" data-parsley-validate="" class="form-horizontal form-label-left" novalidate="" method ="POST" action="{{ route('audit.requirements.update', $requirements->requirements->uuid) }}" > 
+<form id="demo-form2" data-parsley-validate="" class="form-horizontal form-label-left" novalidate="" method ="POST" action="{{ route('audit.requirements.update', $requirements->uuid) }}" > 
     @csrf
     <input name="_method" type="hidden" value="PUT">
     {{--@include('situations._form')--}}
     <div class="form-group">
         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">Artigo/Controle<span class="required">*</span></label>
         <div class="col-md-6 col-sm-6 col-xs-12">
-        <input  type="text" id="clause" name="clause" required="required" class="form-control col-md-7 col-xs-12" value="{{$requirements->requirements->clause}}">
+        <input  type="text" id="clause" name="clause" required="required" class="form-control col-md-7 col-xs-12" value="{{$requirements->clause}}">
         </div>
     </div>
         <div class="form-group">
             <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">Requisito<span class="required">*</span></label>
             <div class="col-md-6 col-sm-6 col-xs-12">
-                <input type="text" id="requirement" name="requirement" required="required" class="form-control col-md-7 col-xs-12" value="{{$requirements->requirements->requirement}}">
+                <input type="text" id="requirement" name="requirement" required="required" class="form-control col-md-7 col-xs-12" value="{{$requirements->requirement}}">
             </div>
         </div>
         <div class="form-group">
             <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">Descrição<span class="required">*</span></label>
             <div class="col-md-6 col-sm-6 col-xs-12">
-            <textarea class="resizable_textarea form-control" maxlength="500" id="brief" name="brief" placeholder="{{$requirements->requirements->brief}}"></textarea>
+            <textarea class="resizable_textarea form-control" maxlength="500" id="brief" name="brief" placeholder="{{$requirements->brief}}"></textarea>
             </div>
         </div>
             {{--<div class="form-group">
