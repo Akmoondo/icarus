@@ -18,6 +18,8 @@ class RequirementController extends Controller
     public function index()
     {
         $requirements = $this->requirementsRepository->index();
+
+        dd( $requirements );
         return view('audit.requirements.index', compact('requirements'));
     }
 

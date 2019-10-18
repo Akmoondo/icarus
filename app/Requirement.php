@@ -14,8 +14,8 @@ class Requirement extends Model
         return $this->hasMany(SectorRequiriment::class, 'requirement_uuid');
     }
 
-    public function evidences(){
-        return $this->hasMany(RequirementEvidence::class, 'requirement_uuid');
+    public function requirements(){
+        return $this->hasMany(RequirementEvidence::class, 'requirement_uuid', 'uuid');
     }
 
     public function reference() {

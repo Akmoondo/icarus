@@ -11,7 +11,7 @@ class RequirementsRepository{
     public function index()
     {
         $requirements = Requirement::all();
-        $requirements->load('reference', 'situation');
+        $requirements->load('reference', 'situation', 'requirements.evidence');
         return $requirements;
     }
 
