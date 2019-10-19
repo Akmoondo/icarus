@@ -3,7 +3,8 @@
 @section('content')
 <div class="x_title">
 <h2>Requisito: {{$requirements->clause}} - {{$requirements->requirement}}</h2>
-    <form class="text-right pull-right">
+    
+<form class="text-right">
     <div class="col-md-3 col-sm-3 col-xs-2 text-right">
         <select class="form-control">
             @foreach ($situations as $situation)

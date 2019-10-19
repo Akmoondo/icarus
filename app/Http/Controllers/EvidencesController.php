@@ -37,8 +37,8 @@ class EvidencesController extends Controller
     public function create()
     {
         $evidences = $this->evidencesRepository->create();
-        //$requirements = Requirement::all();
-        return view('audit.requirements.evidences.create', compact('evidences'));
+        $requirements = Requirement::all();
+        return view('audit.requirements.evidences.create', compact('evidences', 'requirements'));
     }
 
     /**
@@ -51,7 +51,7 @@ class EvidencesController extends Controller
     {
         $inputs = $request->all();
         $evidences = $this->evidencesRepository->store($inputs);
-        return redirect()->route('audit.requirements.index');
+        return redirect()->route('audit.index');
     }
 
     public function show($evidences_id)

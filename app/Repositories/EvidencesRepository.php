@@ -24,8 +24,6 @@ class EvidencesRepository{
 
     public function create (){
         $evidences = Str::uuid();
-        //$requirements = Requirement::all();
-        //return view('evidences.create', compact('evidences', 'requirements'));
         return $evidences;
     }
     public function store ($inputs){
