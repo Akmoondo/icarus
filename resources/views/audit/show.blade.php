@@ -66,7 +66,7 @@
             </div>
             <div class="x_content">
                 @if ( $evidences )
-                
+                 
                     <table class="table table-striped">
                         <thead>
                             <tr>

@@ -31,7 +31,7 @@ Route::post('/privileges', 'PrivilegesController@save')->name('privileges.save')
 Route::get('/privileges/{uuid}', 'PrivilegesController@show')->name('privileges.show');
 Route::put('/privileges/{uuid}', 'PrivilegesController@update')->name('privileges.update');
 Route::delete('/privileges/{uuid}', 'PrivilegesController@destroy')->name('privileges.destroy');
-
+ 
 Route::get('/situations', 'SituationsController@index')->name('audit.situations.index');
 Route::get('/situations/new', 'SituationsController@create')->name('audit.situations.create');
 Route::post('/situations/store', 'SituationsController@store')->name('audit.situations.store');
