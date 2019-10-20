@@ -8,9 +8,9 @@
     @csrf
     <input name="_method" type="hidden" value="PUT">
     <div class="col-md-3 col-sm-3 col-xs-2 text-right">
-        <select class="form-control">
+        <select name="situation_uuid" class="form-control">
             @foreach ($situations as $situation)
-                <option id="situation_uuid" name="situation_uuid" value="{{$situation->uuid}}">{{$situation->situation}}</option>
+                <option value="{{$situation->uuid}}" {{ ($situation->uuid ==  $requirements->situation_uuid)? 'selected' : ''}}>{{$situation->situation}}</option>
             @endforeach
         </select>
     </div>
@@ -73,6 +73,7 @@
                     <table class="table table-striped">
                         <thead>
                             <tr>
+                                <th>Escolha</th>
                                 <th>Nome da Evidência</th>
                                 <th class="text-center">Evidência</th>
                                 <th class="text-right">Ação</th>
@@ -81,6 +82,9 @@
                         <tbody>
                             @foreach ($evidences as $evidence)
                                 <tr>
+                                    <td>
+                                        <input type="checkbox" class="" value="evidencias[{{ $evidence->uuid }}]" />
+                                    </td>
                                     <td> {{ $evidence->name }}</td>
                                     <td class="text-center">{{ $evidence->evidence }}</td>
                                     <td class="text-right">

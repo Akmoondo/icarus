@@ -7,6 +7,7 @@ use App\Repositories\ReferencesRepository;
 use App\Repositories\RequirementsRepository;
 use App\Repositories\SectorsRepository;
 use App\Repositories\SituationsRepository;
+use App\Requirement;
 use Illuminate\Http\Request;
 
 class AuditController extends Controller
@@ -77,7 +78,7 @@ class AuditController extends Controller
     public function show($id)
     {
         $requirements = $this->requirementsRepository->audit($id);
-        //dd ($requirements);
+        dd ($requirements);
         $evidences = $this->evidencesRepository->index();
         $situations = $this->situationsRepository->index();
         return view('audit.show', compact('requirements', 'evidences', 'situations'));
@@ -89,14 +90,15 @@ class AuditController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($requirements_uuid, $inputs)
+    public function edit( Request $request, $requirements_uuid )
     { 
-        
+        $inputs = $request->all();
+
         $requirement = Requirement::where('uuid', $requirements_uuid)->update([
             'situation_uuid' => $inputs['situation_uuid'],
         ]);
 
-        return redirect()->route('audit.show');
+        return back();
     }
 
     /**

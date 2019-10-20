@@ -15,4 +15,6 @@ class Evidence extends Model
     public function requirement_evidence(){
         return $this->hasMany(RequirementEvidence::class, 'evidence_uuid');
     }
+
+
 }

@@ -50,6 +50,7 @@ class RequirementController extends Controller
  
     public function update(Request $request, $id)
     {
+        dd( $request->all() );
         $requirements = $this->requirementsRepository->update($id, $request);
         return  redirect()->route('audit.index');
     }

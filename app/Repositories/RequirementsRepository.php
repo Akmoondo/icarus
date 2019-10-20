@@ -25,7 +25,7 @@ class RequirementsRepository{
     public function audit ( $requirement_id )
     {
         $requirements = Requirement::where('uuid', $requirement_id )->first();
-        $requirements->load('reference', 'situation');
+        $requirements->load('reference', 'situation', 'requirements', 'requirements.evidence');
         return $requirements;
     }
 

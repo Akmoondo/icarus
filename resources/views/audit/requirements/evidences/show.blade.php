@@ -3,7 +3,7 @@
 @section('content')
 <div class="x_title">
 <h2>Evidência: {{$evidence->name}}</h2>
-    <a class="btn btn-danger pull-right" href="{{route('audit.index')}}">Voltar</a>
+    <a class="btn btn-danger pull-right" href="{{ redirect()->getUrlGenerator()->previous() }}">Voltar</a>
     <div class="clearfix"></div>
 </div>
 
@@ -24,7 +24,7 @@
             </tr>
             <tr>
                 <th scope="row">Comentário</th>
-                <td>{{$evidence->comment}} </form></td>
+                <td>{{ $evidence->comment }} </td>
             </tr>
         </tbody>
     </table>
