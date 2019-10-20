@@ -18,7 +18,7 @@
                             <th>Norma/Lei</th>
                             <th class="text-center">Capítulo/Artigo</th>
                             <th class="text-center">Requisito</th>
-                            <th> Situação </th>
+                            <th class="text-center"> Situação </th>
                             <th class="text-right">Ação</th>
                         </tr>
                     </thead>
@@ -28,9 +28,9 @@
                                 <td>{{($requirement->reference)? $requirement->reference->reference : ''}}</td>
                                 <td class="text-center"> {{ $requirement->clause }}</td>
                                 <td class="text-center"> {{ $requirement->requirement }}</td>
-                                <td>
+                                <td class="text-center">
                                     @if($requirement->situation)
-                                        <span class="badge" style="background-color:{{ $requirement->situation->color }};"> {{ $requirement->situation->color }}</span>
+                                        <span class="badge" style="background-color:{{ $requirement->situation->color }};"> {{ $requirement->situation->situation }}</span>
                                     @endif
                                 </td>
                                 <td class="text-right">

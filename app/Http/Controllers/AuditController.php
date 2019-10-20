@@ -89,9 +89,14 @@ class AuditController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
-    {
+    public function edit($requirements_uuid, $inputs)
+    { 
         
+        $requirement = Requirement::where('uuid', $requirements_uuid)->update([
+            'situation_uuid' => $inputs['situation_uuid'],
+        ]);
+
+        return redirect()->route('audit.show');
     }
 
     /**

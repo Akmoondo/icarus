@@ -66,6 +66,7 @@ Route::post('/audit/store', 'AuditController@store')->name('audit.store');
 Route::get('/audit/show/{uuid}', 'AuditController@show')->name('audit.show');
 Route::put('/audit/update/{uuid}', 'AuditController@update')->name('audit.update');
 Route::get('/audit/destroy/{uuid}', 'AuditController@destroy')->name('audit.destroy');
+Route::put('/audit/show/{uuid}/edit', 'AuditController@edit')->name('audit.requirements.edit');
 
 Route::get('/audit/references', 'ReferenceController@index')->name('audit.references.index');
 Route::get('/audit/references/new', 'ReferenceController@create')->name('audit.references.create');

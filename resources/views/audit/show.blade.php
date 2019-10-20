@@ -4,18 +4,21 @@
 <div class="x_title">
 <h2>Requisito: {{$requirements->clause}} - {{$requirements->requirement}}</h2>
     
-<form class="text-right">
+<form class="text-right align-right" method ="POST" action="{{ route('audit.requirements.edit', $requirements->uuid) }}">
+    @csrf
+    <input name="_method" type="hidden" value="PUT">
     <div class="col-md-3 col-sm-3 col-xs-2 text-right">
         <select class="form-control">
             @foreach ($situations as $situation)
-                <option>{{$situation->situation}}</option>
+                <option id="situation_uuid" name="situation_uuid" value="{{$situation->uuid}}">{{$situation->situation}}</option>
             @endforeach
         </select>
     </div>
-    <a class="btn btn-danger pull-right" href="{{route('audit.index')}}">Salvar</a>
-    <form>
+    <button type="submit" class="btn btn-danger pull-right" >Salvar</button>
     <div class="clearfix"></div>
-</div>
+    </div>
+</form>
+    
 
 <div class="col-md-12 col-sm-6 col-xs-12">
     <div class="x_panel">

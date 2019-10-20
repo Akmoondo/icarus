@@ -7,7 +7,7 @@ use App\Requirement;
 use Illuminate\Support\Str;
 
 class RequirementsRepository{
-
+ 
     public function index()
     {
         $requirements = Requirement::all();

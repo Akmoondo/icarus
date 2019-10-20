@@ -33,7 +33,7 @@ class SectorsRepository{
         //return view('companies.sectors.show', compact('sector'));
         return $sector;
     }
-  
+   
     public function update($sector_id, $inputs)
     {
         $sector = Sector::where('uuid', $sector_id)->update([
