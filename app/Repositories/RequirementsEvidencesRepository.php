@@ -13,4 +13,11 @@ class RequirementsEvidencesRepository {
         $search->load('evidence');
         return $search;
     }
+
+    public function evidencesByRequirementId( $requirement_uuid )
+    {
+        return RequirementEvidence::where('requirement_uuid', $requirement_uuid)
+                ->with('evidence')
+                ->get();
+    }
 }

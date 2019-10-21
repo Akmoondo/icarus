@@ -81,9 +81,21 @@
                         </thead>
                         <tbody>
                             @foreach ($evidences as $evidence)
+                                @php
+                                    $checked = '';
+
+                                    foreach( $requirementEvidences as $requirementEvidence ):
+                                        if( $requirementEvidence->evidence->uuid == $evidence->uuid) {
+                                            $checked = 'checked';
+                                        }
+                                    endforeach
+
+                                @endphp
+
                                 <tr>
                                     <td>
-                                        <input type="checkbox" class="" value="evidencias[{{ $evidence->uuid }}]" />
+                                        <input type="checkbox" class="" value="evidencias[{{ $evidence->uuid }}]" {{ $checked }} />
+
                                     </td>
                                     <td> {{ $evidence->name }}</td>
                                     <td class="text-center">{{ $evidence->evidence }}</td>
@@ -103,5 +115,8 @@
             </div>
         </div>
     </div>
+
+
+
 
 @endsection

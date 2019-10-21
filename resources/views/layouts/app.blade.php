@@ -108,6 +108,23 @@
 
     <!-- Custom Theme Scripts -->
     <script src="{{asset('/gentelella/build/js/custom.min.js') }}"></script>
+    <script>
+        $(document).ready(function(){
+
+            $('input').iCheck({
+                checkboxClass: 'icheckbox_flat-green',
+                radioClass: 'iradio_flat'
+            });
+
+            $('input').on('ifChecked', function(event){
+                alert( 'Aqui vai a chamada para Inserção da linha' );
+            });
+
+            $('input').on('ifUnchecked', function(event){
+                alert( 'Aqui vai a chamada para Exclusão da linha' );
+            });
+        });
+    </script>
     
 </body>
 </html>

@@ -4,9 +4,11 @@ namespace App\Http\Controllers;
 
 use App\Repositories\EvidencesRepository;
 use App\Repositories\ReferencesRepository;
+use App\Repositories\RequirementsEvidencesRepository;
 use App\Repositories\RequirementsRepository;
 use App\Repositories\SectorsRepository;
 use App\Repositories\SituationsRepository;
+
 use App\Requirement;
 use Illuminate\Http\Request;
 
@@ -17,20 +19,21 @@ class AuditController extends Controller
     protected $sectorsRepository;
     protected $requirementsRepository;
     protected $evidencesRepository;
-    
+    protected $requirementsEvidencesRepository;
     public function __construct(
         ReferencesRepository $referencesRepository,
         SituationsRepository $situationsRepository,
         EvidencesRepository $evidencesRepository,
         RequirementsRepository $requirementsRepository,
-        SectorsRepository $sectorsRepository
-         )
-    {
+        SectorsRepository $sectorsRepository,
+        RequirementsEvidencesRepository $requirementsEvidencesRepository
+    ){
        $this->referencesRepository = $referencesRepository;
        $this->evidencesRepository = $evidencesRepository;
        $this->requirementsRepository = $requirementsRepository;
        $this->sectorsRepository = $sectorsRepository;
        $this->situationsRepository = $situationsRepository;
+       $this->requirementsEvidencesRepository = $requirementsEvidencesRepository;
     }
 
    
@@ -78,10 +81,11 @@ class AuditController extends Controller
     public function show($id)
     {
         $requirements = $this->requirementsRepository->audit($id);
-        dd ($requirements);
+        $requirementEvidences = $this->requirementsEvidencesRepository->evidencesByRequirementId( $id );
+        //dd($requirements, $requirementEvidences);
         $evidences = $this->evidencesRepository->index();
         $situations = $this->situationsRepository->index();
-        return view('audit.show', compact('requirements', 'evidences', 'situations'));
+        return view('audit.show', compact('requirements', 'evidences', 'situations', 'requirementEvidences'));
     }
 
     /**

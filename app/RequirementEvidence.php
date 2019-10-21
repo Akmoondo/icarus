@@ -15,6 +15,6 @@ class RequirementEvidence extends Model
     }
 
     public function  evidence(){
-        return $this->hasOne(Evidence::class, 'uuid', 'evidence_uuid');
+        return $this->belongsTo(Evidence::class, 'evidence_uuid', 'uuid');
     }
 }
