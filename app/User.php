@@ -47,3 +47,4 @@ class User extends Authenticatable
         return $this->hasOne(Role::class,'uuid', 'role_uuid');
     }
 }
+ 
