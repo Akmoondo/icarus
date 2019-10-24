@@ -31,8 +31,7 @@ class UsersController extends Controller
      */
     public function create()
     {
-        $users = $this->usersRepository->create();
-        return $users;
+        return view('companies.sectors.users.create');
     }
 
     /**
@@ -57,7 +56,8 @@ class UsersController extends Controller
     public function show($id)
     {
         $users = $this->usersRepository->show($id);
-        return $users;
+        //dd ($users);
+        return view('companies.sectors.users.show', compact('users'));
     }
 
     /**
@@ -81,7 +81,7 @@ class UsersController extends Controller
     public function update(Request $request, $id)
     {
         $users = $this->usersRepository->update($id, $request);
-        return  redirect()->route('users.index');
+        return  redirect()->route('companies.sectors.users.index');
     }
 
     /**
@@ -93,7 +93,7 @@ class UsersController extends Controller
     public function destroy($id)
     {
         $users = $this->usersRepository->destroy($id);
-        return redirect()->route('users.index');
+        return redirect()->route('companies.sectors.users.index');
     }
 }
  
