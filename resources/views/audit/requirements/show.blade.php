@@ -3,7 +3,7 @@
 @section('content')
 <div class="x_title">
     <h2>Alterar Requisito: {{$requirements->clause}} - {{$requirements->requirement}}</h2>
-        <a class="btn btn-danger pull-right" href="{{ route('audit.show', $requirements->uuid) }}">Cancelar</a>
+        <a class="btn btn-danger pull-right" href="{{ route('audit.requirements.index', $requirements->uuid) }}">Cancelar</a>
         <div class="clearfix"></div>
 </div>
 <form id="demo-form2" data-parsley-validate="" class="form-horizontal form-label-left" novalidate="" method ="POST" action="{{ route('audit.requirements.update', $requirements->uuid) }}" > 
@@ -28,17 +28,17 @@
             <textarea class="resizable_textarea form-control" maxlength="500" id="brief" name="brief" placeholder="{{$requirements->brief}}"></textarea>
             </div>
         </div>
-            {{--<div class="form-group">
+            <div class="form-group">
                 <label class="control-label col-md-3 col-sm-3 col-xs-12">Referência</label>
                 <div class="col-md-6 col-sm-6 col-xs-12">
-                    <select class="form-control">
+                    <select name="reference_uuid" class="form-control">
                         @foreach ($references as $reference)
-                            <option  name="reference_uuid" id="reference_uuid" value="{{$reference->uuid}}">{{$reference->reference}}</option>
+                    <option  id="reference_uuid" value="{{$reference->uuid}}" placeholder="{{$requirements->reference->reference}}">{{$reference->reference}}</option>
                         @endforeach 
                     </select>
                 </div>
             </div>
-            --}}
+            
     <div class="ln_solid"></div>
     
     <div class="form-group">

@@ -18,7 +18,7 @@ class RequirementsRepository{
     public function show( $requirement_id )
     {
         $requirements = Requirement::where('uuid', $requirement_id )->first();
-        //$requirements->load('reference', 'situation');
+        $requirements->load('reference');
         return $requirements;
     }
  
@@ -37,7 +37,7 @@ class RequirementsRepository{
     }
     
     public function store ($inputs){
-        dd($inputs);
+        //dd($inputs);
         $requirement = Requirement::create($inputs);
 
         return $requirement;
@@ -50,7 +50,7 @@ class RequirementsRepository{
             'requirement' => $inputs['requirement'],
             'brief' => $inputs['brief'],
             //'situation_uuid' => $inputs['situation_uuid'],
-            //'reference_uuid' => $inputs['reference_uuid'],
+            'reference_uuid' => $inputs['reference_uuid'],
             //'requirement_uuid' => $inputs['requirement_uuid'],
         ]);
 

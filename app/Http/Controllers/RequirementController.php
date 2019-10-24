@@ -40,7 +40,8 @@ class RequirementController extends Controller
     {
         $requirements = $this->requirementsRepository->show($id);
         //dd($requirements);
-        return view('audit.requirements.show', compact('requirements'));
+        $references = Reference::all();
+        return view('audit.requirements.show', compact('requirements', 'references'));
     }
 
     public function edit($id)
@@ -50,9 +51,9 @@ class RequirementController extends Controller
  
     public function update(Request $request, $id)
     {
-        dd( $request->all() );
+        //dd( $request->all() );
         $requirements = $this->requirementsRepository->update($id, $request);
-        return  redirect()->route('audit.index');
+        return  redirect()->route('audit.requirements.index');
     }
 
     public function destroy($id)

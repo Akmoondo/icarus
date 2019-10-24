@@ -59,7 +59,7 @@ Route::post('/companies/{company_uuid}/sectors/{sector_uuid}/users/store', 'User
 Route::get('/companies/{company_uuid}/sectors/{sector_uuid}/users/show/{uuid}', 'UsersController@show')->name('companies.sectors.users.show');
 Route::put('/companies/{company_uuid}/sectors/{sector_uuid}/users/update/{uuid}', 'UsersController@update')->name('companies.sectors.users.update');
 Route::get('/companies/{company_uuid}/sectors/{sector_uuid}/users/destroy/{uuid}', 'UsersController@destroy')->name('companies.sectors.users.destroy');
-
+ 
 Route::get('/audit', 'AuditController@index')->name('audit.index');
 Route::get('/audit/new', 'AuditController@create')->name('audit.create');
 Route::post('/audit/store', 'AuditController@store')->name('audit.store');

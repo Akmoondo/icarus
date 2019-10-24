@@ -19,9 +19,9 @@
     <div class="form-group">
         <label class="control-label col-md-3 col-sm-3 col-xs-12">Referência</label>
         <div class="col-md-6 col-sm-6 col-xs-12">
-            <select class="form-control">
+            <select name="reference_uuid" class="form-control">
                 @foreach ($references as $reference)
-                    <option  name="reference_uuid" id="reference_uuid" value="{{$reference->uuid}}">{{$reference->reference}}</option>
+                    <option   id="reference_uuid" value="{{$reference->uuid}}">{{$reference->reference}}</option>
                 @endforeach 
             </select>
         </div>
