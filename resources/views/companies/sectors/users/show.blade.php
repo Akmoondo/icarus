@@ -3,7 +3,7 @@
 @section('content')
 <div class="x_title">
     <h2>Alterar Usuário: {{$users->name}}</h2>
-        <a class="btn btn-danger pull-right" href="{{ route('companies.sectors.users.index') }}">Cancelar</a>
+        <a class="btn btn-danger pull-right" href="{{ route('companies.sectors.users.index', [$company->uuid, $sector->uuid]) }}">Cancelar</a>
         <div class="clearfix"></div>
 </div>
 <form id="demo-form2" data-parsley-validate="" class="form-horizontal form-label-left" novalidate="" method ="POST" action="{{ route('companies.sectors.users.update', $users->uuid) }}" > 

@@ -18,9 +18,9 @@ class UsersController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index($company_uuid, $sector_uuid)
     {
-        $users = $this->usersRepository->index();
+        $users = $this->usersRepository->index($company_uuid, $sector_uuid);
         return view('companies.sectors.users.index', compact('users'));
     }
 
@@ -29,7 +29,7 @@ class UsersController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create($company_uuid, $sector_uuid)
     {
         return view('companies.sectors.users.create');
     }
@@ -40,10 +40,10 @@ class UsersController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, $company_uuid, $sector_uuid)
     {
         $inputs = $request->all();
-        $users = $this->usersRepository->store($inputs);
+        $users = $this->usersRepository->store($inputs, $company_uuid, $sector_uuid);
         return redirect()->route('companies.sectors.users.index');
     }
 
@@ -53,7 +53,7 @@ class UsersController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($company_uuid, $sector_uuid, $id )
     {
         $users = $this->usersRepository->show($id);
         //dd ($users);
@@ -78,7 +78,7 @@ class UsersController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, $company_uuid, $sector_uuid, $id )
     {
         $users = $this->usersRepository->update($id, $request);
         return  redirect()->route('companies.sectors.users.index');
@@ -90,7 +90,7 @@ class UsersController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($company_uuid, $sector_uuid, $id)
     {
         $users = $this->usersRepository->destroy($id);
         return redirect()->route('companies.sectors.users.index');

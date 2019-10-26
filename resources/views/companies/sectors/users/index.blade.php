@@ -6,7 +6,7 @@
     <div class="x_panel">
         <div class="x_title">
             <h2>Usuário</h2>
-            <a class="btn btn-success pull-right" href="{{ route('companies.sectors.users.create') }}">Novo Usuário</a>
+            <a class="btn btn-success pull-right" href="{{ route('companies.sectors.users.create', [$company->uuid, $sector->uuid]) }}">Novo Usuário</a>
             <div class="clearfix"></div>
         </div>
         <div class="x_content">
