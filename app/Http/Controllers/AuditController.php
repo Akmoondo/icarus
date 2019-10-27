@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Repositories\EvidencesRepository;
 use App\Repositories\ReferencesRepository;
-use App\Repositories\RequirementsEvidencesRepository;
 use App\Repositories\RequirementsRepository;
 use App\Repositories\SectorsRepository;
 use App\Repositories\SituationsRepository;
@@ -19,21 +18,18 @@ class AuditController extends Controller
     protected $sectorsRepository;
     protected $requirementsRepository;
     protected $evidencesRepository;
-    protected $requirementsEvidencesRepository;
     public function __construct(
         ReferencesRepository $referencesRepository,
         SituationsRepository $situationsRepository,
         EvidencesRepository $evidencesRepository,
         RequirementsRepository $requirementsRepository,
-        SectorsRepository $sectorsRepository,
-        RequirementsEvidencesRepository $requirementsEvidencesRepository
+        SectorsRepository $sectorsRepository
     ){
        $this->referencesRepository = $referencesRepository;
        $this->evidencesRepository = $evidencesRepository;
        $this->requirementsRepository = $requirementsRepository;
        $this->sectorsRepository = $sectorsRepository;
        $this->situationsRepository = $situationsRepository;
-       $this->requirementsEvidencesRepository = $requirementsEvidencesRepository;
     }
 
    

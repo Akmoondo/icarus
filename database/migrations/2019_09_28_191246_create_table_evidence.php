@@ -19,6 +19,8 @@ class CreateTableEvidence extends Migration
             $table->string('name', 45);
             $table->string('evidence');
             $table->text('comment', 500)->nullable();
+
+            $table->uuid('reference_uuid');
             $table->timestamps();
             $table->softDeletes();
         });

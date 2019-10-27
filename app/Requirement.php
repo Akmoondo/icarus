@@ -14,8 +14,8 @@ class Requirement extends Model
         return $this->hasMany(SectorRequiriment::class, 'requirement_uuid');
     }
 
-    public function requirements(){
-        return $this->belongsToMany('App\Evidence', 'requirement_evidences', 'requirement_uuid', 'evidence_uuid');
+    public function evidences(){
+        return $this->hasMany(Evidence::class, 'requirement_uuid');
     }
 
     public function reference() {
@@ -25,12 +25,5 @@ class Requirement extends Model
     public function situation(){
         return $this->hasOne(Situation::class, 'uuid', 'situation_uuid');
     }
-  
-    public function auto_One() {
-        return $this->hasOne(Requirement::class, 'uuid');
-    }
-
-    public function auto_Many(){
-        return $this->hasMany(Requirement::class, 'uuid', 'requirement_uuid');
-    } 
+   
 }
