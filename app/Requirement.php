@@ -7,14 +7,14 @@ use Illuminate\Database\Eloquent\Model;
 class Requirement extends Model
 {
     protected $fillable = [
-        'uuid', 'clause', 'requirement', 'brief', 'situation_uuid', 'reference_uuid', 'requirement_uuid'
+        'uuid', 'clause', 'requirement', 'brief', 'situation_uuid', 'reference_uuid', 'sector_uuid'
     ];
 
-    public function sector_requirement(){
-        return $this->hasMany(SectorRequiriment::class, 'requirement_uuid');
+    public function sector(){
+        return $this->hasOne(Sector::class, 'uuid', 'sector_uuid');
     }
 
-    public function evidences(){
+    public function evidence(){
         return $this->hasMany(Evidence::class, 'requirement_uuid');
     }
 

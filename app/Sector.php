@@ -2,6 +2,7 @@
 
 namespace App;
 
+use App\Repositories\RequirementsRepository;
 use Illuminate\Database\Eloquent\Model;
 
 class Sector extends Model
@@ -14,7 +15,7 @@ class Sector extends Model
         return $this->hasOne(Company::class, 'uuid', 'company_uuid');
     }
 
-    public function sector_requirement(){
-        return $this->hasMany(SectorRequiriment::class, 'sector_uuid');
+    public function requirement(){
+        return $this->hasMany(Requirement::class, 'sector_uuid');
     }
 }

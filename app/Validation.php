@@ -4,15 +4,14 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Situation extends Model
+class Validation extends Model
 {
     //
     protected $fillable = [
-        'uuid', 'situation', 'color'
+        'uuid', 'validation', 'color'
     ];
 
     public function requirement(){
-        return $this->hasMany(Requirement::class, 'situation_uuid');
+        return $this->hasMany(Evidences::class, 'validation_uuid');
     }
-
 }

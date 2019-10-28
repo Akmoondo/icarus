@@ -20,7 +20,8 @@ class CreateTableEvidence extends Migration
             $table->string('evidence');
             $table->text('comment', 500)->nullable();
 
-            $table->uuid('reference_uuid');
+            $table->uuid('requirement_uuid')->nullable();
+            $table->uuid('validation_uuid')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });

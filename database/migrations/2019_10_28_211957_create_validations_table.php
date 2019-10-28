@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateTableRequirement extends Migration
+class CreateValidationsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,17 +13,11 @@ class CreateTableRequirement extends Migration
      */
     public function up()
     {
-        Schema::create('requirements', function (Blueprint $table) {
+        Schema::create('validations', function (Blueprint $table) {
             $table->increments('id');
             $table->uuid('uuid');
-            $table->string('clause', 10);
-            $table->string('requirement', 20);
-            $table->text('brief', 500);
-            $table->uuid('situation_uuid')->nullable();
-            $table->uuid('reference_uuid')->nullable();
-            $table->uuid('sector_uuid')->nullable();
-
-            
+            $table->string('validation', 45);
+            $table->string('color', 45)->nullable();
             $table->timestamps();
             $table->softDeletes();
         });
@@ -36,6 +30,6 @@ class CreateTableRequirement extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('requirements');
+        Schema::dropIfExists('validations');
     }
 }

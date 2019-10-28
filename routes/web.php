@@ -39,6 +39,13 @@ Route::get('/situations/show/{uuid}', 'SituationsController@show')->name('audit.
 Route::put('/situations/update/{uuid}', 'SituationsController@update')->name('audit.situations.update');
 Route::get('/situations/destroy/{uuid}', 'SituationsController@destroy')->name('audit.situations.destroy');
 
+Route::get('/validations', 'ValidationsController@index')->name('audit.validations.index');
+Route::get('/validations/new', 'ValidationsController@create')->name('audit.validations.create');
+Route::post('/validations/store', 'ValidationsController@store')->name('audit.validations.store');
+Route::get('/validations/show/{uuid}', 'ValidationsController@show')->name('audit.validations.show');
+Route::put('/validations/update/{uuid}', 'ValidationsController@update')->name('audit.validations.update');
+Route::get('/validations/destroy/{uuid}', 'ValidationsController@destroy')->name('audit.validations.destroy');
+
 Route::get('/companies', 'CompaniesController@index')->name('companies.index');
 Route::get('/companies/new', 'CompaniesController@create')->name('companies.create');
 Route::post('/companies/store', 'CompaniesController@store')->name('companies.store');
