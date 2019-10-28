@@ -19,6 +19,4 @@ class Evidence extends Model
     public function validation(){
         return $this->hasOne(Validation::class, 'uuid', 'validation_uuid');
     }
-
-
 }

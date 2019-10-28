@@ -69,36 +69,25 @@
             </div>
             <div class="x_content">
                 @if ( $evidences )
-                 
                     <table class="table table-striped">
                         <thead>
                             <tr>
-                                <th>Escolha</th>
                                 <th>Nome da Evidência</th>
                                 <th class="text-center">Evidência</th>
+                                <th class="text-center">Data Cadastro</th>
+                                <th class="text-center">Situação</th>
+                                <th class="text-center">Data de Validação</th>
                                 <th class="text-right">Ação</th>
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($evidences as $evidence)
-                                @php
-                                    $checked = '';
-
-                                    foreach( $requirementEvidences as $requirementEvidence ):
-                                        if( $requirementEvidence->evidence->uuid == $evidence->uuid) {
-                                            $checked = 'checked';
-                                        }
-                                    endforeach
-
-                                @endphp
-
+                           @foreach ($evidences as $evidence)
                                 <tr>
-                                    <td>
-                                        <input type="checkbox" class="" value="evidencias[{{ $evidence->uuid }}]" {{ $checked }} />
-
-                                    </td>
                                     <td> {{ $evidence->name }}</td>
                                     <td class="text-center">{{ $evidence->evidence }}</td>
+                                    <td class="text-center">Data Cadastro</td>
+                                    <td class="text-center">Situação</td>
+                                    <td class="text-center">Data de Validação</td>
                                     <td class="text-right">
                                         <a href="{{ route('audit.requirements.evidences.show', $evidence->uuid)}}"> <i class="fa fa-eye text-success"></i></a>
                                         <a href="{{ route('audit.requirements.evidences.destroy', $evidence->uuid)}}"> <i class="fa fa-trash text-danger"></i></a>

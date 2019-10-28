@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Evidence;
 use App\Repositories\EvidencesRepository;
 use App\Repositories\ReferencesRepository;
 use App\Repositories\RequirementsRepository;
@@ -77,11 +78,9 @@ class AuditController extends Controller
     public function show($id)
     {
         $requirements = $this->requirementsRepository->audit($id);
-        $requirementEvidences = $this->requirementsEvidencesRepository->evidencesByRequirementId( $id );
-        //dd($requirements, $requirementEvidences);
         $evidences = $this->evidencesRepository->index();
         $situations = $this->situationsRepository->index();
-        return view('audit.show', compact('requirements', 'evidences', 'situations', 'requirementEvidences'));
+        return view('audit.show', compact('requirements', 'evidences', 'situations'));
     }
 
     /**
@@ -101,6 +100,16 @@ class AuditController extends Controller
         return back();
     }
 
+    public function editValidation( Request $request, $evidences_uuid )
+    { 
+        $inputs = $request->all();
+
+        $evidence = Evidence::where('uuid', $evidences_uuid)->update([
+            'validation_uuid' => $inputs['validation_uuid'],
+        ]);
+
+        return back();
+    }
     /**
      * Update the specified resource in storage.
      *

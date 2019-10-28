@@ -5,6 +5,7 @@ namespace App\Repositories;
 use App\Evidence;
 use App\Requirement;
 use Illuminate\Support\Str;
+use App\Validation;
 
 class EvidencesRepository{
 
@@ -18,7 +19,7 @@ class EvidencesRepository{
     public function show( $evidence_id )
     {
         $evidence = Evidence::where('uuid', $evidence_id );
-
+        $evidence->load('validation');
         return $evidence;
     }
 
@@ -31,6 +32,8 @@ class EvidencesRepository{
 
         return $evidence;
     }
+
+    
     public function destroy( $evidence_id )
     {
         $evidence = Evidence::where('uuid', $evidence_id)->delete();
