@@ -35,6 +35,7 @@
               <li><a href="{{route('audit.requirements.index')}}">Requisitos</a></li>
               <li><a href="{{route('audit.references.index')}}">Referências</a></li>
               <li><a href="{{route('audit.situations.index')}}">Situações</a></li>
+              <li><a href="{{route('audit.validations.index')}}">Validações</a></li>
             </ul>
           </li>
         </ul>

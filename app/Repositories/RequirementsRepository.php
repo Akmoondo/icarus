@@ -11,7 +11,7 @@ class RequirementsRepository{
     public function index()
     {
         $requirements = Requirement::all();
-        $requirements->load('reference', 'situation', 'requirements.evidence');
+        $requirements->load('reference', 'situation');
         return $requirements;
     }
 
@@ -25,7 +25,7 @@ class RequirementsRepository{
     public function audit ( $requirement_id )
     {
         $requirements = Requirement::where('uuid', $requirement_id )->first();
-        $requirements->load('reference', 'situation', 'requirements', 'requirements.evidence');
+        $requirements->load('reference', 'situation');
         return $requirements;
     }
 

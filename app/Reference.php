@@ -10,7 +10,7 @@ class Reference extends Model
         'uuid', 'reference' 
     ];
 
-    public function requirement(){
+    public function requirements(){
         return $this->hasMany(Requirement::class, 'reference_uuid');
     }
 }
