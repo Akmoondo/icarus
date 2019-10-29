@@ -74,6 +74,7 @@ Route::get('/audit/show/{uuid}', 'AuditController@show')->name('audit.show');
 Route::put('/audit/update/{uuid}', 'AuditController@update')->name('audit.update');
 Route::get('/audit/destroy/{uuid}', 'AuditController@destroy')->name('audit.destroy');
 Route::put('/audit/show/{uuid}/edit', 'AuditController@edit')->name('audit.requirements.edit');
+Route::put('/audit/show/{uuid}/editValidation', 'AuditController@editValidation')->name('audit.requirements.editValidation');
 
 Route::get('/audit/references', 'ReferenceController@index')->name('audit.references.index');
 Route::get('/audit/references/new', 'ReferenceController@create')->name('audit.references.create');
@@ -93,7 +94,7 @@ Route::get('/audit/requirements/evidences', 'EvidencesController@index')->name('
 Route::get('/audit/requirements/evidences/new', 'EvidencesController@create')->name('audit.requirements.evidences.create');
 Route::post('/audit/requirements/evidences/store', 'EvidencesController@store')->name('audit.requirements.evidences.store');
 Route::get('/audit/requirements/evidences/show/{uuid}', 'EvidencesController@show')->name('audit.requirements.evidences.show');
-Route::get('/audit/requirements/evidences/edit/{uuid}', 'EvidencesController@edit')->name('audit.requirements.evidences.edit');
+//Route::get('/audit/requirements/evidences/edit/{uuid}', 'EvidencesController@edit')->name('audit.requirements.evidences.edit');
 Route::get('/audit/requirements/evidences/destroy/{uuid}', 'EvidencesController@destroy')->name('audit.requirements.evidences.destroy');
 
 

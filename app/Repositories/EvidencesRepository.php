@@ -12,7 +12,8 @@ class EvidencesRepository{
     public function index( $search = null )
     {
         $evidences = Evidence::all();
-       
+        $evidences->load('validation');
+        //dd($evidences);
         return $evidences;
     }
 
@@ -20,6 +21,7 @@ class EvidencesRepository{
     {
         $evidence = Evidence::where('uuid', $evidence_id );
         $evidence->load('validation');
+        
         return $evidence;
     }
 

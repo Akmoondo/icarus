@@ -8,6 +8,7 @@ use App\Repositories\ReferencesRepository;
 use App\Repositories\RequirementsRepository;
 use App\Repositories\SectorsRepository;
 use App\Repositories\SituationsRepository;
+use App\Repositories\ValidationsRepository;
 
 use App\Requirement;
 use Illuminate\Http\Request;
@@ -19,18 +20,22 @@ class AuditController extends Controller
     protected $sectorsRepository;
     protected $requirementsRepository;
     protected $evidencesRepository;
+    protected $validationsRepository;
+
     public function __construct(
         ReferencesRepository $referencesRepository,
         SituationsRepository $situationsRepository,
         EvidencesRepository $evidencesRepository,
         RequirementsRepository $requirementsRepository,
-        SectorsRepository $sectorsRepository
+        SectorsRepository $sectorsRepository,
+        ValidationsRepository $validationsRepository
     ){
        $this->referencesRepository = $referencesRepository;
        $this->evidencesRepository = $evidencesRepository;
        $this->requirementsRepository = $requirementsRepository;
        $this->sectorsRepository = $sectorsRepository;
        $this->situationsRepository = $situationsRepository;
+       $this->validationsRepository = $validationsRepository;
     }
 
    
@@ -80,7 +85,8 @@ class AuditController extends Controller
         $requirements = $this->requirementsRepository->audit($id);
         $evidences = $this->evidencesRepository->index();
         $situations = $this->situationsRepository->index();
-        return view('audit.show', compact('requirements', 'evidences', 'situations'));
+        $validations = $this->validationsRepository->index();
+        return view('audit.show', compact('requirements', 'evidences', 'situations', 'validations'));
     }
 
     /**

@@ -18,7 +18,7 @@
     <div class="clearfix"></div>
     </div>
 </form>
-    
+     
 
 <div class="col-md-12 col-sm-6 col-xs-12">
     <div class="x_panel">
@@ -73,25 +73,42 @@
                         <thead>
                             <tr>
                                 <th>Nome da Evidência</th>
-                                <th class="text-center">Evidência</th>
-                                <th class="text-center">Data Cadastro</th>
+                                <th class="text-center">Evidência</th>                               
                                 <th class="text-center">Situação</th>
-                                <th class="text-center">Data de Validação</th>
-                                <th class="text-right">Ação</th>
+                                <th class="text-center">Validação</th>
+    
                             </tr>
                         </thead>
                         <tbody>
                            @foreach ($evidences as $evidence)
                                 <tr>
-                                    <td> {{ $evidence->name }}</td>
+                                    <td><a href="{{ route('audit.requirements.evidences.show', $evidence->uuid)}}"> {{ $evidence->name }} </a></td>
                                     <td class="text-center">{{ $evidence->evidence }}</td>
-                                    <td class="text-center">Data Cadastro</td>
-                                    <td class="text-center">Situação</td>
-                                    <td class="text-center">Data de Validação</td>
-                                    <td class="text-right">
+                                    <td class="text-center">
+                                        @if($evidence->validation)
+                                            <span class="badge" style="background-color:{{ $evidence->validation->color }};"> {{ $evidence->validation->validation }}</span>
+                                        @endif
+                                    </td>
+                                    <td class="text-center">
+                                        <form class="text-right align-right" method ="POST" action="{{ route('audit.requirements.editValidation', $evidence->uuid) }}">
+                                            @csrf
+                                            <input name="_method" type="hidden" value="PUT">
+                                            <div class="col-md-7 col-sm-7 col-xs-4 text-right">
+                                                <select name="validation_uuid" class="form-control">
+                                                    @foreach ($validations as $validation)
+                                                        <option value="{{$validation->uuid}}" {{ ($validation->uuid ==  $evidence->validation_uuid)? 'selected' : ''}}>{{$validation->validation}}</option>
+                                                    @endforeach
+                                                </select>
+                                            </div>
+                                            <button type="submit" class="btn btn-danger pull-right" >Salvar</button>
+                                            <div class="clearfix"></div>
+                                            </div>
+                                        </form>
+                                    </td>
+                                    <!--<td class="text-right">
                                         <a href="{{ route('audit.requirements.evidences.show', $evidence->uuid)}}"> <i class="fa fa-eye text-success"></i></a>
                                         <a href="{{ route('audit.requirements.evidences.destroy', $evidence->uuid)}}"> <i class="fa fa-trash text-danger"></i></a>
-                                    </td>
+                                    </td>-->
                                 </tr>
                             @endforeach
                         </tbody>

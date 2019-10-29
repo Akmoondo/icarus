@@ -43,5 +43,4 @@ class ValidationsRepository{
         $validation = Validation::where('uuid', $validation_id)->delete();
         return $validation;
     }
-
 }
