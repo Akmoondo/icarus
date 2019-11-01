@@ -3,20 +3,29 @@
 namespace App\Repositories;
 
 use App\Role;
+use Faker\Provider\Uuid;
 
-class RolesRepository{
+class RolesRepository
+{
 
     public function index()
     {
-     
+
         $roles = Role::all();
-       
+
         return $roles;
     }
 
-    public function show( $role_id )
+    public function save($inputs)
     {
-        $role = Role::where('uuid', $role_id );
+        $inputs['uuid'] = Uuid::uuid();
+        $role = Role::create($inputs);
+        return $role;
+    }
+
+    public function show($role_id)
+    {
+        $role = Role::where('uuid', $role_id)->first();
 
         return $role;
     }
@@ -30,10 +39,9 @@ class RolesRepository{
         return $role;
     }
 
-    public function destroy( $role_id )
+    public function destroy($role_id)
     {
         $role = Role::where('uuid', $role_id)->delete();
         return $role;
     }
-
 }

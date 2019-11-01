@@ -21,6 +21,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/', 'DashboardController@index')->name('dashboard.index');
 
 Route::get('/roles', 'RolesController@index')->name('roles.index');
+Route::get('/roles/create', 'RolesController@create')->name('roles.create');
 Route::post('/roles', 'RolesController@save')->name('roles.save');
 Route::get('/roles/{uuid}', 'RolesController@show')->name('roles.show');
 Route::put('/roles/{uuid}', 'RolesController@update')->name('roles.update');
@@ -31,7 +32,7 @@ Route::post('/privileges', 'PrivilegesController@save')->name('privileges.save')
 Route::get('/privileges/{uuid}', 'PrivilegesController@show')->name('privileges.show');
 Route::put('/privileges/{uuid}', 'PrivilegesController@update')->name('privileges.update');
 Route::delete('/privileges/{uuid}', 'PrivilegesController@destroy')->name('privileges.destroy');
- 
+
 Route::get('/situations', 'SituationsController@index')->name('audit.situations.index');
 Route::get('/situations/new', 'SituationsController@create')->name('audit.situations.create');
 Route::post('/situations/store', 'SituationsController@store')->name('audit.situations.store');
@@ -66,7 +67,7 @@ Route::post('/companies/{company_uuid}/sectors/{sector_uuid}/user/store', 'Users
 Route::get('/companies/{company_uuid}/sectors/{sector_uuid}/user/show/{uuid}', 'UsersController@show')->name('companies.sectors.users.show');
 Route::put('/companies/{company_uuid}/sectors/{sector_uuid}/user/update/{uuid}', 'UsersController@update')->name('companies.sectors.users.update');
 Route::get('/companies/{company_uuid}/sectors/{sector_uuid}/user/destroy/{uuid}', 'UsersController@destroy')->name('companies.sectors.users.destroy');
- 
+
 Route::get('/audit', 'AuditController@index')->name('audit.index');
 Route::get('/audit/new', 'AuditController@create')->name('audit.create');
 Route::post('/audit/store', 'AuditController@store')->name('audit.store');
@@ -96,9 +97,3 @@ Route::post('/audit/requirements/evidences/store', 'EvidencesController@store')-
 Route::get('/audit/requirements/evidences/show/{uuid}', 'EvidencesController@show')->name('audit.requirements.evidences.show');
 //Route::get('/audit/requirements/evidences/edit/{uuid}', 'EvidencesController@edit')->name('audit.requirements.evidences.edit');
 Route::get('/audit/requirements/evidences/destroy/{uuid}', 'EvidencesController@destroy')->name('audit.requirements.evidences.destroy');
-
-
-
-
-
-

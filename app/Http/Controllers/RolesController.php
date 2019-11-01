@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Repositories\RolesRepository;
+use Exception;
 use Illuminate\Http\Request;
 
 
@@ -10,10 +11,10 @@ class RolesController extends Controller
 {
 
     protected $rolesRepository;
-    
+
     public function __construct(RolesRepository $rolesRepository)
     {
-       $this->rolesRepository = $rolesRepository;
+        $this->rolesRepository = $rolesRepository;
     }
 
     /**
@@ -36,7 +37,7 @@ class RolesController extends Controller
      */
     public function create()
     {
-        //
+        return view('roles.create');
     }
 
     /**
@@ -45,9 +46,17 @@ class RolesController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function save(Request $request)
     {
-        //
+        try {
+
+            $inputs = $request->all();
+            $this->rolesRepository->save($inputs);
+        } catch (Exeption $e) {
+            throw new Exception('Deu erro ao salvar no banco de dados');
+        }
+
+        return redirect()->route('roles.index');
     }
 
     /**
@@ -58,7 +67,10 @@ class RolesController extends Controller
      */
     public function show($id)
     {
-        //
+        $role = $this->rolesRepository->show( $id );
+
+        return view('roles.edit', compact('role'));
+
     }
 
     /**

@@ -6,7 +6,7 @@
     <div class="x_panel">
         <div class="x_title">
             <h2><i class="fa fa-align-left"></i> Lista de Funções</h2>
-            <a class="btn btn-success pull-right">Nova Função</a>
+            <a href="{{ route('roles.create') }}" class="btn btn-success pull-right">Nova Função</a>
             <div class="clearfix"></div>
         </div>
         <div class="x_content">
@@ -27,7 +27,7 @@
                                 <td class="text-center"> {{ count($role->privileges) }}</td>
                                 <td class="text-right">
                                     <a href="edit"> <i class="fa fa-gear text-primary"></i></a>
-                                    <a href="edit"> <i class="fa fa-edit text-success"></i></a>
+                                    <a href="{{ route('roles.show', $role->uuid) }}"> <i class="fa fa-edit text-success"></i></a>
                                     <a href="edit"> <i class="fa fa-trash text-danger"></i></a>
                                 </td>
                             </tr>
