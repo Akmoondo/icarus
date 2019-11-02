@@ -46,7 +46,6 @@
           <li><a><i class="fa fa-users"></i> Usuários <span class="fa fa-chevron-down"></span></a>
             <ul class="nav child_menu">
               <li><a href="{{route('roles.index')}}">Gerenciar Cargos</a></li>
-              <li><a href="{{route('privileges.index')}}">Gerenciar Privilégios</a></li>
             </ul>
           </li>
           <li><a><i class="fa fa-table"></i> Empresas <span class="fa fa-chevron-down"></span></a>

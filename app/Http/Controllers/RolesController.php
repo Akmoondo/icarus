@@ -67,10 +67,9 @@ class RolesController extends Controller
      */
     public function show($id)
     {
-        $role = $this->rolesRepository->show( $id );
+        $role = $this->rolesRepository->show($id);
 
         return view('roles.edit', compact('role'));
-
     }
 
     /**
@@ -93,7 +92,10 @@ class RolesController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $inputs = $request->all();
+        $this->rolesRepository->update($inputs, $id);
+
+        return redirect()->route('roles.index');
     }
 
     /**
@@ -104,6 +106,7 @@ class RolesController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $this->rolesRepository->destroy($id);
+        return redirect()->route('roles.index');
     }
 }

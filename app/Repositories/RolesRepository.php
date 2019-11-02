@@ -30,7 +30,7 @@ class RolesRepository
         return $role;
     }
 
-    public function update($role_id, $inputs)
+    public function update($inputs, $role_id)
     {
         $role = Role::where('uuid', $role_id)->update([
             'name' => $inputs['name']

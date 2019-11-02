@@ -25,13 +25,13 @@ Route::get('/roles/create', 'RolesController@create')->name('roles.create');
 Route::post('/roles', 'RolesController@save')->name('roles.save');
 Route::get('/roles/{uuid}', 'RolesController@show')->name('roles.show');
 Route::put('/roles/{uuid}', 'RolesController@update')->name('roles.update');
-Route::delete('/roles/{uuid}', 'RolesController@destroy')->name('roles.destroy');
+Route::get('/roles/{uuid}/delete', 'RolesController@destroy')->name('roles.destroy');
 
-Route::get('/privileges', 'PrivilegesController@index')->name('privileges.index');
-Route::post('/privileges', 'PrivilegesController@save')->name('privileges.save');
-Route::get('/privileges/{uuid}', 'PrivilegesController@show')->name('privileges.show');
-Route::put('/privileges/{uuid}', 'PrivilegesController@update')->name('privileges.update');
-Route::delete('/privileges/{uuid}', 'PrivilegesController@destroy')->name('privileges.destroy');
+Route::get('/roles/{role_uuid}/privileges', 'PrivilegesController@index')->name('roles.privileges.index');
+Route::post('/roles/{role_uuid}/privileges', 'PrivilegesController@save')->name('roles.privileges.save');
+Route::get('/roles/{role_uuid}/privileges/{uuid}', 'PrivilegesController@show')->name('roles.privileges.show');
+Route::put('/roles/{role_uuid}/privileges/{uuid}', 'PrivilegesController@update')->name('roles.privileges.update');
+Route::delete('/roles/{role_uuid}/privileges/{uuid}', 'PrivilegesController@destroy')->name('roles.privileges.destroy');
 
 Route::get('/situations', 'SituationsController@index')->name('audit.situations.index');
 Route::get('/situations/new', 'SituationsController@create')->name('audit.situations.create');

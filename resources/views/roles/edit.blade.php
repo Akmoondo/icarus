@@ -9,12 +9,12 @@
     </div>
     <form id="" class="form-horizontal form-label-left" novalidate="" method="POST" action="{{ route("roles.update", $role->uuid) }}">
         @csrf
+        <input name="_method" type="hidden" value="put" />
 
         @include('roles.form')
 
         <div class="form-group">
             <div class="col-md-6">
-                <button class="btn btn-warning" type="reset">Limpar</button>
                 <button type="submit" class="btn btn-success">Gravar</button>
             </div>
         </div>

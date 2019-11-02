@@ -14,7 +14,6 @@
 
     <div class="form-group">
         <div class="col-md-6">
-            <button class="btn btn-warning" type="reset">Limpar</button>
             <button type="submit" class="btn btn-success">Gravar</button>
         </div>
     </div>
