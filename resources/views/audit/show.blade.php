@@ -64,7 +64,7 @@
         <div class="x_panel">
             <div class="x_title">
                 <h2>Evidências</h2>
-                <a class="btn btn-success pull-right" href="{{route('audit.requirements.evidences.create')}}">Nova Evidência</a>
+                <a class="btn btn-success pull-right" href="{{route('audit.requirements.evidences.create', $requirements->uuid)}}">Nova Evidência</a>
                 <div class="clearfix"></div>
             </div>
             <div class="x_content">

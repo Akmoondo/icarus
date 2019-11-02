@@ -25,6 +25,13 @@ class EvidencesRepository{
         return $evidence;
     }
 
+    public function show_requirement($requirement_uuid){
+       
+        $evidence = Evidence::where('requirement_uuid', $requirement_uuid )->get();
+        return $evidence;
+
+    }
+    
     public function create (){
         $evidences = Str::uuid();
         return $evidences;

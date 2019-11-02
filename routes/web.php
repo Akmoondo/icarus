@@ -69,6 +69,7 @@ Route::put('/companies/{company_uuid}/sectors/{sector_uuid}/user/update/{uuid}',
 Route::get('/companies/{company_uuid}/sectors/{sector_uuid}/user/destroy/{uuid}', 'UsersController@destroy')->name('companies.sectors.users.destroy');
 
 Route::get('/audit', 'AuditController@index')->name('audit.index');
+Route::get('/audit/{company_uuid}', 'AuditController@audit')->name('audit.audit');
 Route::get('/audit/new', 'AuditController@create')->name('audit.create');
 Route::post('/audit/store', 'AuditController@store')->name('audit.store');
 Route::get('/audit/show/{uuid}', 'AuditController@show')->name('audit.show');
@@ -92,7 +93,7 @@ Route::put('/audit/requirements/update/{uuid}', 'RequirementController@update')-
 Route::get('/audit/requirements/destroy/{uuid}', 'RequirementController@destroy')->name('audit.requirements.destroy');
 
 Route::get('/audit/requirements/evidences', 'EvidencesController@index')->name('audit.requirements.evidences.index');
-Route::get('/audit/requirements/evidences/new', 'EvidencesController@create')->name('audit.requirements.evidences.create');
+Route::get('/audit/requirements/{requirement_uuid}/evidences/new', 'EvidencesController@create')->name('audit.requirements.evidences.create');
 Route::post('/audit/requirements/evidences/store', 'EvidencesController@store')->name('audit.requirements.evidences.store');
 Route::get('/audit/requirements/evidences/show/{uuid}', 'EvidencesController@show')->name('audit.requirements.evidences.show');
 //Route::get('/audit/requirements/evidences/edit/{uuid}', 'EvidencesController@edit')->name('audit.requirements.evidences.edit');

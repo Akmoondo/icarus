@@ -61,6 +61,7 @@ class EvidencesController extends Controller
         return view('audit.requirements.evidences.show', compact('evidence'));
     }
 
+
     public function destroy($id)
     {
         $evidences = $this->evidencesRepository->destroy($id);

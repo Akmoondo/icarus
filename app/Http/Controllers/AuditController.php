@@ -9,6 +9,7 @@ use App\Repositories\RequirementsRepository;
 use App\Repositories\SectorsRepository;
 use App\Repositories\SituationsRepository;
 use App\Repositories\ValidationsRepository;
+use App\Repositories\CompaniesRepository;
 
 use App\Requirement;
 use Illuminate\Http\Request;
@@ -21,6 +22,7 @@ class AuditController extends Controller
     protected $requirementsRepository;
     protected $evidencesRepository;
     protected $validationsRepository;
+    protected $companiesRepository;
 
     public function __construct(
         ReferencesRepository $referencesRepository,
@@ -28,7 +30,8 @@ class AuditController extends Controller
         EvidencesRepository $evidencesRepository,
         RequirementsRepository $requirementsRepository,
         SectorsRepository $sectorsRepository,
-        ValidationsRepository $validationsRepository
+        ValidationsRepository $validationsRepository,
+        CompaniesRepository $companiesRepository
     ){
        $this->referencesRepository = $referencesRepository;
        $this->evidencesRepository = $evidencesRepository;
@@ -36,6 +39,7 @@ class AuditController extends Controller
        $this->sectorsRepository = $sectorsRepository;
        $this->situationsRepository = $situationsRepository;
        $this->validationsRepository = $validationsRepository;
+       $this->companiesRepository = $companiesRepository;
     }
 
    
@@ -48,9 +52,20 @@ class AuditController extends Controller
      */
     public function index()
     {
+        $companies = $this->companiesRepository->index();
         $requirements = $this->requirementsRepository->index();
+        $situations = $this->situationsRepository->index();
        // dd ($requirements);
-        return view('audit.index', compact('requirements'));
+        return view('audit.index2', compact('companies','requirements', 'situations'));
+    }
+
+    public function audit(Request $request, $company_uuid)
+    {
+        $requirements = $this->requirementsRepository->index();
+        $sectors = $this->sectorsRepository->index( $company_uuid );
+        $company = $this->companiesRepository->show( $company_uuid );
+       // dd ($requirements);
+        return view('audit.index', compact('requirements', 'sectors', 'company'));
     }
 
     /**
@@ -83,7 +98,7 @@ class AuditController extends Controller
     public function show($id)
     {
         $requirements = $this->requirementsRepository->audit($id);
-        $evidences = $this->evidencesRepository->index();
+        $evidences = $this->evidencesRepository->show_requirement($id);
         $situations = $this->situationsRepository->index();
         $validations = $this->validationsRepository->index();
         return view('audit.show', compact('requirements', 'evidences', 'situations', 'validations'));

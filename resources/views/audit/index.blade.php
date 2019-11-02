@@ -1,11 +1,16 @@
 @extends('layouts.app')
 
 @section('content')
-
+        <div class="x_panel">
+            <div class="x_title">
+                <h2>{{$company->name}}</h2>
+            <div class="clearfix"></div>
+        </div>
+@foreach ($sectors as $sector)
 <div class="col-md-12 col-sm-6 col-xs-12">
     <div class="x_panel">
         <div class="x_title">
-            <h2>Auditoria</h2>
+            <h2>{{$sector->sector}}</h2>
             <div class="clearfix"></div>
         </div>
         <div class="x_content">
@@ -44,4 +49,6 @@
         </div>
     </div>
 </div>
+<br/>
+@endforeach
 @endsection
