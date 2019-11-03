@@ -33,7 +33,7 @@ class RequirementController extends Controller
     {
         $inputs = $request->all();
         $requirements = $this->requirementsRepository->store($inputs);
-        return redirect()->route('audit.requirements.index');
+        return redirect()->route('audit.index');
     }
 
     public function show($id)
@@ -53,12 +53,12 @@ class RequirementController extends Controller
     {
         //dd( $request->all() );
         $requirements = $this->requirementsRepository->update($id, $request);
-        return  redirect()->route('audit.requirements.index');
+        return  redirect()->route('audit.index');
     }
 
     public function destroy($id)
     {
         $requirements = $this->requirementsRepository->destroy($id);
-        return redirect()->route('audit.requirements.index');
+        return redirect()->route('audit.index');
     }
 }

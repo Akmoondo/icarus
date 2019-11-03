@@ -18,7 +18,7 @@ class UsersController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index($company_uuid, $sector_uuid)
+    public function index(Request $request, $company_uuid, $sector_uuid)
     {
         $users = $this->usersRepository->index($company_uuid, $sector_uuid);
         return view('companies.sectors.users.index', compact('users'));

@@ -31,7 +31,7 @@
           </li>
           <li><a><i class="fa fa-edit"></i> Auditoria <span class="fa fa-chevron-down"></span></a>
             <ul class="nav child_menu">
-                <li><a href="{{route('audit.index')}}">Auditoria</a></li>
+              <li><a href="{{route('audit.index')}}">Auditoria</a></li>
               <li><a href="{{route('audit.requirements.index')}}">Requisitos</a></li>
               <li><a href="{{route('audit.references.index')}}">Referências</a></li>
               <li><a href="{{route('audit.situations.index')}}">Situações</a></li>

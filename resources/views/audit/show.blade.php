@@ -24,6 +24,7 @@
     <div class="x_panel">
         <div class="x_title">
             <h2>Requisito</h2>
+            <a class="btn btn-success pull-right" href="{{route('audit.requirements.show', $requirements->uuid)}}">Alterar Requisito</a>
             <div class="clearfix"></div>
         </div>
     <div class="x_content">
