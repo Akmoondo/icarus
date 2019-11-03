@@ -11,6 +11,7 @@
     <div class="x_panel">
         <div class="x_title">
             <h2>{{$sector->sector}}</h2>
+            <a class="btn btn-success pull-right" href="{{route('audit.requirements.create')}}">Novo Requisito</a>
             <div class="clearfix"></div>
         </div>
         <div class="x_content">

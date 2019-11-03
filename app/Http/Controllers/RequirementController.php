@@ -19,7 +19,7 @@ class RequirementController extends Controller
     {
         $requirements = $this->requirementsRepository->index();
 
-        //dd( $requirements );
+        dd( $requirements );
         return view('audit.requirements.index', compact('requirements'));
     }
 

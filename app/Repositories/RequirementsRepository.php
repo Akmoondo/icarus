@@ -12,6 +12,7 @@ class RequirementsRepository{
     {
         $requirements = Requirement::all();
         $requirements->load('reference', 'situation');
+        //dd($requirements);
         return $requirements;
     }
 
