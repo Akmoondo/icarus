@@ -71,6 +71,7 @@ Route::get('/companies/{company_uuid}/sectors/{sector_uuid}/user/destroy/{uuid}'
 Route::get('/audit', 'AuditController@getCompany')->name('audit.getCompany');
 Route::get('/audit/{company_uuid}', 'AuditController@getSector')->name('audit.getSector');
 Route::get('/audit/{company_uuid}/{sector_uuid}', 'AuditController@audit')->name('audit.audit');
+Route::get('/audit/{company_uuid}/{sector_uuid}/requirements/new', 'RequirementController@create')->name('audit.requirements.create');
 Route::get('/audit/show/{company_uuid}/{sector_uuid}/{requirement_uuid}', 'AuditController@show')->name('audit.show');
 
 Route::get('/audit/new', 'AuditController@create')->name('audit.create');
@@ -88,7 +89,7 @@ Route::put('/audit/references/update/{uuid}', 'ReferenceController@update')->nam
 Route::get('/audit/references/destroy/{uuid}', 'ReferenceController@destroy')->name('audit.references.destroy');
 
 Route::get('/audit/requirements', 'RequirementController@index')->name('audit.requirements.index');
-Route::get('/audit/requirements/new', 'RequirementController@create')->name('audit.requirements.create');
+
 Route::post('/audit/requirements/store', 'RequirementController@store')->name('audit.requirements.store');
 Route::get('/audit/requirements/show/{uuid}', 'RequirementController@show')->name('audit.requirements.show');
 Route::put('/audit/requirements/update/{uuid}', 'RequirementController@update')->name('audit.requirements.update');
@@ -96,7 +97,7 @@ Route::get('/audit/requirements/destroy/{uuid}', 'RequirementController@destroy'
 
 Route::get('/audit/requirements/evidences', 'EvidencesController@index')->name('audit.requirements.evidences.index');
 Route::get('/audit/requirements/{requirement_uuid}/evidences/new', 'EvidencesController@create')->name('audit.requirements.evidences.create');
-Route::post('/audit/requirements/evidences/store', 'EvidencesController@store')->name('audit.requirements.evidences.store');
+Route::post('/audit/requirements/{requirement_uuid}/evidences/store', 'EvidencesController@store')->name('audit.requirements.evidences.store');
 Route::get('/audit/requirements/evidences/show/{uuid}', 'EvidencesController@show')->name('audit.requirements.evidences.show');
 //Route::get('/audit/requirements/evidences/edit/{uuid}', 'EvidencesController@edit')->name('audit.requirements.evidences.edit');
 Route::get('/audit/requirements/evidences/destroy/{uuid}', 'EvidencesController@destroy')->name('audit.requirements.evidences.destroy');

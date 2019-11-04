@@ -3,7 +3,7 @@
 @section('content')
 <div class="x_title">
         <h2>Adicionar Nova Situação</h2>
-            <a class="btn btn-danger pull-right" href="{{ route('audit.situations.index') }}">Cancelar</a>
+            <a class="btn btn-danger pull-right" href="{{  redirect()->getUrlGenerator()->previous()  }}">Cancelar</a>
             <div class="clearfix"></div>
 </div>
 <form id="demo-form2" data-parsley-validate="" class="form-horizontal form-label-left" novalidate="" method ="POST" action="{{route('audit.situations.store')}}" >

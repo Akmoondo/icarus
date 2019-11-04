@@ -3,13 +3,13 @@
 @section('content')
 <div class="x_title">
         <h2>Adicionar Novo Requisito</h2>
-            <a class="btn btn-danger pull-right" href="{{ route('audit.requirements.index') }}">Cancelar</a>
+            <a class="btn btn-danger pull-right" href="{{  redirect()->getUrlGenerator()->previous() }}">Cancelar</a>
             <div class="clearfix"></div>
 </div>
 <form id="demo-form2" data-parsley-validate="" class="form-horizontal form-label-left" novalidate="" method ="POST" action="{{route('audit.requirements.store')}}" >
     @csrf
     <input type="hidden" id = "uuid" name="uuid" value="{{$requirements}}" >
-    
+    <input type="hidden" id="sector_uuid" name="sector_uuid" value="{{$sector->uuid}}">
     @include('audit.requirements._form')
     
     <div class="form-group">

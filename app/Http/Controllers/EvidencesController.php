@@ -34,10 +34,12 @@ class EvidencesController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request, $requirement_uuid)
     {
         $evidences = $this->evidencesRepository->create();
-        $requirements = Requirement::all();
+        $requirements = Requirement::where('uuid', $requirement_uuid )->first();
+        //dd($requirements);
+
         return view('audit.requirements.evidences.create', compact('evidences', 'requirements'));
     }
 
@@ -51,7 +53,7 @@ class EvidencesController extends Controller
     {
         $inputs = $request->all();
         $evidences = $this->evidencesRepository->store($inputs);
-        return redirect()->route('audit.index');
+        return back();
     }
 
     public function show($evidences_id)

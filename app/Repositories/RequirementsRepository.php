@@ -37,9 +37,8 @@ class RequirementsRepository{
     }
     public function create (){
         $requirements = Str::uuid();
-        $references = Reference::all();
-        //return view('requirements.create', compact('requirements', 'references'));
-        return compact('requirements', 'references');
+        //$references = Reference::all();
+        return compact('requirements');
     }
     
     public function store ($inputs){

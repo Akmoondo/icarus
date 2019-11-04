@@ -3,10 +3,10 @@
 @section('content')
 <div class="x_title">
     <h2>Nova Evidência</h2>
-    <a class="btn btn-danger pull-right" href="{{route('audit.requirements.evidences.index')}}">Cancelar</a>
+    <a class="btn btn-danger pull-right" href="{{ redirect()->getUrlGenerator()->previous() }}">Cancelar</a>
     <div class="clearfix"></div>
 </div>
-<form id="demo-form2" data-parsley-validate="" class="form-horizontal form-label-left" novalidate="" method ="POST" action="{{route('audit.requirements.evidences.store')}}" >
+<form id="demo-form2" data-parsley-validate="" class="form-horizontal form-label-left" novalidate="" method ="POST" action="{{route('audit.requirements.evidences.store', $requirements->uuid)}}" >
     @csrf
     <input type="hidden" id = "uuid" name="uuid" value="{{$evidences}}" >
     <input type="hidden" id="requirement_uuid" name="requirement_uuid" value="{{$requirements->uuid}}">
