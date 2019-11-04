@@ -3,10 +3,9 @@
 @section('content')
         <div class="x_panel">
             <div class="x_title">
-                <h2>{{$company->name}}</h2>
+                <h2>{{--$company->name--}}</h2>
             <div class="clearfix"></div>
         </div>
-@foreach ($sectors as $sector)
 <div class="col-md-12 col-sm-6 col-xs-12">
     <div class="x_panel">
         <div class="x_title">
@@ -36,7 +35,7 @@
                                     @endif
                                 </td>
                                 <td class="text-right">
-                                    <a href="{{ route('audit.show', $requirement->uuid)}}"> <i class="fa fa-edit text-success"></i></a>
+                                    <a href="{{ route('audit.show', [$company->uuid, $sector->uuid, $requirement->uuid])}}"> <i class="fa fa-edit text-success"></i></a>
                                 </td>
                             </tr>
                         @endforeach
@@ -51,5 +50,4 @@
     </div>
 </div>
 <br/>
-@endforeach
 @endsection

@@ -50,22 +50,30 @@ class AuditController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function getCompany()
     {
         $companies = $this->companiesRepository->index();
+    
+        return view('audit.getCompany', compact('companies'));
+    }
+
+    public function getSector(Request $request, $company_uuid)
+    {
+        $company = $this->companiesRepository->show( $company_uuid ); 
+        $sectors = $this->sectorsRepository->index( $company_uuid );
         $requirements = $this->requirementsRepository->index();
         $situations = $this->situationsRepository->index();
        // dd ($requirements);
-        return view('audit.index2', compact('companies','requirements', 'situations'));
+        return view('audit.getSector', compact('company','sectors','requirements', 'situations'));
     }
 
-    public function audit(Request $request, $company_uuid)
+    public function audit(Request $request, $company_uuid, $sector_uuid)
     {
-        $requirements = $this->requirementsRepository->index();
-        $sectors = $this->sectorsRepository->index( $company_uuid );
-        $company = $this->companiesRepository->show( $company_uuid );
-       // dd ($requirements);
-        return view('audit.index', compact('requirements', 'sectors', 'company'));
+        $company = $this->companiesRepository->show( $company_uuid ); 
+        $requirements = $this->requirementsRepository->getRequirementSector($sector_uuid);
+        $sector = $this->sectorsRepository->show( $sector_uuid );
+        //dd ($company);
+        return view('audit.index', compact('company','sector','requirements'));
     }
 
     /**

@@ -68,11 +68,13 @@ Route::get('/companies/{company_uuid}/sectors/{sector_uuid}/user/show/{uuid}', '
 Route::put('/companies/{company_uuid}/sectors/{sector_uuid}/user/update/{uuid}', 'UsersController@update')->name('companies.sectors.users.update');
 Route::get('/companies/{company_uuid}/sectors/{sector_uuid}/user/destroy/{uuid}', 'UsersController@destroy')->name('companies.sectors.users.destroy');
 
-Route::get('/audit', 'AuditController@index')->name('audit.index');
-Route::get('/audit/{company_uuid}', 'AuditController@audit')->name('audit.audit');
+Route::get('/audit', 'AuditController@getCompany')->name('audit.getCompany');
+Route::get('/audit/{company_uuid}', 'AuditController@getSector')->name('audit.getSector');
+Route::get('/audit/{company_uuid}/{sector_uuid}', 'AuditController@audit')->name('audit.audit');
+Route::get('/audit/show/{company_uuid}/{sector_uuid}/{requirement_uuid}', 'AuditController@show')->name('audit.show');
+
 Route::get('/audit/new', 'AuditController@create')->name('audit.create');
 Route::post('/audit/store', 'AuditController@store')->name('audit.store');
-Route::get('/audit/show/{uuid}', 'AuditController@show')->name('audit.show');
 Route::put('/audit/update/{uuid}', 'AuditController@update')->name('audit.update');
 Route::get('/audit/destroy/{uuid}', 'AuditController@destroy')->name('audit.destroy');
 Route::put('/audit/show/{uuid}/edit', 'AuditController@edit')->name('audit.requirements.edit');

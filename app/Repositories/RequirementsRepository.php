@@ -30,6 +30,11 @@ class RequirementsRepository{
         return $requirements;
     }
 
+    public function getRequirementSector ( $sector_uuid ){
+        $requirements = Requirement::where('sector_uuid', $sector_uuid )->get();
+        $requirements->load('reference', 'situation');
+        return $requirements;
+    }
     public function create (){
         $requirements = Str::uuid();
         $references = Reference::all();
