@@ -63,7 +63,7 @@ class AuditController extends Controller
         $sectors = $this->sectorsRepository->index( $company_uuid );
         $requirements = $this->requirementsRepository->index();
         $situations = $this->situationsRepository->index();
-       // dd ($requirements);
+        //dd ($sectors);
         return view('audit.getSector', compact('company','sectors','requirements', 'situations'));
     }
 
@@ -103,10 +103,10 @@ class AuditController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Request $request, $company_uuid, $sector_uuid, $requirement_uuid)
     {
-        $requirements = $this->requirementsRepository->audit($id);
-        $evidences = $this->evidencesRepository->show_requirement($id);
+        $requirements = $this->requirementsRepository->audit($requirement_uuid);
+        $evidences = $this->evidencesRepository->show_requirement($requirement_uuid);
         $situations = $this->situationsRepository->index();
         $validations = $this->validationsRepository->index();
         return view('audit.show', compact('requirements', 'evidences', 'situations', 'validations'));
