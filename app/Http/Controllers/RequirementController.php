@@ -53,12 +53,12 @@ class RequirementController extends Controller
     {
         //dd( $request->all() );
         $requirements = $this->requirementsRepository->update($id, $request);
-        return  redirect()->route('audit.index');
+        return back();
     }
 
     public function destroy($id)
     {
         $requirements = $this->requirementsRepository->destroy($id);
-        return redirect()->route('audit.index');
+        return back();
     }
 }

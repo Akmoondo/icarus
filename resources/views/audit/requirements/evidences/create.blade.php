@@ -9,7 +9,7 @@
 <form id="demo-form2" data-parsley-validate="" class="form-horizontal form-label-left" novalidate="" method ="POST" action="{{route('audit.requirements.evidences.store')}}" >
     @csrf
     <input type="hidden" id = "uuid" name="uuid" value="{{$evidences}}" >
-    <!--<input type="hidden" id="requirement_uuid" name="requirement_uuid" value="{{--$requirement_uuid--}}">-->
+    <input type="hidden" id="requirement_uuid" name="requirement_uuid" value="{{$requirements->uuid}}">
     <div class="form-group">
         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">Nome<span class="required">*</span></label>
         <div class="col-md-6 col-sm-6 col-xs-12">

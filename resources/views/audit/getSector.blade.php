@@ -42,7 +42,7 @@
             <td>
             <p><i class="fa fa-square {{$situation->color}}"></i>{{$situation->situation}}</p>
             </td>
-            <td>Contar Requisitos</td>
+            <td>Contar</td>
         </tr> 
     @endforeach
     

@@ -6,11 +6,7 @@
     <div class="x_panel tile fixed_height_160 overflow_hidden">
     <div class="x_title">
     <h2>{{$company->name}}</h2>
-    <ul class="nav navbar-right panel_toolbox">
-    <li class="">
-    <a href="{{route('audit.getSector', $company->uuid)}}"  role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
-    </li>
-    </ul>
+    <a class="btn btn-success pull-right" href="{{route('audit.getSector', $company->uuid)}}" >Auditar</a>
     <div class="clearfix"></div>
     </div>
     <div class="table-responsive">  
