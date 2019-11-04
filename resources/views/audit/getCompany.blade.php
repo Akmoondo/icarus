@@ -6,9 +6,17 @@
     <div class="x_panel tile fixed_height_160 overflow_hidden">
     <div class="x_title">
     <h2>{{$company->name}}</h2>
-    <a class="btn btn-success pull-right" href="{{route('audit.getSector', $company->uuid)}}" >Auditar</a>
+    <ul class="nav navbar-right panel_toolbox">
+    <li class="">
+    <a href="{{route('audit.getSector', $company->uuid)}}" ><i class="fa fa-edit"></i></a>
+                    </li>
+        <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a> </li>
+    </ul>
     <div class="clearfix"></div>
     </div>
+    
+    
+    <div class="x_content">
     <div class="table-responsive">  
         <table class="table table-bordered">  
             <tbody>
@@ -28,7 +36,8 @@
         </table>
     </div>
     </div>
-</div>
+    </div>
+    </div>
     <br/>
 
     @endforeach

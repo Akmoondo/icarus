@@ -67,6 +67,6 @@ class EvidencesController extends Controller
     public function destroy($id)
     {
         $evidences = $this->evidencesRepository->destroy($id);
-        return redirect()->route('audit.requirements.evidences.index');
+        return back();
     }
 }

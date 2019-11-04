@@ -18,9 +18,10 @@ class UsersController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request, $company_uuid, $sector_uuid)
+    public function index(Request $request, $sector_uuid)
     {
-        $users = $this->usersRepository->index($company_uuid, $sector_uuid);
+        $users = $this->usersRepository->index($sector_uuid);
+        //dd($users);
         return view('companies.sectors.users.index', compact('users'));
     }
 
@@ -29,7 +30,7 @@ class UsersController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create($company_uuid, $sector_uuid)
+    public function create(Request $request, $company_uuid, $sector_uuid)
     {
         return view('companies.sectors.users.create');
     }
@@ -53,7 +54,7 @@ class UsersController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($company_uuid, $sector_uuid, $id )
+    public function show(Request $request, $company_uuid, $sector_uuid, $id )
     {
         $users = $this->usersRepository->show($id);
         //dd ($users);
