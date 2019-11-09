@@ -46,5 +46,9 @@ class User extends Authenticatable
     public function role() {
         return $this->hasOne(Role::class,'uuid', 'role_uuid');
     }
+
+    public function evidence() {
+        return $this->hasMany(Evidence::class, 'user_uuid');
+    }
 }
  

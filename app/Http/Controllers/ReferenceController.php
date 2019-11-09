@@ -17,8 +17,9 @@ class ReferenceController extends Controller
     public function index()
     {
         $references = $this->referencesRepository->index();
- 
+        
         return view('audit.references.index', compact('references'));
+        
     }
 
     public function create()
