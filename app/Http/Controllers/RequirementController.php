@@ -26,7 +26,7 @@ class RequirementController extends Controller
 
     public function create(Request $request, $company_uuid, $sector_uuid)
     {
-        $requirements = $this->requirementsRepository->create();
+        $requirements = $this->requirementsRepository->create($company_uuid, $sector_uuid);
         $sector = Sector::where('uuid', $sector_uuid)->first();
         $references = Reference::all(); 
         return view('audit.requirements.create', compact('requirements', 'sector', 'references'));

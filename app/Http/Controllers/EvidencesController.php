@@ -51,6 +51,7 @@ class EvidencesController extends Controller
      */
     public function store(Request $request)
     {
+
         $inputs = $request->all();
         $evidences = $this->evidencesRepository->store($inputs);
         return back();

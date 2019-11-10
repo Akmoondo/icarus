@@ -81,12 +81,12 @@ Route::get('/audit/destroy/{uuid}', 'AuditController@destroy')->name('audit.dest
 Route::put('/audit/show/{uuid}/edit', 'AuditController@edit')->name('audit.requirements.edit');
 Route::put('/audit/show/{uuid}/editValidation', 'AuditController@editValidation')->name('audit.requirements.editValidation');
 
-Route::get('/audit/references', 'ReferenceController@index')->name('audit.references.index');
-Route::get('/audit/references/new', 'ReferenceController@create')->name('audit.references.create');
-Route::post('/audit/references/store', 'ReferenceController@store')->name('audit.references.store');
-Route::get('/audit/references/show/{uuid}', 'ReferenceController@show')->name('audit.references.show');
-Route::put('/audit/references/update/{uuid}', 'ReferenceController@update')->name('audit.references.update');
-Route::get('/audit/references/destroy/{uuid}', 'ReferenceController@destroy')->name('audit.references.destroy');
+Route::get('/references', 'ReferenceController@index')->name('references.index');
+Route::get('/references/new', 'ReferenceController@create')->name('references.create');
+Route::post('/references/store', 'ReferenceController@store')->name('references.store');
+Route::get('/references/show/{uuid}', 'ReferenceController@show')->name('references.show');
+Route::put('/references/update/{uuid}', 'ReferenceController@update')->name('references.update');
+Route::get('/references/destroy/{uuid}', 'ReferenceController@destroy')->name('references.destroy');
 
 Route::get('/audit/requirements', 'RequirementController@index')->name('audit.requirements.index');
 

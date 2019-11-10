@@ -37,9 +37,19 @@ class EvidencesRepository{
         return $evidences;
     }
     public function store ($inputs){
-        $evidence = Evidence::create($inputs);
-
-        return $evidence;
+        //dd($inputs);
+        //$evidence = Evidence::create($inputs);
+        $path = $inputs->file('evidence')->store('evidencias','public');
+        $evidence = new Evidence();
+       
+        $evidence->uuid = $inputs->input('uuid');
+        $evidence->requirement_uuid = $inputs->input('requirement_uuid');
+        //$evidence->user_uuid = $inputs->input('user_uuid');
+        $evidence->name = $inputs->input('name');
+        $evidence->comment = $inputs->input('comment');
+        $evidence->evidence = $path;
+        $evidence->save();
+        return true;
     }
 
     

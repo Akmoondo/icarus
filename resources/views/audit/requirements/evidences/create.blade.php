@@ -6,7 +6,7 @@
     <a class="btn btn-danger pull-right" href="{{ redirect()->getUrlGenerator()->previous() }}">Cancelar</a>
     <div class="clearfix"></div>
 </div>
-<form id="demo-form2" data-parsley-validate="" class="form-horizontal form-label-left" novalidate="" method ="POST" action="{{route('audit.requirements.evidences.store', $requirements->uuid)}}" >
+<form enctype="multipart/form-data" id="demo-form2" data-parsley-validate="" class="form-horizontal form-label-left" novalidate="" method ="POST" action="{{route('audit.requirements.evidences.store', $requirements->uuid)}}" >
     @csrf
     <input type="hidden" id = "uuid" name="uuid" value="{{$evidences}}" >
     <input type="hidden" id="requirement_uuid" name="requirement_uuid" value="{{$requirements->uuid}}">
@@ -17,7 +17,7 @@
         </div>
     </div>
     <div class="form-group">
-
+ 
     <div class="col-md-12 col-sm-12 col-xs-12">
             <label class="control-label col-md-3 col-sm-3 col-xs-12">Comentário</label>
             <div class="col-md-6 col-sm-6 col-xs-12">

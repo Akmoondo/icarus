@@ -3,7 +3,7 @@
 @section('content')
         <div class="x_panel">
             <div class="x_title">
-                <h2>{{--$company->name--}}</h2>
+                <h2>{{$company->name}}</h2>
             <div class="clearfix"></div>
         </div>
 <div class="col-md-12 col-sm-6 col-xs-12">

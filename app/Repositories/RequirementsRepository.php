@@ -35,10 +35,11 @@ class RequirementsRepository{
         $requirements->load('reference', 'situation');
         return $requirements;
     }
-    public function create (){
+    public function create ( $company_uuid, $sector_uuid){
         $requirements = Str::uuid();
+        
         //$references = Reference::all();
-        return compact('requirements');
+        return $requirements;
     }
     
     public function store ($inputs){
