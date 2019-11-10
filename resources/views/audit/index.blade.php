@@ -1,11 +1,16 @@
 @extends('layouts.app')
 
 @section('content')
-
+        <div class="x_panel">
+            <div class="x_title">
+                <h2>{{$company->name}}</h2>
+            <div class="clearfix"></div>
+        </div>
 <div class="col-md-12 col-sm-6 col-xs-12">
     <div class="x_panel">
         <div class="x_title">
-            <h2>Auditoria</h2>
+            <h2>{{$sector->sector}}</h2>
+            <a class="btn btn-success pull-right" href="{{route('audit.requirements.create', [$company->uuid, $sector->uuid])}}">Novo Requisito</a>
             <div class="clearfix"></div>
         </div>
         <div class="x_content">
@@ -30,7 +35,7 @@
                                     @endif
                                 </td>
                                 <td class="text-right">
-                                    <a href="{{ route('audit.show', $requirement->uuid)}}"> <i class="fa fa-edit text-success"></i></a>
+                                    <a href="{{ route('audit.show', [$company->uuid, $sector->uuid, $requirement->uuid])}}"> <i class="fa fa-edit text-success"></i></a>
                                 </td>
                             </tr>
                         @endforeach
@@ -44,4 +49,5 @@
         </div>
     </div>
 </div>
+<br/>
 @endsection

@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Repositories\EvidencesRepository;
 use App\Repositories\RequirementsRepository;
 use App\Requirement;
+use Illuminate\Support\Facades\Storage;
 
 class EvidencesController extends Controller
 {
@@ -34,10 +35,12 @@ class EvidencesController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request, $requirement_uuid)
     {
         $evidences = $this->evidencesRepository->create();
-        $requirements = Requirement::all();
+        $requirements = Requirement::where('uuid', $requirement_uuid )->first();
+        //dd($requirements);
+
         return view('audit.requirements.evidences.create', compact('evidences', 'requirements'));
     }
 
@@ -49,9 +52,20 @@ class EvidencesController extends Controller
      */
     public function store(Request $request)
     {
+        /*
         $inputs = $request->all();
         $evidences = $this->evidencesRepository->store($inputs);
-        return redirect()->route('audit.index');
+        return back(); */
+            $path = $request->file('evidence')->store('evidencias','public');
+            $evidence = new Evidence();
+            $evidence->uuid = $request->input('uuid');
+            $evidence->requirement_uuid = $request->input('requirement_uuid');
+            //$evidence->user_uuid = $inputs->input('user_uuid');
+            $evidence->name = $request->input('name');
+            $evidence->comment = $request->input('comment');
+            $evidence->evidence = $path;
+            $evidence->save();
+            return back();
     }
 
     public function show($evidences_id)
@@ -61,9 +75,18 @@ class EvidencesController extends Controller
         return view('audit.requirements.evidences.show', compact('evidence'));
     }
 
+    public function download($uuid){
+        $evidence = Evidence::where('uuid', $uuid)->first();
+        //dd($evidence);
+        $path = Storage::disk('public')->getDriver()->getAdapter()->applyPathPrefix($evidence->evidence);
+        return response()->download($path);
+
+    }
+
+
     public function destroy($id)
     {
         $evidences = $this->evidencesRepository->destroy($id);
-        return redirect()->route('audit.requirements.evidences.index');
+        return back();
     }
 }

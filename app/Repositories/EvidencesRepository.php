@@ -6,6 +6,7 @@ use App\Evidence;
 use App\Requirement;
 use Illuminate\Support\Str;
 use App\Validation;
+use Illuminate\Support\Facades\Storage;
 
 class EvidencesRepository{
 
@@ -25,19 +26,40 @@ class EvidencesRepository{
         return $evidence;
     }
 
+    public function show_requirement($requirement_uuid){
+       
+        $evidence = Evidence::where('requirement_uuid', $requirement_uuid )->get();
+        return $evidence;
+
+    }
+    
     public function create (){
         $evidences = Str::uuid();
         return $evidences;
     }
     public function store ($inputs){
-        $evidence = Evidence::create($inputs);
-
-        return $evidence;
+        //dd($inputs);
+        //$evidence = Evidence::create($inputs);
+        $path = $inputs->file('evidence')->store('evidencias','public');
+        $evidence = new Evidence();
+       
+        $evidence->uuid = $inputs->input('uuid');
+        $evidence->requirement_uuid = $inputs->input('requirement_uuid');
+        //$evidence->user_uuid = $inputs->input('user_uuid');
+        $evidence->name = $inputs->input('name');
+        $evidence->comment = $inputs->input('comment');
+        $evidence->evidence = $path;
+        $evidence->save();
+        return true;
     }
 
     
     public function destroy( $evidence_id )
     {
+        $evidence = Evidence::where('uuid', $evidence_id)->first();
+        //dd($evidence);
+        $file = $evidence->evidence;
+        Storage::disk('public')->delete($file);
         $evidence = Evidence::where('uuid', $evidence_id)->delete();
         return $evidence;
     }

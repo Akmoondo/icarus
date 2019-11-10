@@ -25,6 +25,7 @@ class SectorsRepository{
 
         return $sector; 
     }
+    
 
     public function show( $sector_uuid )
     {

@@ -3,7 +3,7 @@
 @section('content')
 <div class="x_title">
     <h2>Alterar Requisito: {{$requirements->clause}} - {{$requirements->requirement}}</h2>
-        <a class="btn btn-danger pull-right" href="{{ route('audit.requirements.index', $requirements->uuid) }}">Cancelar</a>
+        <a class="btn btn-danger pull-right" href="{{ redirect()->getUrlGenerator()->previous() }}">Cancelar</a>
         <div class="clearfix"></div>
 </div>
 <form id="demo-form2" data-parsley-validate="" class="form-horizontal form-label-left" novalidate="" method ="POST" action="{{ route('audit.requirements.update', $requirements->uuid) }}" > 
@@ -43,7 +43,7 @@
     
     <div class="form-group">
         <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
-            <button class="btn btn-warning" type="reset">Limpar</button>
+            <a href="{{ route('audit.requirements.destroy', $requirements->uuid)}}" class="btn btn-warning" >Deletar Requisito</a>
             <button type="submit" class="btn btn-success">Alterar</button>
         </div>
     </div>

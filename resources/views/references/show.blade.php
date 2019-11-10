@@ -3,10 +3,10 @@
 @section('content')
 <div class="x_title">
     <h2>Alterar Referência: {{$references->reference}}</h2>
-        <a class="btn btn-danger pull-right" href="{{ route('audit.references.index') }}">Cancelar</a>
+        <a class="btn btn-danger pull-right" href="{{ redirect()->getUrlGenerator()->previous() }}">Cancelar</a>
         <div class="clearfix"></div>
 </div>
-<form id="demo-form2" data-parsley-validate="" class="form-horizontal form-label-left" novalidate="" method ="POST" action="{{ route('audit.references.update', $references->uuid) }}" > 
+<form id="demo-form2" data-parsley-validate="" class="form-horizontal form-label-left" novalidate="" method ="POST" action="{{ route('references.update', $references->uuid) }}" > 
     @csrf
     <input name="_method" type="hidden" value="PUT">
     {{--@include('situations._form')--}}

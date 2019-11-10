@@ -7,14 +7,10 @@ use Illuminate\Support\Str;
 
 class UsersRepository{
 
-    public function index( $company_uuid, $sector_uuid )
+    public function index( $sector_uuid )
     {
-       if( $sector_uuid ) {
             $users = User::where('sector_uuid', $sector_uuid)->get();
-       } else{
-            $users = User::all();
-       }
-       return $users;
+            return $users;
     }
     
     public function store ($inputs, $company_uuid, $sector_uuid){

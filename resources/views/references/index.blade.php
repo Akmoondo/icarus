@@ -6,7 +6,7 @@
     <div class="x_panel">
         <div class="x_title">
             <h2>Referências</h2>
-            <a class="btn btn-success pull-right" href="{{route('audit.references.create')}}">Nova Referência</a>
+            <a class="btn btn-success pull-right" href="{{route('references.create')}}">Nova Referência</a>
             <div class="clearfix"></div>
         </div>
         <div class="x_content">
@@ -24,8 +24,8 @@
                             <tr>
                                 <td> {{ $reference->reference }}</td>
                                 <td class="text-right">
-                                    <a href="{{ route('audit.references.show', $reference->uuid)}}"> <i class="fa fa-edit text-success"></i></a>
-                                    <a href="{{ route('audit.references.destroy', $reference->uuid)}}"> <i class="fa fa-trash text-danger"></i></a>
+                                    <a href="{{ route('references.show', $reference->uuid)}}"> <i class="fa fa-edit text-success"></i></a>
+                                    <a href="{{ route('references.destroy', $reference->uuid)}}"> <i class="fa fa-trash text-danger"></i></a>
                                 </td>
                             </tr>
                         @endforeach

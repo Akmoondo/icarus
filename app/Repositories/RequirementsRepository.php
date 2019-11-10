@@ -12,6 +12,7 @@ class RequirementsRepository{
     {
         $requirements = Requirement::all();
         $requirements->load('reference', 'situation');
+        //dd($requirements);
         return $requirements;
     }
 
@@ -29,11 +30,16 @@ class RequirementsRepository{
         return $requirements;
     }
 
-    public function create (){
+    public function getRequirementSector ( $sector_uuid ){
+        $requirements = Requirement::where('sector_uuid', $sector_uuid )->get();
+        $requirements->load('reference', 'situation');
+        return $requirements;
+    }
+    public function create ( $company_uuid, $sector_uuid){
         $requirements = Str::uuid();
-        $references = Reference::all();
-        //return view('requirements.create', compact('requirements', 'references'));
-        return compact('requirements', 'references');
+        
+        //$references = Reference::all();
+        return $requirements;
     }
     
     public function store ($inputs){

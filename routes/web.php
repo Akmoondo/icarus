@@ -18,7 +18,7 @@ use Illuminate\Support\Facades\Route;
 Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::get('/', 'DashboardController@index')->name('dashboard.index');
+Route::get('/', 'AuditController@getCompany')->name('dashboard.index');
 
 Route::get('/roles', 'RolesController@index')->name('roles.index');
 Route::get('/roles/create', 'RolesController@create')->name('roles.create');
@@ -68,32 +68,37 @@ Route::get('/companies/{company_uuid}/sectors/{sector_uuid}/user/show/{uuid}', '
 Route::put('/companies/{company_uuid}/sectors/{sector_uuid}/user/update/{uuid}', 'UsersController@update')->name('companies.sectors.users.update');
 Route::get('/companies/{company_uuid}/sectors/{sector_uuid}/user/destroy/{uuid}', 'UsersController@destroy')->name('companies.sectors.users.destroy');
 
-Route::get('/audit', 'AuditController@index')->name('audit.index');
+Route::get('/audit', 'AuditController@getCompany')->name('audit.getCompany');
+Route::get('/audit/{company_uuid}', 'AuditController@getSector')->name('audit.getSector');
+Route::get('/audit/{company_uuid}/{sector_uuid}', 'AuditController@audit')->name('audit.audit');
+Route::get('/audit/{company_uuid}/{sector_uuid}/requirements/new', 'RequirementController@create')->name('audit.requirements.create');
+Route::get('/audit/show/{company_uuid}/{sector_uuid}/{requirement_uuid}', 'AuditController@show')->name('audit.show');
+
 Route::get('/audit/new', 'AuditController@create')->name('audit.create');
 Route::post('/audit/store', 'AuditController@store')->name('audit.store');
-Route::get('/audit/show/{uuid}', 'AuditController@show')->name('audit.show');
 Route::put('/audit/update/{uuid}', 'AuditController@update')->name('audit.update');
 Route::get('/audit/destroy/{uuid}', 'AuditController@destroy')->name('audit.destroy');
 Route::put('/audit/show/{uuid}/edit', 'AuditController@edit')->name('audit.requirements.edit');
 Route::put('/audit/show/{uuid}/editValidation', 'AuditController@editValidation')->name('audit.requirements.editValidation');
 
-Route::get('/audit/references', 'ReferenceController@index')->name('audit.references.index');
-Route::get('/audit/references/new', 'ReferenceController@create')->name('audit.references.create');
-Route::post('/audit/references/store', 'ReferenceController@store')->name('audit.references.store');
-Route::get('/audit/references/show/{uuid}', 'ReferenceController@show')->name('audit.references.show');
-Route::put('/audit/references/update/{uuid}', 'ReferenceController@update')->name('audit.references.update');
-Route::get('/audit/references/destroy/{uuid}', 'ReferenceController@destroy')->name('audit.references.destroy');
+Route::get('/references', 'ReferenceController@index')->name('references.index');
+Route::get('/references/new', 'ReferenceController@create')->name('references.create');
+Route::post('/references/store', 'ReferenceController@store')->name('references.store');
+Route::get('/references/show/{uuid}', 'ReferenceController@show')->name('references.show');
+Route::put('/references/update/{uuid}', 'ReferenceController@update')->name('references.update');
+Route::get('/references/destroy/{uuid}', 'ReferenceController@destroy')->name('references.destroy');
 
 Route::get('/audit/requirements', 'RequirementController@index')->name('audit.requirements.index');
-Route::get('/audit/requirements/new', 'RequirementController@create')->name('audit.requirements.create');
+
 Route::post('/audit/requirements/store', 'RequirementController@store')->name('audit.requirements.store');
 Route::get('/audit/requirements/show/{uuid}', 'RequirementController@show')->name('audit.requirements.show');
 Route::put('/audit/requirements/update/{uuid}', 'RequirementController@update')->name('audit.requirements.update');
 Route::get('/audit/requirements/destroy/{uuid}', 'RequirementController@destroy')->name('audit.requirements.destroy');
 
 Route::get('/audit/requirements/evidences', 'EvidencesController@index')->name('audit.requirements.evidences.index');
-Route::get('/audit/requirements/evidences/new', 'EvidencesController@create')->name('audit.requirements.evidences.create');
-Route::post('/audit/requirements/evidences/store', 'EvidencesController@store')->name('audit.requirements.evidences.store');
+Route::get('/audit/requirements/{requirement_uuid}/evidences/new', 'EvidencesController@create')->name('audit.requirements.evidences.create');
+Route::post('/audit/requirements/{requirement_uuid}/evidences/store', 'EvidencesController@store')->name('audit.requirements.evidences.store');
 Route::get('/audit/requirements/evidences/show/{uuid}', 'EvidencesController@show')->name('audit.requirements.evidences.show');
+Route::get('/audit/requirements/evidences/download/{uuid}', 'EvidencesController@download')->name('audit.requirements.evidences.download');
 //Route::get('/audit/requirements/evidences/edit/{uuid}', 'EvidencesController@edit')->name('audit.requirements.evidences.edit');
 Route::get('/audit/requirements/evidences/destroy/{uuid}', 'EvidencesController@destroy')->name('audit.requirements.evidences.destroy');

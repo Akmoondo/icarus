@@ -22,6 +22,7 @@ class CreateTableEvidence extends Migration
 
             $table->uuid('requirement_uuid')->nullable();
             $table->uuid('validation_uuid')->nullable();
+            $table->uuid('user_uuid')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });
