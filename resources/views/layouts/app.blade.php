@@ -117,11 +117,11 @@
             });
 
             $('input').on('ifChecked', function(event){
-                alert( 'Aqui vai a chamada para Inserção da linha' );
+                //alert( 'Aqui vai a chamada para Inserção da linha' );
             });
 
             $('input').on('ifUnchecked', function(event){
-                alert( 'Aqui vai a chamada para Exclusão da linha' );
+                //alert( 'Aqui vai a chamada para Exclusão da linha' );
             });
         });
     </script>
