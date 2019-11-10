@@ -16,7 +16,7 @@
     <div class="clearfix"></div>
     </div>
     <div class="x_content">
-    <table class="" style="width:100%">
+    <!--<table class="" style="width:100%">
     <tbody><tr>
     <th style="width:37%;">
     <p>Gráfico</p>
@@ -37,7 +37,7 @@
     <td>
     <table class="tile_info">
     <tbody>
-    @foreach ($situations as $situation)
+    {{--@foreach ($situations as $situation)
         <tr>
             <td>
             <p><i class="fa fa-square {{$situation->color}}"></i>{{$situation->situation}}</p>
@@ -45,11 +45,11 @@
             <td>Contar</td>
         </tr> 
     @endforeach
-    
+    --}}
     </tbody></table>
     </td>
     </tr>
-    </tbody></table>
+    </tbody></table>-->
     </div>
     </div>
     </div>
