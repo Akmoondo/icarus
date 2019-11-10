@@ -74,7 +74,7 @@
                         <thead>
                             <tr>
                                 <th>Nome da Evidência</th>
-                                <th class="text-center">Evidência</th>                               
+                                <th class="text-center">Download da Evidência</th>                               
                                 <th class="text-center">Situação</th>
                                 <th class="text-center">Validação</th>
     
@@ -84,7 +84,7 @@
                            @foreach ($evidences as $evidence)
                                 <tr>
                                     <td><a href="{{ route('audit.requirements.evidences.show', $evidence->uuid)}}"> {{ $evidence->name }} </a></td>
-                                    <td class="text-center">{{ $evidence->evidence }}</td>
+                                    <td class="text-center"><a class="btn btn-warning" href="{{ route('audit.requirements.evidences.download', $evidence->uuid)}}">Download</a></td>
                                     <td class="text-center">
                                         @if($evidence->validation)
                                             <span class="badge" style="background-color:{{ $evidence->validation->color }};"> {{ $evidence->validation->validation }}</span>
@@ -106,10 +106,7 @@
                                             </div>
                                         </form>
                                     </td>
-                                    <!--<td class="text-right">
-                                        <a href="{{ route('audit.requirements.evidences.show', $evidence->uuid)}}"> <i class="fa fa-eye text-success"></i></a>
-                                        <a href="{{ route('audit.requirements.evidences.destroy', $evidence->uuid)}}"> <i class="fa fa-trash text-danger"></i></a>
-                                    </td>-->
+                                    
                                 </tr>
                             @endforeach
                         </tbody>

@@ -6,6 +6,7 @@ use App\Evidence;
 use App\Requirement;
 use Illuminate\Support\Str;
 use App\Validation;
+use Illuminate\Support\Facades\Storage;
 
 class EvidencesRepository{
 
@@ -55,6 +56,10 @@ class EvidencesRepository{
     
     public function destroy( $evidence_id )
     {
+        $evidence = Evidence::where('uuid', $evidence_id)->first();
+        //dd($evidence);
+        $file = $evidence->evidence;
+        Storage::disk('public')->delete($file);
         $evidence = Evidence::where('uuid', $evidence_id)->delete();
         return $evidence;
     }

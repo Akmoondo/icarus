@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Repositories\EvidencesRepository;
 use App\Repositories\RequirementsRepository;
 use App\Requirement;
+use Illuminate\Support\Facades\Storage;
 
 class EvidencesController extends Controller
 {
@@ -72,6 +73,14 @@ class EvidencesController extends Controller
         $evidence = Evidence::where('uuid', $evidences_id )->first();
 
         return view('audit.requirements.evidences.show', compact('evidence'));
+    }
+
+    public function download($uuid){
+        $evidence = Evidence::where('uuid', $uuid)->first();
+        //dd($evidence);
+        $path = Storage::disk('public')->getDriver()->getAdapter()->applyPathPrefix($evidence->evidence);
+        return response()->download($path);
+
     }
 
 

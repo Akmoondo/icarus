@@ -99,5 +99,6 @@ Route::get('/audit/requirements/evidences', 'EvidencesController@index')->name('
 Route::get('/audit/requirements/{requirement_uuid}/evidences/new', 'EvidencesController@create')->name('audit.requirements.evidences.create');
 Route::post('/audit/requirements/{requirement_uuid}/evidences/store', 'EvidencesController@store')->name('audit.requirements.evidences.store');
 Route::get('/audit/requirements/evidences/show/{uuid}', 'EvidencesController@show')->name('audit.requirements.evidences.show');
+Route::get('/audit/requirements/evidences/download/{uuid}', 'EvidencesController@download')->name('audit.requirements.evidences.download');
 //Route::get('/audit/requirements/evidences/edit/{uuid}', 'EvidencesController@edit')->name('audit.requirements.evidences.edit');
 Route::get('/audit/requirements/evidences/destroy/{uuid}', 'EvidencesController@destroy')->name('audit.requirements.evidences.destroy');
