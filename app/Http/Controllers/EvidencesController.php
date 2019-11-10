@@ -51,10 +51,20 @@ class EvidencesController extends Controller
      */
     public function store(Request $request)
     {
-
+        /*
         $inputs = $request->all();
         $evidences = $this->evidencesRepository->store($inputs);
-        return back();
+        return back(); */
+            $path = $request->file('evidence')->store('evidencias','public');
+            $evidence = new Evidence();
+            $evidence->uuid = $request->input('uuid');
+            $evidence->requirement_uuid = $request->input('requirement_uuid');
+            //$evidence->user_uuid = $inputs->input('user_uuid');
+            $evidence->name = $request->input('name');
+            $evidence->comment = $request->input('comment');
+            $evidence->evidence = $path;
+            $evidence->save();
+            return back();
     }
 
     public function show($evidences_id)
