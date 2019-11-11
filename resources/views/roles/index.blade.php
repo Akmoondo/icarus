@@ -26,7 +26,7 @@
                                 <td> {{ $role->name }}</td>
                                 <td class="text-center"> {{ count($role->privileges) }}</td>
                                 <td class="text-right">
-                                    <a href="{{ route('privileges.index', $role->uuid) }}"> <i class="fa fa-gear text-primary"></i></a>
+                                    <a href="{{ route('roles.privileges.index', $role->uuid) }}"> <i class="fa fa-gear text-primary"></i></a>
                                     <a href="{{ route('roles.show', $role->uuid) }}"> <i class="fa fa-edit text-success"></i></a>
                                     <a href="{{ route('roles.destroy', $role->uuid) }}"> <i class="fa fa-trash text-danger"></i></a>
                                 </td>
