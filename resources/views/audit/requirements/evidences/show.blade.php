@@ -27,6 +27,10 @@
                     <td>{{$evidence->created_at}}</td>
             </tr>
             <tr>
+                    <th scope="row">Usuário</th>
+                    <td></td>
+            </tr>
+            <tr>
                     <th scope="row">Última Avaliação</th>
                     <td>{{$evidence->updated_at}}</td>
             </tr>
