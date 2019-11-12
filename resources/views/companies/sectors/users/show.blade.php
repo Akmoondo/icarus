@@ -3,10 +3,10 @@
 @section('content')
 <div class="x_title">
     <h2>Alterar Usuário: {{$users->name}}</h2>
-        <a class="btn btn-danger pull-right" href="{{ route('companies.sectors.users.index', [$company->uuid, $sector->uuid]) }}">Cancelar</a>
+        <a class="btn btn-danger pull-right" href="{{ redirect()->getUrlGenerator()->previous() }}">Cancelar</a>
         <div class="clearfix"></div>
 </div>
-<form id="demo-form2" data-parsley-validate="" class="form-horizontal form-label-left" novalidate="" method ="POST" action="{{ route('companies.sectors.users.update', $users->uuid) }}" > 
+<form id="demo-form2" data-parsley-validate="" class="form-horizontal form-label-left" novalidate="" method ="POST" action="{{ route('companies.sectors.users.update', [$sector->companies->uuid, $sector->uuid, $users->uuid]) }}" > 
     @csrf
     <input name="_method" type="hidden" value="PUT">
     {{--@include('situations._form')--}}
@@ -23,12 +23,6 @@
             </div>
         </div>
     
-        <div class="form-group">
-            <label class="control-label col-md-3 col-sm-3 col-xs-12">Senha Antiga</label>
-            <div class="col-md-6 col-sm-6 col-xs-12">
-            <input type="password" class="form-control">
-            </div>
-        </div>
         <div class="form-group">
                 <label class="control-label col-md-3 col-sm-3 col-xs-12">Nova senha</label>
             <div class="col-md-6 col-sm-6 col-xs-12">

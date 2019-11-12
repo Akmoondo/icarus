@@ -4,6 +4,7 @@ namespace App\Repositories;
 
 use App\User;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Hash;
 
 class UsersRepository{
 
@@ -14,8 +15,18 @@ class UsersRepository{
     }
     
     public function store ($inputs, $company_uuid, $sector_uuid){
+        //dd($company_uuid);
         $inputs['uuid'] = Str::uuid();
-        $user = User::create($inputs);
+        $inputs['sector_uuid'] = $sector_uuid;
+        $inputs['company_uuid'] = $company_uuid;
+        $user = User::create([
+            'uuid' => $inputs['uuid'],
+            'name' => $inputs['name'],
+            'email' => $inputs['email'],
+            'password' => Hash::make($inputs['password']),
+            'company_uuid' => $inputs['company_uuid'],
+            'sector_uuid' => $inputs['sector_uuid'],
+        ]);
 
         return $user;
     }
@@ -23,7 +34,7 @@ class UsersRepository{
     public function show( $user_id )
     {
         $user = User::where('uuid', $user_id )->first();
-
+        $user->load('role', 'sector', 'evidence');
         return $user;
     }
 
@@ -32,7 +43,7 @@ class UsersRepository{
         $user = User::where('uuid', $user_id)->update([
             'name' => $inputs['name'],
             'email' => $inputs['email'],
-            //'password' => bcrypt( $inputs['password'] )
+            'password' => bcrypt( $inputs['password'] )
         ]);
 
         return $user;

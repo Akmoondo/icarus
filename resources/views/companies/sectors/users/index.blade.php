@@ -6,7 +6,7 @@
     <div class="x_panel">
         <div class="x_title">
             <h2>Usuário</h2>
-            <a class="btn btn-success pull-right" href="{{ route('companies.sectors.users.create', $sector->uuid) }}">Novo Usuário</a>
+            <a class="btn btn-success pull-right" href="{{ route('companies.sectors.users.create', [$sector->companies->uuid, $sector->uuid]) }}">Novo Usuário</a>
             <div class="clearfix"></div>
         </div>
         <div class="x_content">
@@ -26,8 +26,8 @@
                                 <td> {{ $user->name }}</td>
                                 <td class="text-center">Função</td>
                                 <td class="text-right">
-                                    <a href="{{ route('companies.sectors.users.show', $user->uuid)}}"> <i class="fa fa-edit text-success"></i></a>
-                                    <a href="{{ route('companies.sectors.users.destroy', $user->uuid)}}"> <i class="fa fa-trash text-danger"></i></a>
+                                    <a href="{{ route('companies.sectors.users.show',[$sector->companies->uuid, $sector->uuid, $user->uuid])}}"> <i class="fa fa-edit text-success"></i></a>
+                                    <a href="{{ route('companies.sectors.users.destroy', [$sector->companies->uuid, $sector->uuid, $user->uuid])}}"> <i class="fa fa-trash text-danger"></i></a>
                                 </td>
                             </tr>
                         @endforeach
