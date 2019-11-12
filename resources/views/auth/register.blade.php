@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('auth.layout')
 
 @section('content')
 <div class="container">
@@ -39,19 +39,6 @@
                             </div>
                         </div>
 
-                        <div class="form-group row">
-                            <label for="tipo" class="col-md-4 col-form-label text-md-right">{{ __('tipo') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="tipo" type="text" class="form-control{{ $errors->has('tipo') ? ' is-invalid' : '' }}" name="tipo" value="{{ old('tipo') }}" required autofocus>
-
-                                @if ($errors->has('tipo'))
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('tipo') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
 
                         <div class="form-group row">
                             <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
@@ -88,4 +75,4 @@
         </div>
     </div>
 </div>
-@endsection
+
