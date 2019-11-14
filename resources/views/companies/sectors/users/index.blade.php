@@ -24,9 +24,9 @@
                         @foreach ($users as $user)
                             <tr>
                                 <td> {{ $user->name }}</td>
-                                <td class="text-center">Função</td>
+                                <td class="text-center"> {{ isset($user->role)? $user->role->name : 'Não informado' }}</td>
                                 <td class="text-right">
-                                    <a href="{{ route('companies.sectors.users.show',[$sector->companies->uuid, $sector->uuid, $user->uuid])}}"> <i class="fa fa-edit text-success"></i></a>
+                                    {{-- <a href="{{ route('companies.sectors.users.show',[$sector->companies->uuid, $sector->uuid, $user->uuid])}}"> <i class="fa fa-edit text-success"></i></a> --}}
                                     <a href="{{ route('companies.sectors.users.destroy', [$sector->companies->uuid, $sector->uuid, $user->uuid])}}"> <i class="fa fa-trash text-danger"></i></a>
                                 </td>
                             </tr>

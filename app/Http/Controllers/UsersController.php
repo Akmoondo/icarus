@@ -1,17 +1,21 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use App\Repositories\UsersRepository;
+use App\Role;
+use Illuminate\Support\Facades\Gate;
+use Illuminate\Support\Facades\Auth;
 use App\Sector;
 use Illuminate\Http\Request;
 
 class UsersController extends Controller
 {
     protected $usersRepository;
-    
+
     public function __construct(UsersRepository $usersRepository)
     {
-       $this->usersRepository = $usersRepository;
+        $this->usersRepository = $usersRepository;
     }
     /**
      * Display a listing of the resource.
@@ -20,7 +24,11 @@ class UsersController extends Controller
      */
     public function index(Request $request, $company_uuid, $sector_uuid)
     {
+        if (Gate::forUser(Auth::user())->denies('user-validate', 'usuario-list')) {
+            dd('Você não tem permissão para realizar esta ação!');
+        }
         $users = $this->usersRepository->index($sector_uuid);
+        $users->load('role');
         //dd($users);
         $sector = Sector::where('uuid', $sector_uuid)->first();
         $sector->load('companies');
@@ -35,9 +43,15 @@ class UsersController extends Controller
      */
     public function create(Request $request, $company_uuid, $sector_uuid)
     {
+        if (Gate::forUser(Auth::user())->denies('user-validate', 'usuario-create')) {
+            dd('Você não tem permissão para realizar esta ação!');
+        }
         $sector = Sector::where('uuid', $sector_uuid)->first();
         $sector->load('companies');
-        return view('companies.sectors.users.create', compact('sector'));
+
+        $roles = Role::all();
+
+        return view('companies.sectors.users.create', compact('sector', 'roles'));
     }
 
     /**
@@ -48,6 +62,9 @@ class UsersController extends Controller
      */
     public function store(Request $request, $company_uuid, $sector_uuid)
     {
+        if (Gate::forUser(Auth::user())->denies('user-validate', 'usuario-save')) {
+            dd('Você não tem permissão para realizar esta ação!');
+        }
         $inputs = $request->all();
         $users = $this->usersRepository->store($inputs, $company_uuid, $sector_uuid);
         return back();
@@ -59,13 +76,17 @@ class UsersController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Request $request, $company_uuid, $sector_uuid, $id )
+    public function show(Request $request, $company_uuid, $sector_uuid, $id)
     {
+        if (Gate::forUser(Auth::user())->denies('user-validate', 'usuario-show')) {
+            dd('Você não tem permissão para realizar esta ação!');
+        }
         $users = $this->usersRepository->show($id);
         //dd ($users);
         $sector = Sector::where('uuid', $sector_uuid)->first();
         $sector->load('companies');
-        return view('companies.sectors.users.show', compact('users', 'sector'));
+        $roles = Role::all();
+        return view('companies.sectors.users.show', compact('users', 'sector', 'roles'));
     }
 
     /**
@@ -86,8 +107,11 @@ class UsersController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $company_uuid, $sector_uuid, $id )
+    public function update(Request $request, $company_uuid, $sector_uuid, $id)
     {
+        if (Gate::forUser(Auth::user())->denies('user-validate', 'usuario-update')) {
+            dd('Você não tem permissão para realizar esta ação!');
+        }
         $users = $this->usersRepository->update($id, $request);
         return  back();
     }
@@ -100,8 +124,10 @@ class UsersController extends Controller
      */
     public function destroy($company_uuid, $sector_uuid, $id)
     {
+        if (Gate::forUser(Auth::user())->denies('user-validate', 'usuario-delete')) {
+            dd('Você não tem permissão para realizar esta ação!');
+        }
         $users = $this->usersRepository->destroy($id);
         return back();
     }
 }
- 

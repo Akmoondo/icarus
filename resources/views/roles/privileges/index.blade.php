@@ -6,13 +6,13 @@
     <div class="x_panel">
         <div class="x_title">
         <h2><i class="fa fa-align-left"></i> Adiciona Privilério a {{ $roles->name }}</h2>
-            {{-- <a class="btn btn-success pull-right">Novo Privilégio</a> --}}
+            <a href="{{ route('privileges.create')}}" class="btn btn-success pull-right">Novo Privilégio</a>
             <div class="clearfix"></div>
         </div>
         <div class="x_content">
             @if ( $roles )
 
-            <form id="adiciona-privilegio-grupo" action="#" meyhod="post">
+            <form id="adiciona-privilegio-grupo" action="{{ route('roles.privileges.save', $roles->uuid )}}" method="post">
                 @csrf
                 <input type="hidden" name="role_uuid" value="{{ $roles->uuid }}" />
                 <table class="table table-striped">

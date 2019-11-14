@@ -11,27 +11,42 @@
         <ul class="nav side-menu" style="">
           <li><a><i class="fa fa-edit"></i> Auditoria <span class="fa fa-chevron-down"></span></a>
             <ul class="nav child_menu">
-              <li><a href="{{route('audit.getCompany')}}">Auditoria</a></li>
-              <li><a href="{{route('references.index')}}">Referências</a></li>
-              <li><a href="{{route('audit.situations.index')}}">Situações</a></li>
-              <li><a href="{{route('audit.validations.index')}}">Validações</a></li>
+              @can('user-validate', 'auditoria-list')
+                <li><a href="{{route('audit.getCompany')}}">Auditoria</a></li>
+              @endcan
+              @can('user-validate', 'referencia-list')
+                <li><a href="{{route('references.index')}}">Referências</a></li>
+              @endcan
+              @can('user-validate', 'situacao-list')
+                <li><a href="{{route('audit.situations.index')}}">Situações</a></li>
+              @endcan
+              @can('user-validate', 'validacao-list')   
+                <li><a href="{{route('audit.validations.index')}}">Validações</a></li>
+              @endcan
             </ul>
           </li>
         </ul>
 
         <br>
-        <h3>Usuários</h3>
+        @can('user-validate', 'usuario-list')
+          <h3>Usuários</h3>
+        @endcan
         <ul class="nav side-menu" style="">
+          @can('user-validate', 'usuario-list')
           <li><a><i class="fa fa-users"></i> Usuários <span class="fa fa-chevron-down"></span></a>
-            <ul class="nav child_menu">
-              <li><a href="{{route('roles.index')}}">Gerenciar Cargos</a></li>
-            </ul>
+            <ul class="nav child_menu">              
+                <li><a href="{{route('roles.index')}}">Gerenciar Cargos</a></li>
+            </ul>          
           </li>
-          <li><a><i class="fa fa-table"></i> Empresas <span class="fa fa-chevron-down"></span></a>
-            <ul class="nav child_menu">
-            <li><a href="{{route('companies.index')}}">Gerenciar Empresas</a></li>
-            </ul>
-          </li>
+          @endcan
+          @can('user-validate', 'empresa-list')
+            <li><a><i class="fa fa-table"></i> Empresas <span class="fa fa-chevron-down"></span></a>
+              <ul class="nav child_menu">              
+                <li><a href="{{route('companies.index')}}">Gerenciar Empresas</a></li>
+                
+              </ul>
+            </li>
+          @endcan
       </div>
     </div>
   </div>

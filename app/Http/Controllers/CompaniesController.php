@@ -4,14 +4,16 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Repositories\CompaniesRepository;
+use Illuminate\Support\Facades\Gate;
+use Illuminate\Support\Facades\Auth;
 
 class CompaniesController extends Controller
 {
     protected $companiesRepository;
-    
+
     public function __construct(CompaniesRepository $companiesRepository)
     {
-       $this->companiesRepository = $companiesRepository;
+        $this->companiesRepository = $companiesRepository;
     }
     /**
      * Display a listing of the resource.
@@ -20,6 +22,9 @@ class CompaniesController extends Controller
      */
     public function index()
     {
+        if (Gate::forUser(Auth::user())->denies('user-validate', 'empresa-list')) {
+            dd('Você não tem permissão para realizar esta ação!');
+        }
         $companies = $this->companiesRepository->index();
 
         return view('companies.index', compact('companies'));
@@ -32,6 +37,9 @@ class CompaniesController extends Controller
      */
     public function create()
     {
+        if (Gate::forUser(Auth::user())->denies('user-validate', 'empresa-create')) {
+            dd('Você não tem permissão para realizar esta ação!');
+        }
         $companies = $this->companiesRepository->create();
         return view('companies.create', compact('companies'));
     }
@@ -44,6 +52,9 @@ class CompaniesController extends Controller
      */
     public function store(Request $request)
     {
+        if (Gate::forUser(Auth::user())->denies('user-validate', 'empresa-save')) {
+            dd('Você não tem permissão para realizar esta ação!');
+        }
         $inputs = $request->all();
         $companies = $this->companiesRepository->store($inputs);
         return redirect()->route('companies.index');
@@ -57,6 +68,9 @@ class CompaniesController extends Controller
      */
     public function show($id)
     {
+        if (Gate::forUser(Auth::user())->denies('user-validate', 'empresa-show')) {
+            dd('Você não tem permissão para realizar esta ação!');
+        }
         $company = $this->companiesRepository->show($id);
         return view('companies.show', compact('company'));
     }
@@ -81,6 +95,9 @@ class CompaniesController extends Controller
      */
     public function update(Request $request, $id)
     {
+        if (Gate::forUser(Auth::user())->denies('user-validate', 'empresa-update')) {
+            dd('Você não tem permissão para realizar esta ação!');
+        }
         $companies = $this->companiesRepository->update($id, $request);
         return  redirect()->route('companies.index');
     }
@@ -93,8 +110,10 @@ class CompaniesController extends Controller
      */
     public function destroy($id)
     {
+        if (Gate::forUser(Auth::user())->denies('user-validate', 'empresa-delete')) {
+            dd('Você não tem permissão para realizar esta ação!');
+        }
         $companies = $this->companiesRepository->destroy($id);
         return redirect()->route('companies.index');
     }
 }
-

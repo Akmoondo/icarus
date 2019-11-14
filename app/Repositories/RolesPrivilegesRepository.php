@@ -5,7 +5,7 @@ namespace App\Repositories;
 use App\RolePrivilege;
 use Exception;
 
-class PrivilegeRepository
+class RolesPrivilegesRepository
 {
 
     public function index()
@@ -19,7 +19,7 @@ class PrivilegeRepository
     {
         try {
             foreach ($inputs as $input) {
-                RolePrivilege::create([
+                RolePrivilege::insert([
                     'role_uuid' => $role_uuid,
                     'privilege_uuid' => $input
                 ]);

@@ -12,7 +12,9 @@ use App\Repositories\ValidationsRepository;
 use App\Repositories\CompaniesRepository;
 
 use App\Requirement;
+use Illuminate\Support\Facades\Gate;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class AuditController extends Controller
 {
@@ -32,19 +34,19 @@ class AuditController extends Controller
         SectorsRepository $sectorsRepository,
         ValidationsRepository $validationsRepository,
         CompaniesRepository $companiesRepository
-    ){
-       $this->referencesRepository = $referencesRepository;
-       $this->evidencesRepository = $evidencesRepository;
-       $this->requirementsRepository = $requirementsRepository;
-       $this->sectorsRepository = $sectorsRepository;
-       $this->situationsRepository = $situationsRepository;
-       $this->validationsRepository = $validationsRepository;
-       $this->companiesRepository = $companiesRepository;
+    ) {
+        $this->referencesRepository = $referencesRepository;
+        $this->evidencesRepository = $evidencesRepository;
+        $this->requirementsRepository = $requirementsRepository;
+        $this->sectorsRepository = $sectorsRepository;
+        $this->situationsRepository = $situationsRepository;
+        $this->validationsRepository = $validationsRepository;
+        $this->companiesRepository = $companiesRepository;
     }
 
-   
-     
-   
+
+
+
     /**
      * Display a listing of the resource.
      *
@@ -52,28 +54,39 @@ class AuditController extends Controller
      */
     public function getCompany()
     {
+        if (Gate::forUser(Auth::user())->denies('user-validate', 'auditoria-list')) {
+            dd('Você não tem permissão para realizar esta ação!');
+        }
         $companies = $this->companiesRepository->index();
-    
+
         return view('audit.getCompany', compact('companies'));
     }
 
     public function getSector(Request $request, $company_uuid)
     {
-        $company = $this->companiesRepository->show( $company_uuid ); 
-        $sectors = $this->sectorsRepository->index( $company_uuid );
+        if (Gate::forUser(Auth::user())->denies('user-validate', 'auditoria-list')) {
+            dd('Você não tem permissão para realizar esta ação!');
+        }
+
+        $company = $this->companiesRepository->show($company_uuid);
+        $sectors = $this->sectorsRepository->index($company_uuid);
         $requirements = $this->requirementsRepository->index();
         $situations = $this->situationsRepository->index();
         //dd ($sectors);
-        return view('audit.getSector', compact('company','sectors','requirements', 'situations'));
+        return view('audit.getSector', compact('company', 'sectors', 'requirements', 'situations'));
     }
 
     public function audit(Request $request, $company_uuid, $sector_uuid)
     {
-        $company = $this->companiesRepository->show( $company_uuid ); 
+        if (Gate::forUser(Auth::user())->denies('user-validate', 'requisito-list')) {
+            dd('Você não tem permissão para realizar esta ação!');
+        }
+
+        $company = $this->companiesRepository->show($company_uuid);
         $requirements = $this->requirementsRepository->getRequirementSector($sector_uuid);
-        $sector = $this->sectorsRepository->show( $sector_uuid );
+        $sector = $this->sectorsRepository->show($sector_uuid);
         //dd ($company);
-        return view('audit.index', compact('company','sector','requirements'));
+        return view('audit.index', compact('company', 'sector', 'requirements'));
     }
 
     /**
@@ -105,6 +118,9 @@ class AuditController extends Controller
      */
     public function show(Request $request, $company_uuid, $sector_uuid, $requirement_uuid)
     {
+        if (Gate::forUser(Auth::user())->denies('user-validate', 'auditoria-list')) {
+            dd('Você não tem permissão para realizar esta ação!');
+        }
         $requirements = $this->requirementsRepository->audit($requirement_uuid);
         $evidences = $this->evidencesRepository->show_requirement($requirement_uuid);
         $situations = $this->situationsRepository->index();
@@ -118,9 +134,13 @@ class AuditController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit( Request $request, $requirements_uuid )
-    { 
+    public function edit(Request $request, $requirements_uuid)
+    {
         $inputs = $request->all();
+
+        if (Gate::forUser(Auth::user())->denies('user-validate', 'auditoria-edit')) {
+            dd('Você não tem permissão para realizar esta ação!');
+        }
 
         $requirement = Requirement::where('uuid', $requirements_uuid)->update([
             'situation_uuid' => $inputs['situation_uuid'],
@@ -129,9 +149,13 @@ class AuditController extends Controller
         return back();
     }
 
-    public function editValidation( Request $request, $evidences_uuid )
-    { 
+    public function editValidation(Request $request, $evidences_uuid)
+    {
         $inputs = $request->all();
+
+        if (Gate::forUser(Auth::user())->denies('user-validate', 'auditoria-edit')) {
+            dd('Você não tem permissão para realizar esta ação!');
+        }
 
         $evidence = Evidence::where('uuid', $evidences_uuid)->update([
             'validation_uuid' => $inputs['validation_uuid'],

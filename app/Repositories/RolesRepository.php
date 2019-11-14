@@ -39,6 +39,20 @@ class RolesRepository
         return $role;
     }
 
+
+    public function select()
+    {
+        $roles = [];
+
+        $allRoles = Role::all();
+
+        foreach ($allRoles as $role) {
+            $roles[$role->uuid] = $role->name;
+        }
+
+        return $roles;
+    }
+
     public function destroy($role_id)
     {
         $role = Role::where('uuid', $role_id)->delete();
