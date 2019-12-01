@@ -5,7 +5,7 @@
 <div class="col-md-12 col-sm-6 col-xs-12">
     <div class="x_panel">
         <div class="x_title">
-        <h2><i class="fa fa-align-left"></i> Adiciona Privilério a {{ $roles->name }}</h2>
+        <h2><i class="fa fa-align-left"></i> Adicionar Privilério a {{ $roles->name }}</h2>
             <a href="{{ route('privileges.create')}}" class="btn btn-success pull-right">Novo Privilégio</a>
             <div class="clearfix"></div>
         </div>

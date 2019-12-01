@@ -5,7 +5,7 @@
 <div class="col-md-12 col-sm-6 col-xs-12">
     <div class="x_panel">
         <div class="x_title">
-        <h2><i class="fa fa-align-left"></i>Ciração de Tela</h2>
+        <h2><i class="fa fa-align-left"></i>Criação de Privilégios</h2>
             {{-- <a class="btn btn-success pull-right">Novo Privilégio</a> --}}
             <div class="clearfix"></div>
         </div>

@@ -8,6 +8,8 @@ use App\Repositories\EvidencesRepository;
 use App\Repositories\RequirementsRepository;
 use App\Requirement;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Gate;
+use Illuminate\Support\Facades\Auth;
 
 class EvidencesController extends Controller
 {
@@ -61,18 +63,14 @@ class EvidencesController extends Controller
         if (Gate::forUser(Auth::user())->denies('user-validate', 'evidencia-save')) {
             dd('Você não tem permissão para realizar esta ação!');
         }
-        /*
-        $inputs = $request->all();
-        $evidences = $this->evidencesRepository->store($inputs);
-        return back(); */
         $path = $request->file('evidence')->store('evidencias', 'public');
         $evidence = new Evidence();
         $evidence->uuid = $request->input('uuid');
         $evidence->requirement_uuid = $request->input('requirement_uuid');
-        //$evidence->user_uuid = $inputs->input('user_uuid');
         $evidence->name = $request->input('name');
         $evidence->comment = $request->input('comment');
         $evidence->evidence = $path;
+        $evidence->user_uuid = Auth::user()->uuid;
         $evidence->save();
         return back();
     }
@@ -83,6 +81,8 @@ class EvidencesController extends Controller
             dd('Você não tem permissão para realizar esta ação!');
         }
         $evidence = Evidence::where('uuid', $evidences_id)->first();
+        $evidence->load('user');
+        //dd ($evidence);
 
         return view('audit.requirements.evidences.show', compact('evidence'));
     }

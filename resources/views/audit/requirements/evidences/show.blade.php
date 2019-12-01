@@ -28,7 +28,7 @@
             </tr>
             <tr>
                     <th scope="row">Usuário</th>
-                    <td></td>
+                    <td>{{$evidence->user->name}}</td>
             </tr>
             <tr>
                     <th scope="row">Última Avaliação</th>

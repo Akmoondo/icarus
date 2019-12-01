@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Repositories\RequirementsRepository;
 use App\Sector;
 
+
 class RequirementController extends Controller
 {
     protected $requirementsRepository;
@@ -62,6 +63,6 @@ class RequirementController extends Controller
     public function destroy($id)
     {
         $requirements = $this->requirementsRepository->destroy($id);
-        return back();
+        return view('audit.getCompany');
     }
 }
