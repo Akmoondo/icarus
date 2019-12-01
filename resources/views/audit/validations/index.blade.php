@@ -6,7 +6,9 @@
     <div class="x_panel">
         <div class="x_title">
             <h2>Validações de Evidências</h2>
+            @can('user-validate', 'validacao-create')
             <a class="btn btn-success pull-right" href="{{route('audit.validations.create')}}">Nova Validação</a>
+            @endcan
             <div class="clearfix"></div>
         </div>
         <div class="x_content">
@@ -26,8 +28,12 @@
                                 <td> {{ $validation->validation }}</td>
                                 <td class="text-center"> {{ $validation->color }}</td>
                                 <td class="text-right">
+                                    @can('user-validate', 'validacao-show')
                                     <a href="{{ route('audit.validations.show', $validation->uuid)}}"> <i class="fa fa-edit text-success"></i></a>
+                                    @endcan
+                                    @can('user-validate', 'validacao-delete')
                                     <a href="{{ route('audit.validations.destroy', $validation->uuid)}}"> <i class="fa fa-trash text-danger"></i></a>
+                                    @endcan
                                 </td>
                             </tr>
                         @endforeach

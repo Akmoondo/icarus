@@ -3,7 +3,8 @@
 @section('content')
 <div class="x_title">
 <h2>Requisito: {{$requirements->clause}} - {{$requirements->requirement}}</h2>
-    
+
+@can('user-validate', 'auditoria-edit')
 <form class="text-right align-right" method ="POST" action="{{ route('audit.requirements.edit', $requirements->uuid) }}">
     @csrf
     <input name="_method" type="hidden" value="PUT">
@@ -18,13 +19,15 @@
     <div class="clearfix"></div>
     </div>
 </form>
-     
+@endcan
 
 <div class="col-md-12 col-sm-6 col-xs-12">
     <div class="x_panel">
         <div class="x_title">
             <h2>Requisito</h2>
+            @can('user-validate', 'requisito-show')
             <a class="btn btn-success pull-right" href="{{route('audit.requirements.show', $requirements->uuid)}}">Alterar Requisito</a>
+            @endcan
             <div class="clearfix"></div>
         </div>
     <div class="x_content">
@@ -91,6 +94,7 @@
                                         @endif
                                     </td>
                                     <td class="text-center">
+                                        @can('user-validate', 'auditoria-edit')
                                         <form class="text-right align-right" method ="POST" action="{{ route('audit.requirements.editValidation', $evidence->uuid) }}">
                                             @csrf
                                             <input name="_method" type="hidden" value="PUT">
@@ -105,6 +109,7 @@
                                             <div class="clearfix"></div>
                                             </div>
                                         </form>
+                                        @endcan
                                     </td>
                                     
                                 </tr>

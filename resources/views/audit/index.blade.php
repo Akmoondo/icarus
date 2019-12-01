@@ -10,7 +10,11 @@
     <div class="x_panel">
         <div class="x_title">
             <h2>{{$sector->sector}}</h2>
+
+            @can('user-validate', 'requisito-create')
             <a class="btn btn-success pull-right" href="{{route('audit.requirements.create', [$company->uuid, $sector->uuid])}}">Novo Requisito</a>
+            @endcan
+
             <div class="clearfix"></div>
         </div>
         <div class="x_content">

@@ -6,7 +6,9 @@
     <div class="x_panel">
         <div class="x_title">
             <h2>Referências</h2>
+            @can('user-validate', 'referencia-create')
             <a class="btn btn-success pull-right" href="{{route('references.create')}}">Nova Referência</a>
+            @endcan
             <div class="clearfix"></div>
         </div>
         <div class="x_content">
@@ -24,8 +26,12 @@
                             <tr>
                                 <td> {{ $reference->reference }}</td>
                                 <td class="text-right">
+                                    @can('user-validate', 'referencia-show')
                                     <a href="{{ route('references.show', $reference->uuid)}}"> <i class="fa fa-edit text-success"></i></a>
+                                    @endcan
+                                    @can('user-validate', 'referencia-delete')
                                     <a href="{{ route('references.destroy', $reference->uuid)}}"> <i class="fa fa-trash text-danger"></i></a>
+                                    @endcan
                                 </td>
                             </tr>
                         @endforeach

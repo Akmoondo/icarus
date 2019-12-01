@@ -47,5 +47,7 @@
     </table>
 </div>
 <div class="ln_solid"></div>
+@can('user-validate', 'evidencia-delete')
     <a class="btn btn-danger pull-right" href="{{ route('audit.requirements.evidences.destroy', $evidence->uuid)}}">Apagar Evidência</a>
+@endcan
 @endsection

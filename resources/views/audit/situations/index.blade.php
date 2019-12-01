@@ -6,7 +6,9 @@
     <div class="x_panel">
         <div class="x_title">
             <h2>Situações</h2>
+            @can('user-validate', 'situacao-create')
             <a class="btn btn-success pull-right" href="{{route('audit.situations.create')}}">Nova Situação</a>
+            @endcan
             <div class="clearfix"></div>
         </div>
         <div class="x_content">
@@ -26,8 +28,12 @@
                                 <td> {{ $situation->situation }}</td>
                                 <td class="text-center"> {{ $situation->color }}</td>
                                 <td class="text-right">
+                                    @can('user-validate', 'situacao-show')
                                     <a href="{{ route('audit.situations.show', $situation->uuid)}}"> <i class="fa fa-edit text-success"></i></a>
+                                    @endcan
+                                    @can('user-validate', 'situacao-delete')
                                     <a href="{{ route('audit.situations.destroy', $situation->uuid)}}"> <i class="fa fa-trash text-danger"></i></a>
+                                    @endcan
                                 </td>
                             </tr>
                         @endforeach
