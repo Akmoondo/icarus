@@ -105,6 +105,6 @@ class EvidencesController extends Controller
             dd('Você não tem permissão para realizar esta ação!');
         }
         $evidences = $this->evidencesRepository->destroy($id);
-        return back();
+        return view('home');
     }
 }

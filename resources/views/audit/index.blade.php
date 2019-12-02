@@ -32,7 +32,7 @@
                         @foreach ($requirements as $requirement)
                             <tr>
                                 <td>{{($requirement->reference)? $requirement->reference->reference : ''}}</td>
-                                <td class="text-center"> {{ $requirement->requirement }}</td>
+                                <td class="text-center"> {{$requirement->clause}} - {{$requirement->requirement}}</td>
                                 <td class="text-center">
                                     @if($requirement->situation)
                                         <span class="badge" style="background-color:{{ $requirement->situation->color }};"> {{ $requirement->situation->situation }}</span>
